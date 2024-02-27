@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://ch763sv7kbf5"]
+
+[ext_resource type="Script" path="res://Enemies/BaseEnemy.gd" id="1_ycuag"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rcf2r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gtcy5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_euv5k"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4ibdl"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hru8d"]
+radius = 1.8
+
+[sub_resource type="Animation" id="Animation_iu5k0"]
+resource_name = "Attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20831, 0.3, 0.462188, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 0), Vector3(-1, 0, 0.64), Vector3(-1.01818, 0, -1.10495), Vector3(0, 0, -1.42116), Vector3(-0.521636, 0, -0.729771), Vector3(-1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gjyan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 0), Vector3(-1, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mp3t5"]
+_data = {
+"Attack": SubResource("Animation_iu5k0"),
+"RESET": SubResource("Animation_gjyan")
+}
+
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_ycuag")
+health = 100.0
+strength = 10.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rcf2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_gtcy5")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="PlayerDetection" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerDetection"]
+target_position = Vector3(0, 0, 10)
+
+[node name="RayCast3D2" type="RayCast3D" parent="PlayerDetection"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="RayCast3D3" type="RayCast3D" parent="PlayerDetection"]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="RayCast3D4" type="RayCast3D" parent="PlayerDetection"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="RayCast3D5" type="RayCast3D" parent="PlayerDetection"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0)
+target_position = Vector3(0, 0, 10)
+
+[node name="Weapon" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Weapon"]
+mesh = SubResource("SphereMesh_euv5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Weapon"]
+shape = SubResource("SphereShape3D_4ibdl")
+
+[node name="StrikingArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StrikingArea"]
+shape = SubResource("SphereShape3D_hru8d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mp3t5")
+}
+
+[connection signal="body_entered" from="Weapon" to="." method="_on_hit_player"]
+[connection signal="body_entered" from="StrikingArea" to="." method="_on_striking_area_entered"]
+[connection signal="body_exited" from="StrikingArea" to="." method="_on_striking_area_exited"]

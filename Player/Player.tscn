@@ -1,0 +1,163 @@
+[gd_scene load_steps=14 format=3 uid="uid://nat143ct32bk"]
+
+[ext_resource type="Script" path="res://Player/PlayerManager.gd" id="1_80koi"]
+[ext_resource type="Script" path="res://Player/Camera.gd" id="2_8ebgi"]
+[ext_resource type="Script" path="res://Player/UI/PlayerUIManager.gd" id="3_65a8l"]
+[ext_resource type="PackedScene" uid="uid://dtwpcxa2aregb" path="res://Player/ProgressBars/Bar.tscn" id="4_7rtrq"]
+[ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="5_optwe"]
+[ext_resource type="Script" path="res://Player/UI/Treasure/TreasureCount.gd" id="5_ygfrn"]
+[ext_resource type="Script" path="res://Player/ProgressBars/BarManager.gd" id="6_8rjsf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wk33r"]
+radius = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ywoj8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0x4p"]
+bg_color = Color(0.933333, 0.909804, 0.568627, 1)
+
+[sub_resource type="Animation" id="Animation_d83u5"]
+resource_name = "Dodge"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.0, 1.0, 1.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 1.5, 0), Vector3(0, 1.5, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ybxnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7hrsk"]
+_data = {
+"Dodge": SubResource("Animation_d83u5"),
+"RESET": SubResource("Animation_ybxnj")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("UI_controller", "roll_cooldwon") groups=["Player"]]
+script = ExtResource("1_80koi")
+gravity = 100.0
+UI_controller = NodePath("PlayerUI")
+roll_cooldwon = NodePath("RollTimer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wk33r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ywoj8")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Head"]
+spring_length = 3.0
+script = ExtResource("2_8ebgi")
+
+[node name="Camera3D" type="Camera3D" parent="Head/SpringArm3D"]
+
+[node name="PlayerUI" type="Node3D" parent="." node_paths=PackedStringArray("health", "stamina", "treasure")]
+script = ExtResource("3_65a8l")
+health = NodePath("Health")
+stamina = NodePath("Stamina")
+treasure = NodePath("TreasureCount")
+
+[node name="TreasureCount" type="Node" parent="PlayerUI" node_paths=PackedStringArray("treasure_count")]
+script = ExtResource("5_ygfrn")
+max_value = 10000.0
+loss_value = 5.0
+treasure_count = NodePath("Label")
+
+[node name="Label" type="Label" parent="PlayerUI/TreasureCount"]
+offset_top = 52.5
+offset_right = 133.0
+offset_bottom = 80.5
+text = "100"
+label_settings = ExtResource("5_optwe")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Node" parent="PlayerUI" node_paths=PackedStringArray("ui_bar")]
+script = ExtResource("6_8rjsf")
+max_value = 100.0
+start_value = 100.0
+ui_bar = NodePath("Bar")
+
+[node name="Bar" parent="PlayerUI/Health" instance=ExtResource("4_7rtrq")]
+offset_left = 133.0
+offset_top = 26.0
+offset_right = 881.0
+offset_bottom = 53.0
+need_name = "Health"
+metadata/_edit_use_anchors_ = true
+
+[node name="Stamina" type="Node" parent="PlayerUI" node_paths=PackedStringArray("ui_bar")]
+script = ExtResource("6_8rjsf")
+max_value = 100.0
+start_value = 100.0
+regen_rate = 1.0
+decay_rate = 1.0
+ui_bar = NodePath("Bar")
+
+[node name="Bar" parent="PlayerUI/Stamina" instance=ExtResource("4_7rtrq")]
+offset_left = 133.0
+offset_top = 53.0
+offset_right = 881.0
+offset_bottom = 80.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_j0x4p")
+need_name = "Stamina"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7hrsk")
+}
+
+[node name="RollTimer" type="Timer" parent="."]
+wait_time = 0.8
+
+[connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
