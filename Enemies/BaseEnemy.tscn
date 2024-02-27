@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch763sv7kbf5"]
+[gd_scene load_steps=11 format=3 uid="uid://ch763sv7kbf5"]
 
 [ext_resource type="Script" path="res://Enemies/BaseEnemy.gd" id="1_ycuag"]
 
@@ -15,6 +15,8 @@ radius = 0.25
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hru8d"]
 radius = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ey0fj"]
 
 [sub_resource type="Animation" id="Animation_iu5k0"]
 resource_name = "Attack"
@@ -55,7 +57,7 @@ _data = {
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_ycuag")
-health = 100.0
+health = 20.0
 strength = 10.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -103,6 +105,11 @@ shape = SubResource("SphereShape3D_4ibdl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StrikingArea"]
 shape = SubResource("SphereShape3D_hru8d")
 
+[node name="Hitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("CapsuleShape3D_ey0fj")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mp3t5")
@@ -111,3 +118,4 @@ libraries = {
 [connection signal="area_entered" from="Weapon" to="." method="_on_hit_player"]
 [connection signal="body_entered" from="StrikingArea" to="." method="_on_striking_area_entered"]
 [connection signal="body_exited" from="StrikingArea" to="." method="_on_striking_area_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_entered"]

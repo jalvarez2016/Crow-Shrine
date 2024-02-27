@@ -15,10 +15,10 @@ func heal(amount: float):
 
 func use_stamina(amount: float = 0):
 	if amount > 0:
-		stamina.subtract(amount)
-		
-	stamina.subtract(.5)
+		return stamina.subtract(amount)
+	else:
+		stamina.subtract(.5)
 
 func refill_stamina():
-	stamina.add(.1)
+	stamina.add(.2)
 	

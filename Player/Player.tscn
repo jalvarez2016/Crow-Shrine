@@ -1,20 +1,30 @@
-[gd_scene load_steps=16 format=3 uid="uid://nat143ct32bk"]
+[gd_scene load_steps=20 format=3 uid="uid://nat143ct32bk"]
 
 [ext_resource type="Script" path="res://Player/PlayerManager.gd" id="1_80koi"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="2_8ebgi"]
+[ext_resource type="Script" path="res://Player/Weapons/BaseWeapon.gd" id="2_gkliq"]
 [ext_resource type="Script" path="res://Player/UI/PlayerUIManager.gd" id="3_65a8l"]
 [ext_resource type="PackedScene" uid="uid://dtwpcxa2aregb" path="res://Player/ProgressBars/Bar.tscn" id="4_7rtrq"]
 [ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="5_optwe"]
 [ext_resource type="Script" path="res://Player/UI/Treasure/TreasureCount.gd" id="5_ygfrn"]
 [ext_resource type="Script" path="res://Player/ProgressBars/BarManager.gd" id="6_8rjsf"]
 [ext_resource type="Script" path="res://Player/Hitbox.gd" id="8_vvhcg"]
+[ext_resource type="Script" path="res://Player/Managers/AttackManager.gd" id="9_x6xln"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wk33r"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ywoj8"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tadse"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2x4vg"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdpfj"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0x4p"]
 bg_color = Color(0.933333, 0.909804, 0.568627, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4xyj3"]
 
 [sub_resource type="Animation" id="Animation_d83u5"]
 resource_name = "Dodge"
@@ -77,20 +87,31 @@ _data = {
 "RESET": SubResource("Animation_ybxnj")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4xyj3"]
-
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("UI_controller", "roll_cooldwon") groups=["Player"]]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("UI_controller", "roll_cooldwon", "attack_manager") groups=["Player"]]
 script = ExtResource("1_80koi")
 gravity = 100.0
 UI_controller = NodePath("PlayerUI")
 roll_cooldwon = NodePath("RollTimer")
+attack_manager = NodePath("AttackManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wk33r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_ywoj8")
+mesh = SubResource("CapsuleMesh_tadse")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="Weapon" type="Area3D" parent="MeshInstance3D" groups=["Weapon"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06044, 0, 0)
+script = ExtResource("2_gkliq")
+weapon_name = "Pin"
+damage = 18
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Weapon"]
+shape = SubResource("BoxShape3D_2x4vg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Weapon"]
+mesh = SubResource("BoxMesh_pdpfj")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -154,14 +175,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_j0x4p")
 need_name = "Stamina"
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_7hrsk")
-}
-
-[node name="RollTimer" type="Timer" parent="."]
-wait_time = 0.8
-
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("player_manager") groups=["Player"]]
 script = ExtResource("8_vvhcg")
 player_manager = NodePath("..")
@@ -169,5 +182,18 @@ player_manager = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CapsuleShape3D_4xyj3")
+
+[node name="RollTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7hrsk")
+}
+
+[node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("weapon", "animator")]
+script = ExtResource("9_x6xln")
+weapon = NodePath("../MeshInstance3D/Weapon")
+animator = NodePath("../AnimationPlayer")
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]

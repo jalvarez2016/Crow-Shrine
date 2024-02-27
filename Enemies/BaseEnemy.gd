@@ -9,6 +9,8 @@ const JUMP_VELOCITY = 4.5
 var player : CharacterBody3D
 var player_detected : bool
 var player_is_in_striking_distance : bool
+
+var is_alive : bool = true
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
@@ -35,6 +37,8 @@ func _physics_process(delta):
 
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
+
+# Enemy attacking Player Logic
 
 func player_detection(delta):
 	var detection_rays = [
@@ -68,7 +72,6 @@ func _on_hit_player(body):
 		print('hit player')
 		body.attacked(strength)
 
-
 func _on_striking_area_entered(body):
 	if body is Player:
 		player_is_in_striking_distance = true
@@ -78,3 +81,18 @@ func _on_striking_area_exited(body):
 	if body is Player:
 		player_is_in_striking_distance = false
 		animation_player.play("RESET")
+
+# Player attacking Enemy Logic
+
+func attacked(damage: float):
+	health -= damage
+	if health <= 0:
+		is_alive = false
+
+func _on_hitbox_entered(area):
+	if area.is_in_group("Weapon"):
+		print('player hit enemy')
+		pass
+	#	var damage = area.get_damage()
+		#attacked(damage);
+	pass # Replace with function body.

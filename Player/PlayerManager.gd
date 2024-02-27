@@ -8,6 +8,8 @@ class_name Player
 @export var UI_controller : Node3D
 @export var roll_cooldwon : Timer
 
+@export var attack_manager : AttackManager
+
 @onready var spring_arm: SpringArm3D = $Head/SpringArm3D
 @onready var mesh : MeshInstance3D = $MeshInstance3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -64,17 +66,29 @@ func _process(delta: float):
 	
 	move_and_slide()
 
+# Enemy Attacking Player
+
 func attacked(damage: float):
 	UI_controller.damage(damage)
+
+# Player Actions
 
 func healed(amount: float):
 	UI_controller.heal(amount)
 
 func dodge():
-	dodging = true
-	roll_cooldwon.start()
-	UI_controller.use_stamina(20)
-	animation_player.play("Dodge")
+	var can_dodge = UI_controller.use_stamina(20)
+	if can_dodge:
+		dodging = true
+		roll_cooldwon.start()
+		animation_player.play("Dodge")
 
 func _on_roll_timer_timeout():
 	dodging = false
+
+func attack():
+	#Have an attack counter
+	pass
+
+func get_damage():
+	pass

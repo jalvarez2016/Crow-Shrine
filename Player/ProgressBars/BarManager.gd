@@ -19,10 +19,14 @@ func add(amount: float):
 	update_ui_bar()
 
 func subtract(amount: float = decay_rate):
+	if amount > value:
+		return false
 	value -= amount
 	if value < 0:
 		value = 0
+		
 	update_ui_bar()
+	return true
 		
 func update_ui_bar():
 	ui_bar.update_value(value, max_value)
