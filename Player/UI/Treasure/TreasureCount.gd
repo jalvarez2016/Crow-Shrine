@@ -9,16 +9,19 @@ var value : float
 
 func _ready():
 	value = start_value
+	treasure_count.text = str(value)
 
 func add(amount: float):
 	value += amount
 	if value > max_value:
 		value = max_value
+	treasure_count.text = str(value)
 
 func subtract():
 	value -= loss_value
 	if value < 0:
 		value = 0
+	treasure_count.text = str(value)
 		
 func update_count():
 	treasure_count.text = str(value)

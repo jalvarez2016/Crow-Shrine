@@ -67,6 +67,9 @@ func _process(delta: float):
 func attacked(damage: float):
 	UI_controller.damage(damage)
 
+func healed(amount: float):
+	UI_controller.heal(amount)
+
 func dodge():
 	dodging = true
 	roll_cooldwon.start()

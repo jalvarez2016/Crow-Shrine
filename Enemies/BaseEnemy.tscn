@@ -26,10 +26,10 @@ tracks/0/path = NodePath("Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.20831, 0.3, 0.462188, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-1, 0, 0), Vector3(-1, 0, 0.64), Vector3(-1.01818, 0, -1.10495), Vector3(0, 0, -1.42116), Vector3(-0.521636, 0, -0.729771), Vector3(-1, 0, 0)]
+"values": [Vector3(-1, 0, 0), Vector3(-1, 0, 0.64), Vector3(-1.018, 0.5, -1.105), Vector3(0, 0.5, -1.421), Vector3(-0.522, 0.5, -0.73), Vector3(-1, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gjyan"]
@@ -108,6 +108,6 @@ libraries = {
 "": SubResource("AnimationLibrary_mp3t5")
 }
 
-[connection signal="body_entered" from="Weapon" to="." method="_on_hit_player"]
+[connection signal="area_entered" from="Weapon" to="." method="_on_hit_player"]
 [connection signal="body_entered" from="StrikingArea" to="." method="_on_striking_area_entered"]
 [connection signal="body_exited" from="StrikingArea" to="." method="_on_striking_area_exited"]

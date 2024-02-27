@@ -64,7 +64,7 @@ func player_detection(delta):
 	player_detected = false
 
 func _on_hit_player(body):
-	if body is Player && player_is_in_striking_distance:
+	if body.is_in_group("Player") && player_is_in_striking_distance:
 		print('hit player')
 		body.attacked(strength)
 

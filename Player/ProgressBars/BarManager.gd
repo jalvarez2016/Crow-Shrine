@@ -16,11 +16,13 @@ func add(amount: float):
 	value += amount
 	if value > max_value:
 		value = max_value
+	update_ui_bar()
 
 func subtract(amount: float = decay_rate):
 	value -= amount
 	if value < 0:
 		value = 0
+	update_ui_bar()
 		
 func update_ui_bar():
 	ui_bar.update_value(value, max_value)
