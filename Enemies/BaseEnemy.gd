@@ -2,10 +2,12 @@ extends CharacterBody3D
 
 @export var health: float
 @export var strength: float
+@export var invincibility_timer: Timer
 
 const movement_speed = 5.0
 const JUMP_VELOCITY = 4.5
 
+var invincible : bool = false
 var player : CharacterBody3D
 var player_detected : bool
 var player_is_in_striking_distance : bool
@@ -88,11 +90,17 @@ func attacked(damage: float):
 	health -= damage
 	if health <= 0:
 		is_alive = false
+		print('enemy dead')
 
 func _on_hitbox_entered(area):
+	if invincible:
+		return
 	if area.is_in_group("Weapon"):
 		print('player hit enemy')
-		pass
-	#	var damage = area.get_damage()
-		#attacked(damage);
-	pass # Replace with function body.
+		var damage = area.get_damage()
+		attacked(damage);
+		invincible = true
+		invincibility_timer.start(.5)
+	
+func _on_invincibility_timeout():
+	invincible = false

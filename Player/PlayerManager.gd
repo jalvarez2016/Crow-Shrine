@@ -30,8 +30,11 @@ func _process(delta: float):
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_force
 
-	if Input.is_action_just_pressed("dodge"): # need to check if stamina is enough
+	if Input.is_action_just_pressed("dodge"):
 		dodge()
+	if Input.is_action_just_pressed("weapon_attack"):
+		attack()
+		
 
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var move_direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -87,8 +90,7 @@ func _on_roll_timer_timeout():
 	dodging = false
 
 func attack():
-	#Have an attack counter
-	pass
+	attack_manager.attack()
 
 func get_damage():
-	pass
+	attack_manager.get_damage()

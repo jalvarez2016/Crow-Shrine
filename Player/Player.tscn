@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://nat143ct32bk"]
+[gd_scene load_steps=25 format=3 uid="uid://nat143ct32bk"]
 
 [ext_resource type="Script" path="res://Player/PlayerManager.gd" id="1_80koi"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="2_8ebgi"]
@@ -20,6 +20,80 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdpfj"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_ncric"]
+resource_name = "Attack1"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.55, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.06044, 0, 0), Vector3(-0.793, -0.107, -1.081), Vector3(-0.793, 0.093, 0.64), Vector3(0.27, 0.193, 2.121), Vector3(1.059, -0.085, -0.374), Vector3(0.236, -0.089, 0.808), Vector3(-0.587, -0.092, 0.757), Vector3(-1.06044, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5v2i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.06044, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_memes"]
+resource_name = "Attack2"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.06044, 0, 0), Vector3(-0.799879, 0, 0.540829), Vector3(0, 0, 2), Vector3(-1.06044, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_try5m"]
+resource_name = "Attack3"
+length = 0.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.33, 0.38, 0.43, 0.53, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.06044, 0, 0), Vector3(-0.817849, 4.06704e-08, -0.917158), Vector3(-0.157, -0.234, 1.019), Vector3(-0.052, 0.303, 2.08), Vector3(0, 1.056, 2.085), Vector3(0, 0.918, 2.085), Vector3(-1.06044, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a13af"]
+_data = {
+"Attack1": SubResource("Animation_ncric"),
+"Attack2": SubResource("Animation_memes"),
+"Attack3": SubResource("Animation_try5m"),
+"RESET": SubResource("Animation_5v2i4")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0x4p"]
 bg_color = Color(0.933333, 0.909804, 0.568627, 1)
@@ -101,17 +175,23 @@ shape = SubResource("CapsuleShape3D_wk33r")
 mesh = SubResource("CapsuleMesh_tadse")
 skeleton = NodePath("../CollisionShape3D")
 
-[node name="Weapon" type="Area3D" parent="MeshInstance3D" groups=["Weapon"]]
+[node name="Weapon" type="Area3D" parent="MeshInstance3D" node_paths=PackedStringArray("attackManager") groups=["Weapon"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06044, 0, 0)
 script = ExtResource("2_gkliq")
 weapon_name = "Pin"
 damage = 18
+attackManager = NodePath("../../AttackManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Weapon"]
 shape = SubResource("BoxShape3D_2x4vg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Weapon"]
 mesh = SubResource("BoxMesh_pdpfj")
+
+[node name="AttackAnimator" type="AnimationPlayer" parent="MeshInstance3D/Weapon"]
+libraries = {
+"": SubResource("AnimationLibrary_a13af")
+}
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -191,9 +271,13 @@ libraries = {
 "": SubResource("AnimationLibrary_7hrsk")
 }
 
-[node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("weapon", "animator")]
+[node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("weapon", "animator", "comboTimer")]
 script = ExtResource("9_x6xln")
 weapon = NodePath("../MeshInstance3D/Weapon")
-animator = NodePath("../AnimationPlayer")
+animator = NodePath("../MeshInstance3D/Weapon/AttackAnimator")
+comboTimer = NodePath("ComboReset")
+
+[node name="ComboReset" type="Timer" parent="AttackManager"]
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
+[connection signal="timeout" from="AttackManager/ComboReset" to="AttackManager" method="_on_combo_reset_timeout"]

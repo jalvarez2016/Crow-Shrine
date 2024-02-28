@@ -55,10 +55,11 @@ _data = {
 "RESET": SubResource("Animation_gjyan")
 }
 
-[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("invincibility_timer") groups=["Enemy"]]
 script = ExtResource("1_ycuag")
-health = 20.0
+health = 100.0
 strength = 10.0
+invincibility_timer = NodePath("Invincibility")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -115,7 +116,10 @@ libraries = {
 "": SubResource("AnimationLibrary_mp3t5")
 }
 
+[node name="Invincibility" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Weapon" to="." method="_on_hit_player"]
 [connection signal="body_entered" from="StrikingArea" to="." method="_on_striking_area_entered"]
 [connection signal="body_exited" from="StrikingArea" to="." method="_on_striking_area_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_entered"]
+[connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
