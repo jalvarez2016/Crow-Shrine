@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4riit7ksn7b1"]
+
+[ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="1_vjqf6"]
+[ext_resource type="Script" path="res://Player/UI/Magic Selector/Spell.gd" id="2_3hs4o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djj2p"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.45098)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Spell" type="Label"]
+offset_right = 44.0
+offset_bottom = 28.0
+size_flags_horizontal = 3
+text = "Heal
+"
+label_settings = ExtResource("1_vjqf6")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_3hs4o")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_djj2p")

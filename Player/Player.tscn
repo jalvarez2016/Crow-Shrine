@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://nat143ct32bk"]
+[gd_scene load_steps=26 format=3 uid="uid://nat143ct32bk"]
 
 [ext_resource type="Script" path="res://Player/PlayerManager.gd" id="1_80koi"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="2_8ebgi"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Player/UI/Treasure/TreasureCount.gd" id="5_ygfrn"]
 [ext_resource type="Script" path="res://Player/ProgressBars/BarManager.gd" id="6_8rjsf"]
 [ext_resource type="Script" path="res://Player/Hitbox.gd" id="8_vvhcg"]
+[ext_resource type="PackedScene" uid="uid://btdff8w6xtbnm" path="res://Player/UI/Magic Selector/MagicSelectorUI.tscn" id="9_0ednh"]
 [ext_resource type="Script" path="res://Player/Managers/AttackManager.gd" id="9_x6xln"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wk33r"]
@@ -36,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-1.06044, 0, 0), Vector3(-0.793, -0.107, -1.081), Vector3(-0.793, 0.093, 0.64), Vector3(0.27, 0.193, 2.121), Vector3(1.059, -0.085, -0.374), Vector3(0.236, -0.089, 0.808), Vector3(-0.587, -0.092, 0.757), Vector3(-1.06044, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_5v2i4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.06044, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_memes"]
@@ -85,6 +71,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-1.06044, 0, 0), Vector3(-0.817849, 4.06704e-08, -0.917158), Vector3(-0.157, -0.234, 1.019), Vector3(-0.052, 0.303, 2.08), Vector3(0, 1.056, 2.085), Vector3(0, 0.918, 2.085), Vector3(-1.06044, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5v2i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.06044, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a13af"]
@@ -161,12 +162,13 @@ _data = {
 "RESET": SubResource("Animation_ybxnj")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("UI_controller", "roll_cooldwon", "attack_manager") groups=["Player"]]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("UI_controller", "roll_cooldwon", "attack_manager", "magic_manger") groups=["Player"]]
 script = ExtResource("1_80koi")
 gravity = 100.0
 UI_controller = NodePath("PlayerUI")
 roll_cooldwon = NodePath("RollTimer")
 attack_manager = NodePath("AttackManager")
+magic_manger = NodePath("PlayerUI/MagicSelector")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wk33r")
@@ -254,6 +256,9 @@ offset_bottom = 80.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_j0x4p")
 need_name = "Stamina"
 metadata/_edit_use_anchors_ = true
+
+[node name="MagicSelector" parent="PlayerUI" node_paths=PackedStringArray("player") instance=ExtResource("9_0ednh")]
+player = NodePath("../..")
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("player_manager") groups=["Player"]]
 script = ExtResource("8_vvhcg")

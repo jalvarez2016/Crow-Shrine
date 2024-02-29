@@ -9,6 +9,7 @@ class_name Player
 @export var roll_cooldwon : Timer
 
 @export var attack_manager : AttackManager
+@export var magic_manger : Magic_Selector
 
 @onready var spring_arm: SpringArm3D = $Head/SpringArm3D
 @onready var mesh : MeshInstance3D = $MeshInstance3D
@@ -34,7 +35,8 @@ func _process(delta: float):
 		dodge()
 	if Input.is_action_just_pressed("weapon_attack"):
 		attack()
-		
+	if Input.is_action_just_pressed("magic"):
+		cast_magic()
 
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var move_direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -94,3 +96,6 @@ func attack():
 
 func get_damage():
 	attack_manager.get_damage()
+
+func cast_magic():
+	magic_manger.magic()
