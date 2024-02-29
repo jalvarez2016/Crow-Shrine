@@ -25,7 +25,6 @@ func attack ():
 	comboTimer.start(1)
 	damage = weapon.damage + int(randf_range(0, damage_range)) + (combo * 10) 
 	animator.play(attacks[attack_count].animation)
-	print(attacks[attack_count].animation)
 	
 	if attack_count < max_attack_count:
 		attack_count += 1
