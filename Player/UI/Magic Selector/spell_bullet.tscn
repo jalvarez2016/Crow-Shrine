@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://xdol3wbn1mjt"]
 
 [ext_resource type="Shader" path="res://Shaders/2dShaders/Greyout.gdshader" id="1_qj3f1"]
-[ext_resource type="Script" path="res://Spell_Bullet.gd" id="2_85ssr"]
+[ext_resource type="Script" path="res://Player/UI/Magic Selector/Spell_Bullet.gd" id="2_0t050"]
 [ext_resource type="Texture2D" uid="uid://bgp5u0tkb0vqj" path="res://icon.svg" id="3_rcy6s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sae6o"]
@@ -14,7 +14,7 @@ shader_parameter/isActive = true
 
 [node name="Spell_Bullet" type="Node2D" node_paths=PackedStringArray("bullet_icon")]
 material = SubResource("ShaderMaterial_sae6o")
-script = ExtResource("2_85ssr")
+script = ExtResource("2_0t050")
 bullet_icon = NodePath("Icon")
 
 [node name="Icon" type="Sprite2D" parent="."]
