@@ -153,7 +153,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.5, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7hrsk"]
@@ -194,6 +194,9 @@ mesh = SubResource("BoxMesh_pdpfj")
 libraries = {
 "": SubResource("AnimationLibrary_a13af")
 }
+
+[node name="SpellSpawnPosition" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.04587)
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -257,15 +260,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_j0x4p")
 need_name = "Stamina"
 metadata/_edit_use_anchors_ = true
 
-[node name="MagicSelector" parent="PlayerUI" node_paths=PackedStringArray("player") instance=ExtResource("9_0ednh")]
+[node name="MagicSelector" parent="PlayerUI" node_paths=PackedStringArray("player", "spell_spawn_position") instance=ExtResource("9_0ednh")]
 player = NodePath("../..")
+spell_spawn_position = NodePath("../../MeshInstance3D/SpellSpawnPosition")
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("player_manager") groups=["Player"]]
 script = ExtResource("8_vvhcg")
 player_manager = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CapsuleShape3D_4xyj3")
 
 [node name="RollTimer" type="Timer" parent="."]

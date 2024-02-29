@@ -30,7 +30,6 @@ func _physics_process(delta):
 	
 	if navigation_agent.is_navigation_finished():
 		if player_detected:
-			print(player_detected)
 			set_movement_target(player.global_position)
 			return
 		return
@@ -71,7 +70,6 @@ func player_detection(delta):
 
 func _on_hit_player(body):
 	if body.is_in_group("Player") && player_is_in_striking_distance:
-		print('hit player')
 		body.attacked(strength)
 
 func _on_striking_area_entered(body):
@@ -95,7 +93,7 @@ func attacked(damage: float):
 func _on_hitbox_entered(area):
 	if invincible:
 		return
-	if area.is_in_group("Weapon"):
+	if (area.is_in_group("Weapon") || area.is_in_group("Magic")):
 		print('player hit enemy')
 		var damage = area.get_damage()
 		attacked(damage);

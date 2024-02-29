@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://btdff8w6xtbnm"]
+[gd_scene load_steps=26 format=3 uid="uid://btdff8w6xtbnm"]
 
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/MagicSelectorUI.gd" id="1_2yv1n"]
 [ext_resource type="Script" path="res://Player/Managers/SpellManager.gd" id="2_1y5jd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xdol3wbn1mjt" path="res://Player/UI/Magic Selector/spell_bullet.tscn" id="3_ao2nq"]
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/Spell_Bullets.gd" id="3_dsefn"]
 [ext_resource type="Shader" path="res://Shaders/2dShaders/Greyout.gdshader" id="5_bjuky"]
+[ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Magic_Missle/Magic_Missle_Spawner.gd" id="8_rd0yl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g72f8"]
 shader = ExtResource("5_bjuky")
@@ -230,8 +231,10 @@ spell_name = "Heal"
 [node name="Panel" parent="SpellContainer/Heal/Label" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_x0p0v")
 
-[node name="Magic Missle" type="Node2D" parent="SpellContainer"]
+[node name="Magic Missle" type="Node2D" parent="SpellContainer" node_paths=PackedStringArray("selector")]
 visible = false
+script = ExtResource("8_rd0yl")
+selector = NodePath("../..")
 
 [node name="Label" parent="SpellContainer/Magic Missle" instance=ExtResource("2_hoc6i")]
 anchors_preset = 8

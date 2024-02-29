@@ -10,6 +10,5 @@ func make_active():
 	
 
 func deactivate():
-	print(icon_material)
 	(icon_material as ShaderMaterial).set_shader_parameter("isActive", false)
 	
