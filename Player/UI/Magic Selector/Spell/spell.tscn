@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4riit7ksn7b1"]
 
 [ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="1_vjqf6"]
-[ext_resource type="Script" path="res://Player/UI/Magic Selector/Spell.gd" id="2_3hs4o"]
+[ext_resource type="Script" path="res://Player/UI/Magic Selector/Spell/Spell.gd" id="2_3hs4o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djj2p"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.45098)
