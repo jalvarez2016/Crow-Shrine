@@ -94,14 +94,13 @@ corner_radius_bottom_left = 20
 script = ExtResource("1_2yv1n")
 spell_manager = NodePath("SpellContainer")
 
-[node name="SpellContainer" type="Node2D" parent="." node_paths=PackedStringArray("spell_bullet_manager", "spell1", "spell2", "spell3", "spell4", "slot_position1", "slot_position2", "slot_position3")]
+[node name="SpellContainer" type="Node2D" parent="." node_paths=PackedStringArray("spell_bullet_manager", "spell1", "spell2", "spell3", "slot_position1", "slot_position2", "slot_position3")]
 position = Vector2(899, 473)
 script = ExtResource("2_1y5jd")
 spell_bullet_manager = NodePath("Spell_Bullets")
 spell1 = NodePath("Heal")
 spell2 = NodePath("Magic Missle")
 spell3 = NodePath("FireBall")
-spell4 = NodePath("Thorns")
 slot_position1 = NodePath("Slot_container/SlotPosition1")
 slot_position2 = NodePath("Slot_container/SlotPosition2")
 slot_position3 = NodePath("Slot_container/SlotPosition3")
