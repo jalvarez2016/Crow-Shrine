@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbqfh3k2hlc03"]
+
+[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/Flame_Weapon_part.gd" id="1_h41yq"]
+[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/Area3D.gd" id="2_2kyv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qkeoq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xotmo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3o68b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i46s"]
+albedo_color = Color(1, 0.168627, 0.239216, 1)
+
+[node name="FlameWeaponPart" type="RigidBody3D"]
+mass = 0.01
+script = ExtResource("1_h41yq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qkeoq")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("main") groups=["Weapon Part"]]
+script = ExtResource("2_2kyv0")
+main = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_xotmo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_3o68b")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1i46s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

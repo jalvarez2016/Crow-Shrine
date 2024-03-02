@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://nat143ct32bk"]
+[gd_scene load_steps=29 format=3 uid="uid://nat143ct32bk"]
 
 [ext_resource type="Script" path="res://Player/PlayerManager.gd" id="1_80koi"]
 [ext_resource type="Script" path="res://Player/Camera.gd" id="2_8ebgi"]
 [ext_resource type="Script" path="res://Player/Weapons/BaseWeapon.gd" id="2_gkliq"]
+[ext_resource type="Script" path="res://Player/Aim.gd" id="2_ml8bj"]
 [ext_resource type="Script" path="res://Player/UI/PlayerUIManager.gd" id="3_65a8l"]
+[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/WeaponPartAttachment.gd" id="3_yxm0e"]
 [ext_resource type="PackedScene" uid="uid://dtwpcxa2aregb" path="res://Player/ProgressBars/Bar.tscn" id="4_7rtrq"]
 [ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="5_optwe"]
 [ext_resource type="Script" path="res://Player/UI/Treasure/TreasureCount.gd" id="5_ygfrn"]
@@ -17,10 +19,10 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tadse"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2x4vg"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.5, 0.5, 1.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdpfj"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.5, 0.5, 1.5)
 
 [sub_resource type="Animation" id="Animation_ncric"]
 resource_name = "Attack1"
@@ -95,6 +97,9 @@ _data = {
 "Attack3": SubResource("Animation_try5m"),
 "RESET": SubResource("Animation_5v2i4")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0eynn"]
+size = Vector3(0.5, 0.5, 0.4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0x4p"]
 bg_color = Color(0.933333, 0.909804, 0.568627, 1)
@@ -185,9 +190,11 @@ damage = 18
 attackManager = NodePath("../../AttackManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_2x4vg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 mesh = SubResource("BoxMesh_pdpfj")
 
 [node name="AttackAnimator" type="AnimationPlayer" parent="MeshInstance3D/Weapon"]
@@ -195,17 +202,31 @@ libraries = {
 "": SubResource("AnimationLibrary_a13af")
 }
 
-[node name="SpellSpawnPosition" type="Marker3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.04587)
+[node name="WeaponPartAttachment" type="Area3D" parent="MeshInstance3D/Weapon" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.31464)
+script = ExtResource("3_yxm0e")
+player = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D/Weapon/WeaponPartAttachment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.265969)
+shape = SubResource("BoxShape3D_0eynn")
+
+[node name="Aim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_ml8bj")
+
+[node name="SpellSpawnPosition" type="Marker3D" parent="Aim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Head"]
 spring_length = 3.0
 script = ExtResource("2_8ebgi")
 
 [node name="Camera3D" type="Camera3D" parent="Head/SpringArm3D"]
+current = true
 
 [node name="PlayerUI" type="Node3D" parent="." node_paths=PackedStringArray("health", "stamina", "treasure")]
 script = ExtResource("3_65a8l")
@@ -260,9 +281,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_j0x4p")
 need_name = "Stamina"
 metadata/_edit_use_anchors_ = true
 
-[node name="MagicSelector" parent="PlayerUI" node_paths=PackedStringArray("player", "spell_spawn_position") instance=ExtResource("9_0ednh")]
+[node name="MagicSelector" parent="PlayerUI" node_paths=PackedStringArray("player", "aim_spell", "spell_spawn_position") instance=ExtResource("9_0ednh")]
 player = NodePath("../..")
-spell_spawn_position = NodePath("../../MeshInstance3D/SpellSpawnPosition")
+aim_spell = NodePath("../../Aim")
+spell_spawn_position = NodePath("../../Aim/SpellSpawnPosition")
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("player_manager") groups=["Player"]]
 script = ExtResource("8_vvhcg")
@@ -287,5 +309,6 @@ comboTimer = NodePath("ComboReset")
 
 [node name="ComboReset" type="Timer" parent="AttackManager"]
 
+[connection signal="area_entered" from="MeshInstance3D/Weapon/WeaponPartAttachment" to="MeshInstance3D/Weapon/WeaponPartAttachment" method="attach_weapon_part"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="AttackManager/ComboReset" to="AttackManager" method="_on_combo_reset_timeout"]

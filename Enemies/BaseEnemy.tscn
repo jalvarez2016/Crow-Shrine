@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch763sv7kbf5"]
+[gd_scene load_steps=13 format=3 uid="uid://ch763sv7kbf5"]
 
 [ext_resource type="Script" path="res://Enemies/BaseEnemy.gd" id="1_ycuag"]
 [ext_resource type="Script" path="res://Enemies/EnemyHitbox.gd" id="2_8ff0u"]
+[ext_resource type="Script" path="res://Enemies/StatusEffects/Burn.gd" id="3_b2ae2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rcf2r"]
 
@@ -107,12 +108,27 @@ shape = SubResource("SphereShape3D_4ibdl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StrikingArea"]
 shape = SubResource("SphereShape3D_hru8d")
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("enemy") groups=["Enemy"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("enemy", "burn_manager") groups=["Enemy"]]
 script = ExtResource("2_8ff0u")
 enemy = NodePath("..")
+burn_manager = NodePath("StatusEffects/Burn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("CapsuleShape3D_ey0fj")
+
+[node name="StatusEffects" type="Node3D" parent="Hitbox"]
+
+[node name="Burn" type="Node3D" parent="Hitbox/StatusEffects" node_paths=PackedStringArray("enemy", "damage_timer", "burn_cool_down")]
+script = ExtResource("3_b2ae2")
+enemy = NodePath("../../..")
+damage_timer = NodePath("Damage")
+burn_cool_down = NodePath("BurnCoolDown")
+
+[node name="BurnCoolDown" type="Timer" parent="Hitbox/StatusEffects/Burn"]
+wait_time = 5.0
+
+[node name="Damage" type="Timer" parent="Hitbox/StatusEffects/Burn"]
+wait_time = 0.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -125,4 +141,6 @@ libraries = {
 [connection signal="body_entered" from="StrikingArea" to="." method="_on_striking_area_entered"]
 [connection signal="body_exited" from="StrikingArea" to="." method="_on_striking_area_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_entered"]
+[connection signal="timeout" from="Hitbox/StatusEffects/Burn/BurnCoolDown" to="Hitbox/StatusEffects/Burn" method="_on_burn_cool_down_timeout"]
+[connection signal="timeout" from="Hitbox/StatusEffects/Burn/Damage" to="Hitbox/StatusEffects/Burn" method="_on_damage_timeout"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]

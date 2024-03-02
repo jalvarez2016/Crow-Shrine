@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://xviw2xq8v4um"]
+[gd_scene load_steps=11 format=3 uid="uid://xviw2xq8v4um"]
 
 [ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="1_4hsyv"]
 [ext_resource type="PackedScene" uid="uid://ch763sv7kbf5" path="res://Enemies/BaseEnemy.tscn" id="2_u80bf"]
+[ext_resource type="PackedScene" uid="uid://bbqfh3k2hlc03" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="3_csg56"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qn8vx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -62,3 +63,6 @@ mesh = SubResource("BoxMesh_3835e")
 
 [node name="Enemy" parent="." instance=ExtResource("2_u80bf")]
 transform = Transform3D(-0.634258, 0, -0.773121, 0, 1, 0, 0.773121, 0, -0.634258, -12.345, 1.89395, -0.57525)
+
+[node name="FlameWeaponPart" parent="." instance=ExtResource("3_csg56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87236, 3.79305, 4.29959)

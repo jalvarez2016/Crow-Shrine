@@ -7,3 +7,4 @@ class_name Weapon
 
 func get_damage():
 	return attackManager.get_damage()
+

@@ -1,7 +1,7 @@
 extends Node
 class_name Spell_Manager
 
-var selected_spell : int = 2
+var selected_spell : int = 1
 var changing_spell : bool = false
 
 @export var spell_bullet_manager: Bullet_Manager
@@ -9,13 +9,12 @@ var changing_spell : bool = false
 @export var spell1 : Node2D
 @export var spell2 : Node2D
 @export var spell3 : Node2D
-@export var spell4 : Node2D
 
 @export var slot_position1: Marker2D
 @export var slot_position2: Marker2D
 @export var slot_position3: Marker2D
 
-@onready var spells:= [spell1, spell2, spell3, spell4]
+@onready var spells:= [spell1, spell2, spell3]
 
 
 func cast_spell():

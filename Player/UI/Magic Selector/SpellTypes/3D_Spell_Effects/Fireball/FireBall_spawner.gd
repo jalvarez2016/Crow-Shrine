@@ -8,8 +8,6 @@ func cast():
 	var root = get_tree().get_root().get_node("World")
 	var fireball_instance = fireball.instantiate()
 	fireball_instance.position = selector.spell_spawn_position.global_position
-	var player = selector.player
-	var mesh = player.get_node("MeshInstance3D")
-	fireball_instance.rotation.y = mesh.rotation.y
+	var camera = selector.camera
+	fireball_instance.rotation.y = camera.rotation.y
 	root.add_child(fireball_instance)
-	pass

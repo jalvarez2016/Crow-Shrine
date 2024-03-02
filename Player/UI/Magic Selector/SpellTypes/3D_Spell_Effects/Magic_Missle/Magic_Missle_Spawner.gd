@@ -13,4 +13,3 @@ func cast():
 	var mesh = player.get_node("MeshInstance3D")
 	missle_instance.rotation.y = mesh.rotation.y
 	root.add_child(missle_instance)
-	pass
