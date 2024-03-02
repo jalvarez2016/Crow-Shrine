@@ -196,6 +196,8 @@ libraries = {
 "": SubResource("AnimationLibrary_a13af")
 }
 
+[node name="WeaponPartAttachment" type="Node3D" parent="MeshInstance3D/Weapon"]
+
 [node name="Aim" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("2_ml8bj")
@@ -293,5 +295,6 @@ comboTimer = NodePath("ComboReset")
 
 [node name="ComboReset" type="Timer" parent="AttackManager"]
 
+[connection signal="area_entered" from="MeshInstance3D/Weapon" to="MeshInstance3D/Weapon" method="attach_weapon_part"]
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="AttackManager/ComboReset" to="AttackManager" method="_on_combo_reset_timeout"]

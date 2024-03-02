@@ -7,3 +7,6 @@ class_name Weapon
 
 func get_damage():
 	return attackManager.get_damage()
+
+func attach_weapon_part(area: Area3D):
+	pass
