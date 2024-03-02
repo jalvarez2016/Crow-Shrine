@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch763sv7kbf5"]
+[gd_scene load_steps=12 format=3 uid="uid://ch763sv7kbf5"]
 
 [ext_resource type="Script" path="res://Enemies/BaseEnemy.gd" id="1_ycuag"]
+[ext_resource type="Script" path="res://Enemies/EnemyHitbox.gd" id="2_8ff0u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rcf2r"]
 
@@ -106,7 +107,9 @@ shape = SubResource("SphereShape3D_4ibdl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StrikingArea"]
 shape = SubResource("SphereShape3D_hru8d")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("enemy") groups=["Enemy"]]
+script = ExtResource("2_8ff0u")
+enemy = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("CapsuleShape3D_ey0fj")

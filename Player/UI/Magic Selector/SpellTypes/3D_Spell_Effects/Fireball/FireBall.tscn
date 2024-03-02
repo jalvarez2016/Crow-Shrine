@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c42yqkp4xvxxe"]
+
+[ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Fireball/Fireball.gd" id="1_4bnxg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ih14y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uv8yn"]
+
+[sub_resource type="Animation" id="Animation_xkh3d"]
+resource_name = "firing"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pfchs"]
+_data = {
+"firing": SubResource("Animation_xkh3d")
+}
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_4bnxg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ih14y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_uv8yn")
+
+[node name="Explode" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Explode")
+libraries = {
+"": SubResource("AnimationLibrary_pfchs")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Explode" to="." method="_on_explode_timeout"]

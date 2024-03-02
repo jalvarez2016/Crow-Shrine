@@ -14,6 +14,10 @@ config/name="Crow-shrine"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/movie_file="D:/Recordings/CrowShrine/Fireball.avi"
+
 [input]
 
 back={
