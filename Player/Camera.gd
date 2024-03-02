@@ -17,4 +17,3 @@ func _unhandled_input(event: InputEvent):
 func _process(_delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
-	pass

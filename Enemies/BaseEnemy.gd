@@ -102,3 +102,4 @@ func _on_hitbox_entered(area):
 	
 func _on_invincibility_timeout():
 	invincible = false
+
