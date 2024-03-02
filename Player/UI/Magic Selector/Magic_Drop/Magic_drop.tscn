@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1k8tjw1tbvlq"]
+
+[ext_resource type="Script" path="res://Player/UI/Magic Selector/Magic_Drop/Magic_drop.gd" id="1_cbp3g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dadry"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ew7ty"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ia51x"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.1
+scale_max = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_r56ck"]
+
+[node name="Magic_Drop" type="Area3D" groups=["Magic Drop"]]
+script = ExtResource("1_cbp3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_dadry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("SphereMesh_ew7ty")
+skeleton = NodePath("../..")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_ia51x")
+draw_pass_1 = SubResource("SphereMesh_r56ck")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

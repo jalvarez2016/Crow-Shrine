@@ -110,3 +110,6 @@ func _update_spell_order(movement: String):
 
 func _on_scroll_cool_down_timeout():
 	changing_spell = false
+
+func replenish_magic_bullet():
+	spell_bullet_manager.refill()
