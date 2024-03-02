@@ -1,19 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtwpcxa2aregb"]
+[gd_scene load_steps=4 format=3 uid="uid://dtwpcxa2aregb"]
 
+[ext_resource type="Theme" uid="uid://bbkiu03l5rql5" path="res://Themes/Border.tres" id="1_dwfl6"]
 [ext_resource type="Script" path="res://Player/ProgressBars/Bar.gd" id="1_ubv6f"]
 [ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="2_easw8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kju01"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5m6a"]
-bg_color = Color(0.513726, 0.92549, 0.403922, 1)
 
 [node name="Bar" type="ProgressBar"]
 offset_right = 748.0
 offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxFlat_kju01")
-theme_override_styles/fill = SubResource("StyleBoxFlat_u5m6a")
+theme = ExtResource("1_dwfl6")
 value = 100.0
 show_percentage = false
 script = ExtResource("1_ubv6f")
