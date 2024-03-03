@@ -1,27 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtwpcxa2aregb"]
+[gd_scene load_steps=4 format=3 uid="uid://dtwpcxa2aregb"]
 
+[ext_resource type="Theme" uid="uid://sw42i75gcqa3" path="res://Themes/Border.tres" id="1_b5lrf"]
 [ext_resource type="Script" path="res://Player/ProgressBars/Bar.gd" id="1_ubv6f"]
 [ext_resource type="LabelSettings" uid="uid://t72nuuri0je5" path="res://Player/ProgressBars/BarText.tres" id="2_easw8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kju01"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5m6a"]
-bg_color = Color(0.513726, 0.92549, 0.403922, 1)
 
 [node name="Bar" type="ProgressBar"]
 offset_right = 748.0
 offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxFlat_kju01")
-theme_override_styles/fill = SubResource("StyleBoxFlat_u5m6a")
+theme = ExtResource("1_b5lrf")
 value = 100.0
 show_percentage = false
 script = ExtResource("1_ubv6f")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 748.0
-offset_bottom = 27.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -374.0
+offset_top = -14.0
+offset_right = 374.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Health: 100/100"
 label_settings = ExtResource("2_easw8")
 horizontal_alignment = 1
