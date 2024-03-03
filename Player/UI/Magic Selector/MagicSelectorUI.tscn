@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b4riit7ksn7b1" path="res://Player/UI/Magic Selector/Spell/spell.tscn" id="7_6kx6i"]
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Magic_Missle/Magic_Missle_Spawner.gd" id="8_rd0yl"]
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Fireball/FireBall_spawner.gd" id="9_vm0ms"]
+[ext_resource type="Texture2D" uid="uid://cyy5x8ponqeb0" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_e_outline.png" id="11_lhh22"]
+[ext_resource type="Texture2D" uid="uid://bghwbfwniwapg" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_ctrl_outline.png" id="12_7vga4"]
+[ext_resource type="Texture2D" uid="uid://dyi711ysvum6w" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/key_tab_outline.png" id="13_mgrj6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g72f8"]
 shader = ExtResource("5_bjuky")
@@ -62,33 +65,9 @@ shader_parameter/isActive = null
 shader = ExtResource("5_bjuky")
 shader_parameter/isActive = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0p0v"]
-bg_color = Color(0.564706, 0.980392, 0.588235, 0.0784314)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr5yf"]
-bg_color = Color(0.415686, 0.282353, 0.976471, 0.0784314)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsihl"]
-bg_color = Color(1, 0.309804, 0.52549, 0.0784314)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt8t2"]
-bg_color = Color(0.411765, 0.807843, 0.960784, 0.0784314)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="LabelSettings" id="LabelSettings_jodat"]
+font_size = 40
+outline_size = 10
 
 [node name="MagicSelector" type="Node2D" node_paths=PackedStringArray("spell_manager")]
 script = ExtResource("1_2yv1n")
@@ -190,20 +169,6 @@ position = Vector2(100, -30)
 
 [node name="SlotPosition2" type="Marker2D" parent="SpellContainer/Slot_container"]
 position = Vector2(100, 0)
-scale = Vector2(5, 1)
-
-[node name="Panel" type="Panel" parent="SpellContainer/Slot_container/SlotPosition2"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="SlotPosition3" type="Marker2D" parent="SpellContainer/Slot_container"]
 position = Vector2(100, 30)
@@ -229,7 +194,8 @@ grow_vertical = 2
 spell_name = "Heal"
 
 [node name="Panel" parent="SpellContainer/Heal/Label" index="0"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_x0p0v")
+offset_top = -6.0
+offset_bottom = 6.0
 
 [node name="Magic Missle" type="Node2D" parent="SpellContainer" node_paths=PackedStringArray("selector")]
 visible = false
@@ -252,7 +218,8 @@ text = "Magic Bullet"
 spell_name = "Magic Bullet"
 
 [node name="Panel" parent="SpellContainer/Magic Missle/Label" index="0"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_cr5yf")
+offset_top = -6.0
+offset_bottom = 6.0
 
 [node name="FireBall" type="Node2D" parent="SpellContainer" node_paths=PackedStringArray("selector")]
 visible = false
@@ -275,32 +242,37 @@ text = "Fireball"
 spell_name = "Fireball"
 
 [node name="Panel" parent="SpellContainer/FireBall/Label" index="0"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_fsihl")
-
-[node name="Thorns" type="Node2D" parent="SpellContainer"]
-visible = false
-
-[node name="Label" parent="SpellContainer/Thorns" instance=ExtResource("7_6kx6i")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -105.5
-offset_top = -14.0
-offset_right = 105.5
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Thorns
-"
-spell_name = "Thorns"
-
-[node name="Panel" parent="SpellContainer/Thorns/Label" index="0"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_rt8t2")
+offset_top = -6.0
+offset_bottom = 6.0
 
 [node name="ScrollCoolDown" type="Timer" parent="SpellContainer"]
 wait_time = 0.15
+
+[node name="UI_Keys" type="Node2D" parent="."]
+position = Vector2(755, 475)
+
+[node name="KeyboardEOutline" type="Sprite2D" parent="UI_Keys"]
+position = Vector2(-20, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_lhh22")
+
+[node name="Label" type="Label" parent="UI_Keys"]
+offset_left = 10.0
+offset_top = -28.0
+offset_right = 50.0
+offset_bottom = 27.0
+text = "/"
+label_settings = SubResource("LabelSettings_jodat")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyboardCtrlOutline" type="Sprite2D" parent="UI_Keys"]
+position = Vector2(80, 0)
+texture = ExtResource("12_7vga4")
+
+[node name="KeyTabOutline" type="Sprite2D" parent="UI_Keys"]
+position = Vector2(137, 0)
+texture = ExtResource("13_mgrj6")
 
 [connection signal="timeout" from="SpellContainer/ScrollCoolDown" to="SpellContainer" method="_on_scroll_cool_down_timeout"]
 
@@ -317,4 +289,3 @@ wait_time = 0.15
 [editable path="SpellContainer/Heal/Label"]
 [editable path="SpellContainer/Magic Missle/Label"]
 [editable path="SpellContainer/FireBall/Label"]
-[editable path="SpellContainer/Thorns/Label"]
