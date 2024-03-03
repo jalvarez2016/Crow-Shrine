@@ -12,7 +12,7 @@ func _process(_delta):
 	global_position = Vector3(global_position.x, global_position.y, global_position.z) + (global_transform.basis.z * speed)
 
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	explode()
 	queue_free()
 

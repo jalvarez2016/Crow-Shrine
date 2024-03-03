@@ -8,3 +8,6 @@ class_name Magic_Selector
 
 func magic():
 	spell_manager.cast_spell()
+
+func replenish_magic():
+	spell_manager.replenish_magic_bullet()
