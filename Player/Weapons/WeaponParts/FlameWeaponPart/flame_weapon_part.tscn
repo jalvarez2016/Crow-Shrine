@@ -4,10 +4,12 @@
 [ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/Area3D.gd" id="2_2kyv0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkeoq"]
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xotmo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3o68b"]
+size = Vector3(0.3, 0.3, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i46s"]
 albedo_color = Color(1, 0.168627, 0.239216, 1)

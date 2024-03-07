@@ -13,14 +13,19 @@ class_name Player
 
 @onready var spring_arm: SpringArm3D = $Head/SpringArm3D
 @onready var mesh : MeshInstance3D = $MeshInstance3D
+@onready var mesh_manager : Node3D = $MeshInstance3D/Crow
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 var angular_acceleration := 7
 var isAlive : bool = true
+var isSprinting : bool = false
 var dodging : bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
+	 #Update animations
+	mesh_manager.update_animation_parameters()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -33,8 +38,7 @@ func _process(delta: float):
 
 	if Input.is_action_just_pressed("dodge"):
 		dodge()
-	if Input.is_action_just_pressed("weapon_attack"):
-		attack()
+		
 	if Input.is_action_just_pressed("magic"):
 		cast_magic()
 
@@ -48,16 +52,19 @@ func _process(delta: float):
 		# sprinting
 		if Input.is_action_pressed("sprint"):
 			UI_controller.use_stamina()
+			isSprinting = true
 			velocity.x = move_direction.x * speed * 1.8
 			velocity.z = move_direction.z * speed * 1.8
 			
 		# dodging
 		elif dodging:
+			isSprinting = false
 			velocity.x = move_direction.x * speed * 3
 			velocity.z = move_direction.z * speed * 3
 			
 		# walking
 		else:
+			isSprinting = false
 			UI_controller.refill_stamina()
 			velocity.x = move_direction.x * speed
 			velocity.z = move_direction.z * speed
@@ -65,9 +72,13 @@ func _process(delta: float):
 		
 	# standing still
 	else:
+		if Input.is_action_just_pressed("weapon_attack"):
+			attack()
+		
 		UI_controller.refill_stamina()
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+		
 	
 	move_and_slide()
 
