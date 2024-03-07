@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Magic_Missle/Magic_Missle_Spawner.gd" id="8_rd0yl"]
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Fireball/FireBall_spawner.gd" id="9_vm0ms"]
 [ext_resource type="Texture2D" uid="uid://cyy5x8ponqeb0" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_e_outline.png" id="11_lhh22"]
-[ext_resource type="Texture2D" uid="uid://bghwbfwniwapg" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_ctrl_outline.png" id="12_7vga4"]
+[ext_resource type="Texture2D" uid="uid://bvmde7caq135b" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/mouse_scroll.png" id="12_1gyj3"]
 [ext_resource type="Texture2D" uid="uid://dyi711ysvum6w" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/key_tab_outline.png" id="13_mgrj6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g72f8"]
@@ -266,12 +266,12 @@ label_settings = SubResource("LabelSettings_jodat")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="KeyboardCtrlOutline" type="Sprite2D" parent="UI_Keys"]
-position = Vector2(80, 0)
-texture = ExtResource("12_7vga4")
+[node name="MouseScroll" type="Sprite2D" parent="UI_Keys"]
+position = Vector2(137, 0)
+texture = ExtResource("12_1gyj3")
 
 [node name="KeyTabOutline" type="Sprite2D" parent="UI_Keys"]
-position = Vector2(137, 0)
+position = Vector2(73, 0)
 texture = ExtResource("13_mgrj6")
 
 [connection signal="timeout" from="SpellContainer/ScrollCoolDown" to="SpellContainer" method="_on_scroll_cool_down_timeout"]

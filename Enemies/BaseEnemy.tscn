@@ -109,6 +109,7 @@ shape = SubResource("SphereShape3D_4ibdl")
 shape = SubResource("SphereShape3D_hru8d")
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("enemy", "burn_manager") groups=["Enemy"]]
+collision_layer = 4
 script = ExtResource("2_8ff0u")
 enemy = NodePath("..")
 burn_manager = NodePath("StatusEffects/Burn")
