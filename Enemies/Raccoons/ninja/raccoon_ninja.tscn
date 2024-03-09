@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxsybkd4doet1"]
+
+[ext_resource type="PackedScene" uid="uid://dmc5mxvg32llq" path="res://Enemies/Raccoons/ninja/ninja.glb" id="1_s7g3a"]
+[ext_resource type="PackedScene" uid="uid://dw50h83rkn6cb" path="res://Enemies/Raccoons/ninja/ninja-star.glb" id="2_xx4sc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rkmb"]
+
+[node name="RaccoonNinja" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0rkmb")
+
+[node name="ninja" parent="." instance=ExtResource("1_s7g3a")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.483909, 0)
+
+[node name="Skeleton3D" parent="ninja/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.756077, -0.444262, 0.153093, 0.455568)
+bones/0/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.243628, -0.169914, -0.103316, 0.949263)
+bones/3/rotation = Quaternion(0.00124504, -0.00245343, 0.804853, 0.593468)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0426384, 0.0476547, 0.668818, 0.740671)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.0171696, 0.0332483, 0.72818, 0.684364)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.00720816, 0.000362139, 0.0595098, 0.998202)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.00674186, -0.000101179, -0.0256124, 0.999649)
+bones/8/rotation = Quaternion(0.187373, -0.0353231, -0.597694, 0.77872)
+bones/9/rotation = Quaternion(0.161199, -0.0708471, -0.463174, 0.8686)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.3682, 0.128785, 0.410439, 0.824247)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.391438, 0.11751, 0.221339, 0.885425)
+bones/12/rotation = Quaternion(0.521725, 0.494058, 0.591469, -0.365887)
+bones/13/rotation = Quaternion(-0.756664, 0.0322455, 0.182329, 0.627037)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.30067, -0.0312171, 0.395087, 0.867485)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.511199, 0.504975, 0.583491, 0.378437)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.0625178, -0.206902, -0.407287, 0.887356)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.103799, -0.0056033, -0.123064, 0.98694)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/position = Vector3(0.675716, 0.02519, 0.375266)
+bones/18/rotation = Quaternion(8.53662e-08, 8.60178e-08, -0.699546, 0.714588)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(0.294792, -0.950965, 0.223396)
+bones/19/rotation = Quaternion(0.706687, 0.0243395, 0.706688, -0.0243397)
+bones/19/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(-0.675716, 0.02519, 0.375266)
+bones/21/rotation = Quaternion(8.53662e-08, -8.60178e-08, 0.699546, 0.714588)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/position = Vector3(-0.294792, -0.950965, 0.223396)
+bones/22/rotation = Quaternion(-0.706687, 0.0243395, 0.706688, 0.0243397)
+bones/22/scale = Vector3(1, 1, 1)
+
+[node name="ninja-star" parent="." instance=ExtResource("2_xx4sc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.489741, 0)
+
+[editable path="ninja"]
+[editable path="ninja-star"]
