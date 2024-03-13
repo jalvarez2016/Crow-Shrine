@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://stx63gfosssi"]
+
+[ext_resource type="ArrayMesh" uid="uid://ckr7q2pbdyyii" path="res://Assets/3dModels/Environment/Bushes/Bush_Flowers.obj" id="1_qumjo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wst2l"]
+diffuse_mode = 3
+albedo_color = Color(0.568627, 0.827451, 0.564706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gy2e5"]
+shading_mode = 0
+albedo_color = Color(0.831373, 0.407843, 0.470588, 1)
+
+[node name="BushFlowers" type="MeshInstance3D"]
+mesh = ExtResource("1_qumjo")
+surface_material_override/0 = SubResource("StandardMaterial3D_wst2l")
+surface_material_override/1 = SubResource("StandardMaterial3D_gy2e5")
