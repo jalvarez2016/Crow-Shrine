@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://wa17e4f4ftot"]
+[gd_scene load_steps=26 format=3 uid="uid://wa17e4f4ftot"]
 
 [ext_resource type="Script" path="res://Game_Areas/FightAreas/Area.gd" id="1_0tltg"]
-[ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="1_dqadx"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_tttm0"]
 [ext_resource type="Resource" path="res://Game_Areas/FightAreas/data.hterrain" id="3_2iwwu"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_7tyqk"]
@@ -43,9 +42,12 @@ textures = [[ExtResource("5_t2ej4"), ExtResource("6_5yaae"), ExtResource("7_gqu0
 [sub_resource type="SphereShape3D" id="SphereShape3D_fk0he"]
 radius = 7.70235
 
-[node name="Forest" type="Node3D" node_paths=PackedStringArray("spawn_point")]
+[node name="Forest" type="Node3D" node_paths=PackedStringArray("spawn_point", "return_point", "entrance", "exit")]
 script = ExtResource("1_0tltg")
 spawn_point = NodePath("Spawn")
+return_point = NodePath("Return")
+entrance = NodePath("Entrance")
+exit = NodePath("Exit")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -53,9 +55,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t2nou")
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_dqadx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="HTerrain" type="Node3D" parent="."]
 script = ExtResource("2_tttm0")
@@ -357,10 +356,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26448, 5, 31.8026)
 skeleton = NodePath("../..")
 
 [node name="Spawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03905, 0)
+
+[node name="Return" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7486, 0, 166.402)
 
 [node name="Exit" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1107, 0, 185.023)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Exit"]
+shape = SubResource("SphereShape3D_fk0he")
+
+[node name="Entrance" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.80844, 1.39035, -18.7628)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entrance"]
 shape = SubResource("SphereShape3D_fk0he")

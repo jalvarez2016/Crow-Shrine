@@ -54,15 +54,16 @@ func player_detection(delta):
 	while index < detection_rays.size():
 		var ray = detection_rays[index]
 		if ray.is_colliding() && !player_detected:
-			var collision_body = ray.get_collider() 
-			if collision_body.is_in_group("Player"):
-				var direction = global_position - collision_body.position
-				rotation.y = (lerp_angle(rotation.y, atan2(direction.x, direction.z), delta * 7))
-				
-				player = collision_body
-				player_detected = true
-				set_movement_target(player.global_position)
-				return
+			var collision_body = ray.get_collider()
+			if collision_body != null:
+				if collision_body.is_in_group("Player"):
+					var direction = global_position - collision_body.position
+					rotation.y = (lerp_angle(rotation.y, atan2(direction.x, direction.z), delta * 7))
+					
+					player = collision_body
+					player_detected = true
+					set_movement_target(player.global_position)
+					return
 		index += 1
 	
 	player = null

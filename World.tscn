@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://db2pmrrcafi0b"]
+[gd_scene load_steps=2 format=3 uid="uid://db2pmrrcafi0b"]
 
-[ext_resource type="PackedScene" uid="uid://xviw2xq8v4um" path="res://Shrine.tscn" id="1_1ruit"]
-[ext_resource type="Script" path="res://Game_Areas/Shrine/Shrine.gd" id="1_k5kaf"]
+[ext_resource type="Script" path="res://Game_Areas/Shrine/Area_Manager.gd" id="1_k5kaf"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_k5kaf")
-
-[node name="Shrine" parent="." instance=ExtResource("1_1ruit")]
