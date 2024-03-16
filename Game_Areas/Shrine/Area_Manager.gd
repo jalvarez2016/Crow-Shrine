@@ -6,11 +6,10 @@ var player = preload("res://Player/Player.tscn")
 var shrine = preload("res://Shrine.tscn")
 var fight_areas_amount = 3
 var fight_areas = [
-	"res://Game_Areas/FightAreas/Forest1.tscn",
-	"res://Game_Areas/FightAreas/Forest1.tscn",
-	"res://Game_Areas/FightAreas/Forest1.tscn",
-	"res://Game_Areas/FightAreas/Forest1.tscn",
-	"res://Game_Areas/FightAreas/Forest1.tscn",
+	"res://Game_Areas/FightAreas/ForestArea1/Forest1.tscn",
+	"res://Game_Areas/FightAreas/ForestArea2/Forest2.tscn",
+	"res://Game_Areas/FightAreas/ForestArea3/Forest3.tscn",
+	"res://Game_Areas/FightAreas/ForestArea4/Forest4.tscn",
 ]
 var final_area
 var current_area = 0 # index of the path
@@ -32,6 +31,14 @@ func _ready():
 	player = player.instantiate()
 	add_child(player)
 	shrine_instance.ready_player(player)
-	
 
 
+func _process(_delta):
+	if area_is_loading:
+		var children_count = get_child_count()
+		if children_count == 1:
+			area_is_loading = false
+
+
+#Past jason here
+#Make a new scene with a button that activates thw exit or entrance on Q pressed when close enough to it
