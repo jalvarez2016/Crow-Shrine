@@ -148,7 +148,7 @@ transform = Transform3D(-0.0847042, 0, -0.996407, 0, 1, 0, 0.996407, 0, -0.08470
 transform = Transform3D(0.883072, 0, 0.469241, 0, 1, 0, -0.469241, 0, 0.883072, -38.8512, -5, 44.6004)
 
 [node name="Tree14" parent="Trees" instance=ExtResource("13_3akk3")]
-transform = Transform3D(-0.182511, 0, -0.983206, 0, 1, 0, 0.983206, 0, -0.182511, -39.7991, 0, 26.351)
+transform = Transform3D(-0.182511, 0, -0.983206, 0, 1, 0, 0.983206, 0, -0.182511, -39.7991, -5.56258, 26.351)
 
 [node name="Tree15" parent="Trees" instance=ExtResource("13_3akk3")]
 transform = Transform3D(-0.182511, 0, -0.983206, 0, 1, 0, 0.983206, 0, -0.182511, -63.6807, -5, 30.1501)
