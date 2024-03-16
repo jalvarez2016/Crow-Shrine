@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name Spell_Manager
 
 var selected_spell : int = 1

@@ -1,4 +1,4 @@
-extends Node2D
+extends AspectRatioContainer
 class_name Magic_Selector
 
 @export var player : Player

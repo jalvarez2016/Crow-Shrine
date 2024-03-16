@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgihiedyi287x"]
+
+[ext_resource type="Shader" path="res://Shaders/3dShaders/PixelEffect.gdshader" id="1_70cu7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mc15p"]
+size = Vector2(9, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjwmu"]
+render_priority = 0
+shader = ExtResource("1_70cu7")
+
+[node name="Camera3D" type="Camera3D"]
+current = true
+size = 4.685
+near = 0.001
+
+[node name="ShaderEffect" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.873)
+mesh = SubResource("PlaneMesh_mc15p")
+surface_material_override/0 = SubResource("ShaderMaterial_mjwmu")

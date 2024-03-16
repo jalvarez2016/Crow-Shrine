@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://chj6q6ju4fmca"]
+
+[ext_resource type="Shader" path="res://Assets/3dModels/Environment/Trees/TreeMaterial1.gdshader" id="1_l04k0"]
+
+[sub_resource type="Gradient" id="Gradient_my60a"]
+offsets = PackedFloat32Array(0.5, 0.51)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m2foi"]
+gradient = SubResource("Gradient_my60a")
+
+[sub_resource type="Gradient" id="Gradient_qic1a"]
+offsets = PackedFloat32Array(0.58, 0.777)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c7wmk"]
+gradient = SubResource("Gradient_qic1a")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_l04k0")
+shader_parameter/albedo = Color(0.501961, 0.835294, 0.415686, 1)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_m2foi")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_c7wmk")

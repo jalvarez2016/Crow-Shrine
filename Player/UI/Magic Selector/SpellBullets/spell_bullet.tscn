@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://Shaders/2dShaders/Greyout.gdshader" id="1_qj3f1"]
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellBullets/Spell_Bullet.gd" id="2_0t050"]
-[ext_resource type="Texture2D" uid="uid://bgp5u0tkb0vqj" path="res://icon.svg" id="3_rcy6s"]
+[ext_resource type="Texture2D" uid="uid://djnjs0jbdjuqm" path="res://Assets/2dIcons/Spell_Icon.png" id="3_2kkqf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sae6o"]
 shader = ExtResource("1_qj3f1")
@@ -12,12 +12,17 @@ shader_parameter/isActive = null
 shader = ExtResource("1_qj3f1")
 shader_parameter/isActive = true
 
-[node name="Spell_Bullet" type="Node2D" node_paths=PackedStringArray("bullet_icon")]
+[node name="Spell_Bullet" type="Control"]
 material = SubResource("ShaderMaterial_sae6o")
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("2_0t050")
-bullet_icon = NodePath("Icon")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_1hrsg")
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_rcy6s")
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource("3_2kkqf")
+expand_mode = 1
+stretch_mode = 4

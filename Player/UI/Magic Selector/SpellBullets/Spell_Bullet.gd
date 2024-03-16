@@ -1,8 +1,7 @@
-extends Node2D
+extends Control
 
 
 @onready var icon_material = $Icon.material
-@export var bullet_icon : Sprite2D
 
 
 func make_active():

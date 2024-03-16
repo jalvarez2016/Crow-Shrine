@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ckr7q2pbdyyii"
+path="res://.godot/imported/Bush_Flowers.obj-ca46c28f273f03a3fe7415cb192b87f1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Bush_Flowers.obj-ca46c28f273f03a3fe7415cb192b87f1.mesh"]
+
+source_file="res://Assets/3dModels/Environment/Bushes/Bush_Flowers.obj"
+dest_files=["res://.godot/imported/Bush_Flowers.obj-ca46c28f273f03a3fe7415cb192b87f1.mesh", "res://.godot/imported/Bush_Flowers.obj-ca46c28f273f03a3fe7415cb192b87f1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -66,15 +66,19 @@ shader = ExtResource("5_bjuky")
 shader_parameter/isActive = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_jodat"]
-font_size = 40
-outline_size = 10
+font_size = 30
+outline_size = 1
 
-[node name="MagicSelector" type="Node2D" node_paths=PackedStringArray("spell_manager")]
+[node name="MagicSelector" type="AspectRatioContainer" node_paths=PackedStringArray("spell_manager")]
+offset_right = 240.0
+offset_bottom = 135.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_2yv1n")
 spell_manager = NodePath("SpellContainer")
 
-[node name="SpellContainer" type="Node2D" parent="." node_paths=PackedStringArray("spell_bullet_manager", "spell1", "spell2", "spell3", "slot_position1", "slot_position2", "slot_position3")]
-position = Vector2(899, 473)
+[node name="SpellContainer" type="Control" parent="." node_paths=PackedStringArray("spell_bullet_manager", "spell1", "spell2", "spell3", "slot_position1", "slot_position2", "slot_position3")]
+layout_mode = 2
 script = ExtResource("2_1y5jd")
 spell_bullet_manager = NodePath("Spell_Bullets")
 spell1 = NodePath("Heal")
@@ -84,97 +88,106 @@ slot_position1 = NodePath("Slot_container/SlotPosition1")
 slot_position2 = NodePath("Slot_container/SlotPosition2")
 slot_position3 = NodePath("Slot_container/SlotPosition3")
 
-[node name="Spell_Bullets" type="Node2D" parent="SpellContainer"]
-position = Vector2(-55, 0)
+[node name="Spell_Bullets" type="Control" parent="SpellContainer"]
+layout_mode = 2
+anchors_preset = 0
 script = ExtResource("3_texis")
 
-[node name="Spell_Bullet" parent="SpellContainer/Spell_Bullets" instance=ExtResource("4_7xxsw")]
-position = Vector2(-700, -370)
+[node name="HBoxContainer" type="HBoxContainer" parent="SpellContainer/Spell_Bullets"]
+layout_mode = 0
+offset_left = 79.5
+offset_top = 88.0
+offset_right = 555.5
+offset_bottom = 136.0
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet" index="0"]
+[node name="Spell_Bullet" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet" index="0"]
 material = SubResource("ShaderMaterial_g72f8")
 
-[node name="Spell_Bullet2" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
-position = Vector2(-670, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+[node name="Spell_Bullet2" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet2" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet2" index="0"]
 material = SubResource("ShaderMaterial_ho1s1")
 
-[node name="Spell_Bullet3" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
-position = Vector2(-640, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+[node name="Spell_Bullet3" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet3" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet3" index="0"]
 material = SubResource("ShaderMaterial_chhj6")
 
-[node name="Spell_Bullet4" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet4" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_av582")
-position = Vector2(-610, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet4" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet4" index="0"]
 material = SubResource("ShaderMaterial_rcru2")
 
-[node name="Spell_Bullet5" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet5" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_52nnm")
-position = Vector2(-580, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet5" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet5" index="0"]
 material = SubResource("ShaderMaterial_xemhs")
 
-[node name="Spell_Bullet6" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet6" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_220yr")
-position = Vector2(-550, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Spell_Bullet7" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet7" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_220yr")
-position = Vector2(-520, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet7" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet7" index="0"]
 material = SubResource("ShaderMaterial_8vwu4")
 
-[node name="Spell_Bullet8" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet8" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_220yr")
-position = Vector2(-490, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet8" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet8" index="0"]
 material = SubResource("ShaderMaterial_xe860")
 
-[node name="Spell_Bullet9" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet9" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_220yr")
-position = Vector2(-460, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet9" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet9" index="0"]
 material = SubResource("ShaderMaterial_l2b5c")
 
-[node name="Spell_Bullet10" parent="SpellContainer/Spell_Bullets" node_paths=PackedStringArray("bullet_icon") instance=ExtResource("4_7xxsw")]
+[node name="Spell_Bullet10" parent="SpellContainer/Spell_Bullets/HBoxContainer" instance=ExtResource("4_7xxsw")]
 material = SubResource("ShaderMaterial_euyap")
-position = Vector2(-430, -370)
-bullet_icon = NodePath("../Spell_Bullet/Icon")
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Icon" parent="SpellContainer/Spell_Bullets/Spell_Bullet10" index="0"]
+[node name="Icon" parent="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet10" index="0"]
 material = SubResource("ShaderMaterial_fsu00")
 
 [node name="Slot_container" type="Node2D" parent="SpellContainer"]
-position = Vector2(30, 0)
+position = Vector2(942.5, 549)
 
 [node name="SlotPosition1" type="Marker2D" parent="SpellContainer/Slot_container"]
-position = Vector2(100, -30)
+position = Vector2(39, -42)
 
 [node name="SlotPosition2" type="Marker2D" parent="SpellContainer/Slot_container"]
-position = Vector2(100, 0)
+position = Vector2(39, -2)
 
 [node name="SlotPosition3" type="Marker2D" parent="SpellContainer/Slot_container"]
-position = Vector2(100, 30)
+position = Vector2(39, 42)
 
 [node name="Heal" type="Node2D" parent="SpellContainer" node_paths=PackedStringArray("selector")]
-visible = false
+position = Vector2(972.5, 547)
 script = ExtResource("3_a5110")
 amount = 20
 selector = NodePath("../..")
@@ -186,19 +199,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -105.5
-offset_top = -14.0
-offset_right = 105.5
-offset_bottom = 14.0
+offset_top = -25.5
+offset_right = 94.5
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 spell_name = "Heal"
 
 [node name="Panel" parent="SpellContainer/Heal/Label" index="0"]
-offset_top = -6.0
-offset_bottom = 6.0
+anchors_preset = -1
+anchor_left = 0.03
+anchor_right = 1.025
+offset_left = -6.0
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Magic Missle" type="Node2D" parent="SpellContainer" node_paths=PackedStringArray("selector")]
-visible = false
+position = Vector2(972.5, 497)
 script = ExtResource("8_rd0yl")
 selector = NodePath("../..")
 
@@ -222,7 +242,7 @@ offset_top = -6.0
 offset_bottom = 6.0
 
 [node name="FireBall" type="Node2D" parent="SpellContainer" node_paths=PackedStringArray("selector")]
-visible = false
+position = Vector2(972.5, 597)
 script = ExtResource("9_vm0ms")
 selector = NodePath("../..")
 
@@ -248,44 +268,59 @@ offset_bottom = 6.0
 [node name="ScrollCoolDown" type="Timer" parent="SpellContainer"]
 wait_time = 0.15
 
-[node name="UI_Keys" type="Node2D" parent="."]
-position = Vector2(755, 475)
+[node name="UI_Keys" type="Control" parent="."]
+layout_mode = 2
 
-[node name="KeyboardEOutline" type="Sprite2D" parent="UI_Keys"]
-position = Vector2(-20, 0)
-scale = Vector2(0.8, 0.8)
+[node name="HBoxContainer" type="HBoxContainer" parent="UI_Keys"]
+layout_mode = 0
+offset_left = 633.5
+offset_top = 524.0
+offset_right = 847.5
+offset_bottom = 582.0
+metadata/_edit_group_ = true
+
+[node name="KeyboardEOutline" type="TextureRect" parent="UI_Keys/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("11_lhh22")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="UI_Keys"]
-offset_left = 10.0
-offset_top = -28.0
-offset_right = 50.0
-offset_bottom = 27.0
+[node name="Label" type="Label" parent="UI_Keys/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "/"
 label_settings = SubResource("LabelSettings_jodat")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MouseScroll" type="Sprite2D" parent="UI_Keys"]
-position = Vector2(137, 0)
+[node name="MouseScroll" type="TextureRect" parent="UI_Keys/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("12_1gyj3")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="KeyTabOutline" type="Sprite2D" parent="UI_Keys"]
-position = Vector2(73, 0)
+[node name="KeyTabOutline" type="TextureRect" parent="UI_Keys/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 texture = ExtResource("13_mgrj6")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="timeout" from="SpellContainer/ScrollCoolDown" to="SpellContainer" method="_on_scroll_cool_down_timeout"]
 
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet2"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet3"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet4"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet5"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet6"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet7"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet8"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet9"]
-[editable path="SpellContainer/Spell_Bullets/Spell_Bullet10"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet2"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet3"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet4"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet5"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet6"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet7"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet8"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet9"]
+[editable path="SpellContainer/Spell_Bullets/HBoxContainer/Spell_Bullet10"]
 [editable path="SpellContainer/Heal/Label"]
 [editable path="SpellContainer/Magic Missle/Label"]
 [editable path="SpellContainer/FireBall/Label"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://y3yjqgg5wud8"]
+
+[ext_resource type="Script" path="res://Game_Areas/FightAreas/Exit/exit_interactable.gd" id="1_nnyqr"]
+[ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="2_mnxni"]
+[ext_resource type="Texture2D" uid="uid://wwsswoyn10w1" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_q.png" id="3_f3jx7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7mieh"]
+radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_d38y5"]
+size = Vector3(0.3, 0.5, 0.3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sroii"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6qf4"]
+emission_enabled = true
+emission = Color(0.780392, 0, 0.0705882, 1)
+emission_energy_multiplier = 4.91
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jjccr"]
+radius = 4.59127
+
+[node name="ExitInteractable" type="Node3D"]
+script = ExtResource("1_nnyqr")
+
+[node name="Button" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button"]
+shape = SubResource("SphereShape3D_7mieh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_d38y5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277686, 0)
+mesh = SubResource("CylinderMesh_sroii")
+surface_material_override/0 = SubResource("StandardMaterial3D_q6qf4")
+
+[node name="Exit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31173, 0, -1.76523)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.11848)
+shape = SubResource("SphereShape3D_jjccr")
+
+[node name="fence" parent="Exit" instance=ExtResource("2_mnxni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.802642)
+
+[node name="KeyboardQ" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(624, 591)
+texture = ExtResource("3_f3jx7")
+
+[connection signal="body_entered" from="Button" to="." method="_on_button_body_entered"]
+[connection signal="body_exited" from="Button" to="." method="_on_button_body_exited"]
