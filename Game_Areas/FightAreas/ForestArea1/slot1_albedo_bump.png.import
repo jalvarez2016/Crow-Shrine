@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv78sslkoi4at"
-path.s3tc="res://.godot/imported/slot0_albedo_bump.png-cabfcaf65c313c6876ceebb2b0c2423e.s3tc.ctex"
+uid="uid://dnwdkj0cfpnpa"
+path.s3tc="res://.godot/imported/slot1_albedo_bump.png-aa58f27b80cf3c8e9e27e72c41028e92.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://slot0_albedo_bump.png"
-dest_files=["res://.godot/imported/slot0_albedo_bump.png-cabfcaf65c313c6876ceebb2b0c2423e.s3tc.ctex"]
+source_file="res://Game_Areas/FightAreas/ForestArea1/slot1_albedo_bump.png"
+dest_files=["res://.godot/imported/slot1_albedo_bump.png-aa58f27b80cf3c8e9e27e72c41028e92.s3tc.ctex"]
 
 [params]
 
