@@ -10,5 +10,5 @@ func cast():
 	var missle_instance = missle.instantiate()
 	missle_instance.position = selector.spell_spawn_position.global_position
 	var camera = selector.aim_spell
-	missle_instance.rotation_degrees.y = camera.rotation_degrees.y + 180
+	missle_instance.rotation_degrees.y = camera.rotation_degrees.y
 	root.add_child(missle_instance) 
