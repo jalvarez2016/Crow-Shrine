@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://bllr4txmwtrn3"]
+
+[ext_resource type="PackedScene" uid="uid://b7eoewgrvkupg" path="res://Assets/3dModels/Buildings/WeaponShop/WeaponShop.glb" id="1_6ikd4"]
+
+[node name="WeaponShop" instance=ExtResource("1_6ikd4")]
+
+[node name="Cube_063" parent="." index="0"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -0.0705567, 0, 0, 0.860939, 0, -7.19517)
+
+[node name="Cube_064" parent="." index="1"]
+transform = Transform3D(-0.410612, 0.521506, 0, -0.382355, -0.560048, 0, 0, 0, 0.14788, -1.53449, 2.28313, -7.45924)
+
+[node name="Cube_065" parent="." index="2"]
+transform = Transform3D(-0.390483, -0.470342, -1.8679e-07, -0.144408, 1.19504, 0.324199, -0.0366027, 0.302903, -1.27906, -0.0670123, 1.97757, -7.85277)
+
+[node name="Cube_066" parent="." index="3"]
+transform = Transform3D(0.173181, 0.606527, 0.189044, 0.159468, -0.565794, 0.359108, 0.122724, -0.120699, -0.733396, -1.84649, 0.395131, -7.93365)
+
+[node name="Cube_049" parent="." index="4"]
+transform = Transform3D(0.741629, 0, 0, 0, 1.66426, 0, 0, 0, 0.741629, 6.20304, 6.29407, -0.133765)
+
+[node name="Cube_051" parent="." index="5"]
+transform = Transform3D(0.225913, 0, 0, 0, 1, 0, 0, 0, 1, 6.19996, 8.16177, -0.0600004)
+
+[node name="Cylinder_004" parent="." index="6"]
+transform = Transform3D(0, 0.583141, 0, -0.32527, 0, 0, 0, 0, 0.32527, 7.00901, 8.73979, -0.0350294)
+
+[node name="Cylinder_005" parent="." index="7"]
+transform = Transform3D(0.392583, 0, 0, 0, 0.666774, 0, 0, 0, 0.392583, 7.32804, 7.07783, -0.0350294)
+
+[node name="Cube_054" parent="." index="8"]
+transform = Transform3D(0.0914379, 0, 0, 0, 0.426945, 0, 0, 0, 0.0914379, 7.32804, 8.17155, -0.0350294)
+
+[node name="Cube_048" parent="." index="9"]
+transform = Transform3D(0.225913, 0, 0, 0, 1, 0, 0, 0, 1, -6.10971, 8.16177, -0.0600004)
+
+[node name="Cube_050" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91616, 11.2398, -3.05213)
+
+[node name="Icosphere" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 0.553242, 0.195163, 0, -0.110089, 0.980771, -3.00519, -0.268852, -3.85613)
+
+[node name="Icosphere_001" parent="." index="12"]
+transform = Transform3D(0.155818, 0.0398223, 0.520086, 0.0149767, 0.31847, -0.0800306, -0.428311, 0.025623, 0.186406, -2.41565, -0.690129, -2.9555)
+
+[node name="Icosphere_002" parent="." index="13"]
+transform = Transform3D(0.386233, 0.0281728, 0.00884322, -0.0267473, 0.284655, 0.26135, 0.0125095, -0.2612, 0.285772, -2.17661, -0.677665, -3.85613)
+
+[node name="Icosphere_003" parent="." index="14"]
+transform = Transform3D(-0.295052, 0.154135, -0.198076, 0.233795, 0.279973, -0.130395, 0.091278, -0.218873, -0.306285, -2.52477, -0.677665, -4.71975)
+
+[node name="Icosphere_004" parent="." index="15"]
+transform = Transform3D(-0.169509, 0.0885512, -0.113795, 0.134316, 0.160845, -0.0749124, 0.0524396, -0.125743, -0.175962, -2.38344, -0.772328, -4.30788)
+
+[node name="Icosphere_005" parent="." index="16"]
+transform = Transform3D(-0.0608491, 0.130013, 0.170052, 0.134316, 0.160845, -0.0749124, -0.166675, 0.0821536, -0.122451, -2.45382, -0.772328, -3.45963)
+
+[node name="Icosphere_006" parent="." index="17"]
+transform = Transform3D(0.396959, -0.0318069, -0.269175, 0.0149767, 0.31847, -0.0800306, 0.22395, 0.0350811, 0.482474, -3.65771, -0.690129, -2.82638)
+
+[node name="Icosphere_007" parent="." index="18"]
+transform = Transform3D(-0.0608491, 0.130013, 0.170052, 0.134316, 0.160845, -0.0749124, -0.166675, 0.0821536, -0.122451, -3.15335, -0.772328, -2.50494)
+
+[node name="Icosphere_008" parent="." index="19"]
+transform = Transform3D(0.386233, 0.0281728, 0.00884322, -0.0267473, 0.284655, 0.26135, 0.0125095, -0.2612, 0.285772, -2.82036, -0.677665, -2.25627)
+
+[node name="Icosphere_009" parent="." index="20"]
+transform = Transform3D(0.274918, 0.198125, -0.187656, 0.225306, -0.0145057, 0.314761, 0.153965, -0.332542, -0.125533, -3.2504, -0.677665, -4.91009)
+
+[node name="Cube_053" parent="." index="21"]
+transform = Transform3D(0.0801315, 0, 0, 0, 1, 0, 0, 0, 0.0801315, -1.59218, 0.878918, -1.96552)
+
+[node name="Cube_062" parent="." index="22"]
+transform = Transform3D(0.242539, 0, 0, 0, 1.3674, 0, 0, 0, 1.3674, 7.04047, 4.29945, -0.0600004)
+
+[node name="Cube_055" parent="." index="23"]
+transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 6.01487, 0, -6.03503)
+
+[node name="Cube_056" parent="." index="24"]
+transform = Transform3D(-0.667386, 0, -1.61592e-06, 0, 1, 0, 2.17462e-07, 0, -4.95924, -5.89871, 0, -0.0757933)
+
+[node name="Cube_057" parent="." index="25"]
+transform = Transform3D(5.36442e-07, 0, -1, 0, 1, 0, 1, 0, 5.36442e-07, -5.9036, 0, -6.03503)
+
+[node name="Cube_058" parent="." index="26"]
+transform = Transform3D(7.82765, 0, 0, 0, 1, 0, 0, 0, 7.82765, -0.0692601, -2, -0.0350294)
+
+[node name="Cube_059" parent="." index="27"]
+transform = Transform3D(3.58014e-07, 0, -4.95924, 0, 1, 0, 0.667386, 0, 2.66034e-06, 0.0556374, 0, -6.45722)
+
+[node name="Cube_060" parent="." index="28"]
+transform = Transform3D(7.53083, 0, 0, 0, 1, 0, 0, 0, 7.53083, 0.16654, 8.66014, -0.0350294)
+
+[node name="Cube_052" parent="." index="29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.878363, 6.60374, 0, -0.0350294)
