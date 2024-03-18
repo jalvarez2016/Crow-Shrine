@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmax3vvtuybjk"]
+
+[ext_resource type="PackedScene" uid="uid://casjepdw445is" path="res://Assets/3dModels/Buildings/House/House.glb" id="1_s3ykc"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3mdl2"]
+data = PackedVector3Array(-1.3186, 0.5651, 1.4559, -1.3186, 1, -1.4559, -1.3186, 1, 1.4559, -1.3186, 0.5651, 1.4559, -1.3186, 0.5651, -1.4559, -1.3186, 1, -1.4559, -1.3186, 0.5651, -1.4559, 1.1261, 1, -1.4559, -1.3186, 1, -1.4559, -1.3186, 0.5651, -1.4559, 1.1261, 0.5651, -1.4559, 1.1261, 1, -1.4559, 1.1261, 0.5651, -1.4559, 1.1261, 1, 1.4559, 1.1261, 1, -1.4559, 1.1261, 0.5651, -1.4559, 1.1261, 0.5651, 1.4559, 1.1261, 1, 1.4559, 1.1261, 0.5651, 1.4559, -1.3186, 1, 1.4559, 1.1261, 1, 1.4559, 1.1261, 0.5651, 1.4559, -1.3186, 0.5651, 1.4559, -1.3186, 1, 1.4559, -1.3186, 0.5651, -1.4559, 1.1261, 0.5651, 1.4559, 1.1261, 0.5651, -1.4559, -1.3186, 0.5651, -1.4559, -1.3186, 0.5651, 1.4559, 1.1261, 0.5651, 1.4559, 1.1261, 1, -1.4559, -1.3186, 1, 1.4559, -1.3186, 1, -1.4559, 1.1261, 1, -1.4559, 1.1261, 1, 1.4559, -1.3186, 1, 1.4559)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7bk4l"]
+size = Vector3(14, 11, 15)
+
+[node name="House" instance=ExtResource("1_s3ykc")]
+
+[node name="Cube_037" parent="." index="0"]
+transform = Transform3D(0.334221, 0, 0, 0, 1, 0, 0, 0, 1, -11.9187, 8.18167, -0.0296912)
+
+[node name="Cube_042" parent="." index="1"]
+transform = Transform3D(0.741629, 0, 0, 0, 1.66426, 0, 0, 0, 0.741629, 0.188167, 6.29407, -0.103456)
+
+[node name="Cube_044" parent="." index="2"]
+transform = Transform3D(0.741629, 0, 0, 0, 0, -0.741629, 0, 1.66426, 0, 0.188167, 4.0172, -2.41215)
+
+[node name="Cube_045" parent="." index="3"]
+transform = Transform3D(0.225913, 0, 0, 0, 1, 0, 0, 0, 1, 0.185086, 8.18167, -0.0296912)
+
+[node name="Cube_046" parent="." index="4"]
+transform = Transform3D(0.279372, 0, 0, 0, 1, 0, 0, 0, 1.45846, -0.182648, 0, 0.0398221)
+
+[node name="Cube_047" parent="." index="5"]
+transform = Transform3D(0.514009, 0, 0, 0, 0.514009, 0, 0, 0, 0.514009, -0.182648, -0.485991, 3.95186)
+
+[node name="Cylinder_002" parent="." index="6"]
+transform = Transform3D(0, 0.583141, 0, -0.32527, 0, 0, 0, 0, 0.32527, 0.994139, 8.73979, -0.0047183)
+
+[node name="Cylinder_003" parent="." index="7"]
+transform = Transform3D(0.392583, 0, 0, 0, 0.666774, 0, 0, 0, 0.392583, 1.31317, 7.07783, -0.0047183)
+
+[node name="Cube_043" parent="." index="8"]
+transform = Transform3D(0.0914379, 0, 0, 0, 0.426945, 0, 0, 0, 0.0914379, 1.31317, 8.17155, -0.0047183)
+
+[node name="Icosphere_010" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105148, 1.47554, -1.12194)
+
+[node name="Cube_035" parent="." index="10"]
+transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, -6.00472)
+
+[node name="Cube_036" parent="." index="11"]
+transform = Transform3D(-0.667386, 0, -1.61592e-06, 0, 1, 0, 2.17462e-07, 0, -4.95924, -11.9136, 0, -0.0454822)
+
+[node name="Cube_038" parent="." index="12"]
+transform = Transform3D(5.36442e-07, 0, -1, 0, 1, 0, 1, 0, 5.36442e-07, -11.9185, 0, -6.00472)
+
+[node name="Cube_039" parent="." index="13"]
+transform = Transform3D(7.82765, 0, 0, 0, 1, 0, 0, 0, 7.82765, -6.08413, -2, -0.0047183)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_039" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_039/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_3mdl2")
+
+[node name="Cube_040" parent="." index="14"]
+transform = Transform3D(3.58014e-07, 0, -4.95924, 0, 1, 0, 0.667386, 0, 2.66034e-06, -5.95923, 0, -6.42692)
+
+[node name="Cube_041" parent="." index="15"]
+transform = Transform3D(7.53083, 0, 0, 0, 1, 0, 0, 0, 7.53083, -5.84833, 8.66014, -0.0047183)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="16"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 4, 0)
+shape = SubResource("BoxShape3D_7bk4l")
