@@ -11,3 +11,6 @@ func healed(amount: float):
 
 func collect_magic_drop():
 	magic_selector.replenish_magic()
+
+func collect_treasure(body):
+	pass

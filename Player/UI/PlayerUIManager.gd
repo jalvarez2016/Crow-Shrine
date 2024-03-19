@@ -21,4 +21,7 @@ func use_stamina(amount: float = 0):
 
 func refill_stamina():
 	stamina.add(.2)
-	
+
+
+func add_treasure(value):
+	treasure.add(value)

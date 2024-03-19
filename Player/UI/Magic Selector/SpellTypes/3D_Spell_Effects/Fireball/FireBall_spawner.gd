@@ -5,7 +5,7 @@ extends Node2D
 var fireball = preload("res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Fireball/FireBall.tscn")
 
 func cast():
-	var root = get_tree().get_root().get_node("World")
+	var root = get_tree().get_root().get_node("Control").get_node("World")
 	var fireball_instance = fireball.instantiate()
 	fireball_instance.position = selector.spell_spawn_position.global_position
 	var camera = selector.aim_spell

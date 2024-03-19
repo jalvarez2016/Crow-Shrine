@@ -110,3 +110,7 @@ func get_damage():
 
 func cast_magic():
 	magic_manger.magic()
+
+
+func collect_treasure(value):
+	UI_controller.add_treasure(value)

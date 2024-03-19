@@ -22,7 +22,7 @@ func _on_explode_timeout():
 	queue_free()
 
 func explode():
-	var root = get_tree().get_root().get_node("World")
+	var root = get_tree().get_root().get_node("Control").get_node("World")
 	var explosion_instance = explosion.instantiate()
 	explosion_instance.position = global_position
 	root.add_child(explosion_instance)
