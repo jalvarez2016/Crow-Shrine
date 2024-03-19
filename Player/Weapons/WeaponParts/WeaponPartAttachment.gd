@@ -20,7 +20,7 @@ func attach_weapon_part(area: Area3D):
 
 
 func remove_weapon_part():
-	var root = get_tree().get_root().get_node("World")
+	var root = get_tree().get_root().get_node("Control").get_node("World")
 	weapon_part.main.reparent(root, true)
 	weapon_part.main.eject()
 	weapon_part = null

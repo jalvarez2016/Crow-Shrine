@@ -48,6 +48,7 @@ func get_damage():
 	return 0
 
 func stop_animating():
+	print('signal')
 	is_animating = false
 	combo_timer()
 	

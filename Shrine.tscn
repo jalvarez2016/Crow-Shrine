@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://xviw2xq8v4um"]
+[gd_scene load_steps=19 format=3 uid="uid://xviw2xq8v4um"]
 
 [ext_resource type="Script" path="res://Game_Areas/FightAreas/Area.gd" id="1_20l6q"]
 [ext_resource type="PackedScene" uid="uid://y3yjqgg5wud8" path="res://Game_Areas/FightAreas/Exit/exit_interactable.tscn" id="5_ypn2f"]
 [ext_resource type="PackedScene" uid="uid://cjg5lle2c7ne5" path="res://Assets/3dModels/Buildings/Bar/Bar.tscn" id="6_c4x3v"]
 [ext_resource type="PackedScene" uid="uid://cmax3vvtuybjk" path="res://Assets/3dModels/Buildings/House/House.tscn" id="7_8nmlj"]
 [ext_resource type="PackedScene" uid="uid://dahbnio2fl5of" path="res://Game_Areas/Shrine/fence.tscn" id="7_65a3w"]
+[ext_resource type="PackedScene" uid="uid://bngr334r11vms" path="res://Assets/3dModels/Interactables/Coin/Coin.tscn" id="8_o4uvr"]
 [ext_resource type="PackedScene" uid="uid://dk0w44t1jn2ug" path="res://Assets/3dModels/Buildings/Shrine/Shrine.tscn" id="9_jjega"]
 [ext_resource type="PackedScene" uid="uid://bllr4txmwtrn3" path="res://Assets/3dModels/Buildings/WeaponShop/Weapon_shop.tscn" id="9_xybc3"]
 
@@ -230,3 +231,6 @@ transform = Transform3D(2.465, 0, 0, 0, 2.465, 0, 0, 0, 2.465, 54.6273, 0.499998
 
 [node name="fence4" parent="Fences" instance=ExtResource("7_65a3w")]
 transform = Transform3D(2.465, 0, 0, 0, 2.465, 0, 0, 0, 2.465, 71.6273, 0.499998, -39.7784)
+
+[node name="Coin" parent="." instance=ExtResource("8_o4uvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42176, 1.00955, 4.91389)

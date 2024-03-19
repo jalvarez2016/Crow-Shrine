@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bngr334r11vms"]
+
+[ext_resource type="PackedScene" uid="uid://c5nuriu88vy8f" path="res://Game_Areas/models/GLB format/coin.glb" id="1_krj5r"]
+[ext_resource type="Script" path="res://Assets/3dModels/Interactables/Coin/Coin.gd" id="2_mjkpj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_636xe"]
+radius = 0.766858
+
+[node name="Coin" instance=ExtResource("1_krj5r")]
+script = ExtResource("2_mjkpj")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_636xe")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

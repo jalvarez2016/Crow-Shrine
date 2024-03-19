@@ -964,7 +964,7 @@ states/Attack3/position = Vector2(529, 222)
 states/End/position = Vector2(529, 100)
 states/Start/position = Vector2(203, 100)
 transitions = ["Start", "Attack1", SubResource("AnimationNodeStateMachineTransition_6h5uk"), "Attack1", "End", SubResource("AnimationNodeStateMachineTransition_aflwf"), "Attack3", "End", SubResource("AnimationNodeStateMachineTransition_uurvw"), "Attack2", "End", SubResource("AnimationNodeStateMachineTransition_b34ue"), "Attack3", "Attack1", SubResource("AnimationNodeStateMachineTransition_p4t63"), "Attack2", "Attack3", SubResource("AnimationNodeStateMachineTransition_fhrin"), "Attack1", "Attack2", SubResource("AnimationNodeStateMachineTransition_j0lcw")]
-graph_offset = Vector2(56, -10)
+graph_offset = Vector2(49, -105)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_asqne"]
 animation = &"Defeated"
@@ -1157,22 +1157,20 @@ states/Loot/position = Vector2(540, 217)
 states/Move/node = SubResource("AnimationNodeStateMachine_5dxkc")
 states/Move/position = Vector2(745, 100)
 transitions = ["Idle", "Defeated", SubResource("AnimationNodeStateMachineTransition_5yutu"), "Move", "Defeated", SubResource("AnimationNodeStateMachineTransition_p1rc2"), "Attack", "Defeated", SubResource("AnimationNodeStateMachineTransition_xksqk"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_tq3ti"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_50nwp"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_vbxlt"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_d5gy7"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_yg0hs"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_we1mk"), "Idle", "Loot", SubResource("AnimationNodeStateMachineTransition_e4s4r"), "Move", "Loot", SubResource("AnimationNodeStateMachineTransition_86635"), "Attack", "Loot", SubResource("AnimationNodeStateMachineTransition_6y20t"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_r3uaf"), "Attack", "Defend", SubResource("AnimationNodeStateMachineTransition_i0y27"), "Defend", "Attack", SubResource("AnimationNodeStateMachineTransition_n5ry8"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_kajt5"), "Move", "Jump", SubResource("AnimationNodeStateMachineTransition_fe148"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_lb4eh"), "Loot", "Idle", SubResource("AnimationNodeStateMachineTransition_dvmv3"), "Defend", "Idle", SubResource("AnimationNodeStateMachineTransition_yfwgt"), "Idle", "Defend", SubResource("AnimationNodeStateMachineTransition_5eqwj"), "Move", "Defend", SubResource("AnimationNodeStateMachineTransition_f0tl5"), "Defend", "Move", SubResource("AnimationNodeStateMachineTransition_w05ec"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6ffrp")]
-graph_offset = Vector2(57, -91)
+graph_offset = Vector2(58, -237)
 
 [node name="Crow2" instance=ExtResource("1_gxibk")]
 transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
 script = ExtResource("2_dgsqq")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/2/rotation = Quaternion(0.0703468, -0.00727342, 0.902005, -0.425894)
+bones/2/rotation = Quaternion(0.0702482, -0.00815406, 0.906363, -0.416538)
 bones/3/rotation = Quaternion(0.0110396, -1.364e-07, -0.195589, 0.980624)
-bones/4/rotation = Quaternion(-0.0703192, -0.00754189, 0.904685, 0.42017)
+bones/4/rotation = Quaternion(-0.0702439, -0.00819118, 0.906583, 0.416059)
 bones/5/rotation = Quaternion(0.0110396, 1.364e-07, 0.195589, 0.980624)
-bones/6/rotation = Quaternion(0.705546, -0.0555394, 0.704921, -0.0469721)
-bones/7/rotation = Quaternion(0.702717, -0.0701328, -0.703619, 0.0786753)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.880084, -0.459443, -0.119853, 0.455141, -0.888207, 0.0627269, -0.135273, 0.000655049, 0.990808, -1.00536, 0.143462, -0.0963249)
+transform = Transform3D(-0.884174, -0.451318, -0.12062, 0.447177, -0.892363, 0.0610041, -0.135169, -8.75443e-08, 0.990823, -0.997485, 0.134384, -0.0970733)
 bone_name = "ForeArm L"
 bone_idx = 5
 
