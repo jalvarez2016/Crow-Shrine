@@ -67,6 +67,7 @@ func moving():
 	if player.isSprinting:
 		animator["parameters/Move/conditions/sprinting"] = true
 		animator["parameters/Move/conditions/walking"] = false
+		
 	else:
 		animator["parameters/Move/conditions/sprinting"] = false
 		animator["parameters/Move/conditions/walking"] = true

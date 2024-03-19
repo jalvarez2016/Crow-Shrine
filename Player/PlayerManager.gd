@@ -13,7 +13,7 @@ class_name Player
 
 @onready var spring_arm: SpringArm3D = $Head/SpringArm3D
 @onready var mesh : MeshInstance3D = $MeshInstance3D
-@onready var mesh_manager : Node3D = $MeshInstance3D/Crow
+@onready var mesh_manager : Node3D = $MeshInstance3D/Crow2
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 var angular_acceleration := 7
