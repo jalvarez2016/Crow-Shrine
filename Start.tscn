@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvavl22xvdwj0"]
+
+[ext_resource type="Script" path="res://Start.gd" id="1_a2277"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pkfa3"]
+line_spacing = 5.0
+font_size = 80
+outline_size = 10
+
+[sub_resource type="FontVariation" id="FontVariation_dngjf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ym3al"]
+font = SubResource("FontVariation_dngjf")
+font_size = 30
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a2277")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_top = 189.0
+offset_right = 1152.0
+offset_bottom = 303.0
+text = "Crow Shrine"
+label_settings = SubResource("LabelSettings_pkfa3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 26.0
+offset_right = 180.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press any button to start"
+label_settings = SubResource("LabelSettings_ym3al")
