@@ -40,5 +40,3 @@ func _process(_delta):
 			area_is_loading = false
 
 
-#Past jason here
-#Make a new scene with a button that activates thw exit or entrance on Q pressed when close enough to it

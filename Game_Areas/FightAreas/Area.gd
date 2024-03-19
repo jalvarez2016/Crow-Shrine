@@ -61,7 +61,7 @@ func load_next_area(body):
 
 
 func _ready():
-	world = get_tree().get_root().get_node("World")
+	world = get_tree().get_root().get_node("Control").get_node("World")
 	connect_entrance()
 	connect_exit()
 	
