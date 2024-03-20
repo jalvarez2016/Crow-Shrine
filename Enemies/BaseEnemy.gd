@@ -16,6 +16,10 @@ var is_alive : bool = true
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
+# -- Enemy Drops --
+var magic_regen_drop = preload("res://Player/UI/Magic Selector/Magic_Drop/Magic_drop.tscn")
+var money_drop = preload("res://Assets/3dModels/Interactables/Coin/Coin.tscn")
+
 func _ready():
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
@@ -89,7 +93,7 @@ func attacked(damage: float):
 	health -= damage
 	if health <= 0:
 		is_alive = false
-		print('enemy dead')
+		on_death()
 
 func _on_hitbox_entered(area):
 	if invincible:
@@ -104,3 +108,13 @@ func _on_hitbox_entered(area):
 func _on_invincibility_timeout():
 	invincible = false
 
+func on_death():
+	var magic_drop_instance = magic_regen_drop.instantiate()
+	var coin_instance = money_drop.instantiate()
+	magic_drop_instance.global_position = self.position
+	coin_instance.global_position = self.position
+	
+	var world = get_tree().get_root().get_node("Control").get_node("World")
+	world.add_child(magic_drop_instance)
+	world.add_child(coin_instance)
+	queue_free()
