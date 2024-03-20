@@ -75,8 +75,14 @@ func connect_entrance():
 	entrance.get_exit_body().body_entered.connect(load_prev_area)
 
 
-func connect_exit():
-	if exit == null || world.current_area + 1 == world.path.size():
+func connect_exit(): 
+	if exit == null:
+		return
+		
+	if world.current_area + 1 > world.path.size() - 1:
+		set_next_area(world.path[0])
+		exit.get_exit_body().body_entered.connect(load_next_area)
+		world.current_area = 0
 		return
 	
 	set_next_area(world.path[world.current_area + 1])
