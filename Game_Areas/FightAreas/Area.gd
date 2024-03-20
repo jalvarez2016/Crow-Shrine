@@ -53,7 +53,11 @@ func load_next_area(body):
 		print('next area loading')
 		world.area_is_loading = true
 		player.global_position = Vector3(0, 0, 1000)
-		world.current_area += 1
+		if world.current_area + 1 > world.path.size() - 1:
+			world.current_area = 0
+			world.randomize_areas()
+		else:
+			world.current_area += 1
 		var next_area_instance = load(next_area).instantiate()
 		next_area_instance.ready_player(body)
 		world.add_child(next_area_instance)
@@ -75,8 +79,13 @@ func connect_entrance():
 	entrance.get_exit_body().body_entered.connect(load_prev_area)
 
 
-func connect_exit():
-	if exit == null || world.current_area + 1 == world.path.size():
+func connect_exit(): 
+	if exit == null:
+		return
+		
+	if world.current_area + 1 > world.path.size() - 1:
+		set_next_area(world.path[0])
+		exit.get_exit_body().body_entered.connect(load_next_area)
 		return
 	
 	set_next_area(world.path[world.current_area + 1])
