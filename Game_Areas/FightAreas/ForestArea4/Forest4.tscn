@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://jqo7ogi73hwj"]
+[gd_scene load_steps=21 format=3 uid="uid://jqo7ogi73hwj"]
 
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_754to"]
 [ext_resource type="Script" path="res://Game_Areas/FightAreas/Area.gd" id="1_s0oit"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="10_2tt2d"]
 [ext_resource type="PackedScene" uid="uid://d3spxjs88s222" path="res://Assets/3dModels/Environment/Trees/Tree.tscn" id="12_3cpv5"]
 [ext_resource type="PackedScene" uid="uid://ch763sv7kbf5" path="res://Enemies/BaseEnemy.tscn" id="14_f055r"]
+[ext_resource type="AudioStream" uid="uid://catdp1ymchpyb" path="res://Assets/Music/ForestFight1.wav" id="15_rpx6q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ukd86"]
 sky_top_color = Color(0.0156863, 0.00784314, 0.172549, 1)
@@ -243,3 +244,6 @@ transform = Transform3D(-0.844478, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844478
 
 [node name="Enemy28" parent="Enemies" instance=ExtResource("14_f055r")]
 transform = Transform3D(-0.844478, 0, 0.535591, 0, 1, 0, -0.535591, 0, -0.844478, 113.416, 1.31833, -101.732)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_rpx6q")
