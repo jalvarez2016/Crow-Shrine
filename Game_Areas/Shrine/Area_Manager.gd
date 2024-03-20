@@ -4,7 +4,7 @@ extends Node3D
 var area_is_loading = false
 var player = preload("res://Player/Player.tscn")
 var shrine = preload("res://Shrine.tscn")
-var fight_areas_amount = 1
+var fight_areas_amount = 3
 var fight_areas = [
 	"res://Game_Areas/FightAreas/ForestArea1/Forest1.tscn",
 	"res://Game_Areas/FightAreas/ForestArea2/Forest2.tscn",
@@ -51,7 +51,4 @@ func randomize_areas():
 		area_count += 1
 	path.push_back(final_area)
 		
-	var shrine_ref = path[0]
-	var shrine_instance = load(shrine_ref).instantiate()
-	add_child(shrine_instance)
 	
