@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg51t1rmvgxn6"]
+
+[ext_resource type="PackedScene" uid="uid://oak0oqq65b41" path="res://Enemies/racoons/hacker/Hackermain.tscn" id="2_752m5"]
+[ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="2_xl5ey"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_232b0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fhol5"]
+sky_material = SubResource("ProceduralSkyMaterial_232b0")
+
+[sub_resource type="Environment" id="Environment_31nw6"]
+background_mode = 2
+sky = SubResource("Sky_fhol5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0ytgl"]
+vertices = PackedVector3Array(-24.5, -0.0475399, -24.5, -24.5, -0.0475399, 24.5, 24.5, -0.0475399, 24.5, 24.5, -0.0475399, -24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mfoxi"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mbuaf"]
+data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25, 25, -0.5, 25, -25, -0.5, 25, 25, 0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, 0.5, -25, -25, -0.5, -25, 25, -0.5, -25, 25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, -25, 25, -0.5, -25, 25, -0.5, 25, -25, 0.5, -25, -25, 0.5, 25, -25, -0.5, -25, -25, 0.5, 25, -25, -0.5, 25, -25, -0.5, -25, 25, 0.5, 25, -25, 0.5, 25, 25, 0.5, -25, -25, 0.5, 25, -25, 0.5, -25, 25, 0.5, -25, -25, -0.5, 25, 25, -0.5, 25, -25, -0.5, -25, 25, -0.5, 25, 25, -0.5, -25, -25, -0.5, -25)
+
+[node name="test_world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_31nw6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_xl5ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4158, 3.58719, 1.66756)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0ytgl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.04754, 0)
+mesh = SubResource("BoxMesh_mfoxi")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mbuaf")
+
+[node name="Hackermain" parent="." instance=ExtResource("2_752m5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1272, 1.49125, 0.123653)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbdw6uiq7r8ud"]
+
+[ext_resource type="Script" path="res://Enemies/racoons/ninja/ninjaStar.gd" id="1_bv5sx"]
+[ext_resource type="PackedScene" uid="uid://dq4du5od74u50" path="res://Assets/3dModels/raccoons/ninja/shuriken.glb" id="1_syobk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_krsgd"]
+height = 0.1
+radius = 0.284
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q3s7p"]
+height = 0.1
+radius = 0.341461
+
+[node name="NinjaStar" type="RigidBody3D"]
+collision_mask = 2
+script = ExtResource("1_bv5sx")
+
+[node name="shuriken" parent="." instance=ExtResource("1_syobk")]
+
+[node name="Skeleton3D" parent="shuriken/Armature" index="0"]
+bones/0/rotation = Quaternion(-1.77595e-07, 0.430556, 1.01101e-06, 0.902564)
+bones/1/rotation = Quaternion(5.29901e-17, -0.90636, -4.69076e-17, 0.422506)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00619507, 0)
+shape = SubResource("CylinderShape3D_krsgd")
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemyAttack"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_q3s7p")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+
+[editable path="shuriken"]
