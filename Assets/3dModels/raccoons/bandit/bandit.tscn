@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi7hqd7iyuc2m"]
+
+[ext_resource type="Script" path="res://Assets/3dModels/raccoons/bandit/bandit.gd" id="1_15i76"]
+[ext_resource type="PackedScene" uid="uid://b47roedt63t3x" path="res://Assets/3dModels/raccoons/bandit/bandit.glb" id="1_uw5jt"]
+[ext_resource type="PackedScene" uid="uid://qwxbqdwvpxuo" path="res://Assets/3dModels/raccoons/bandit/bandit-bag.glb" id="2_offmw"]
+
+[node name="Bandir" type="Node3D"]
+script = ExtResource("1_15i76")
+
+[node name="bandit" parent="." instance=ExtResource("1_uw5jt")]
+
+[node name="Skeleton3D" parent="bandit/Armature" index="0"]
+bones/0/position = Vector3(0.019383, 0.106534, -0.0123066)
+bones/0/rotation = Quaternion(0.00674272, 2.26023e-08, 0.0106198, 0.999921)
+bones/1/rotation = Quaternion(0.0417125, -0.0486556, -0.684391, 0.726293)
+bones/2/rotation = Quaternion(-0.0304627, -0.111177, -0.513215, 0.850483)
+bones/3/rotation = Quaternion(0.120949, -0.0014193, -0.32144, 0.939173)
+bones/4/rotation = Quaternion(0.0426384, 0.0476547, 0.668818, 0.740671)
+bones/5/rotation = Quaternion(0.0586973, -0.0390318, 0.51122, 0.856554)
+bones/6/rotation = Quaternion(0.224581, 0.00322154, 0.259815, 0.939175)
+bones/7/rotation = Quaternion(0.139334, 0.000538708, -0.0253527, 0.989921)
+bones/8/rotation = Quaternion(-0.0971374, 0.0507262, -0.374115, 0.920885)
+bones/9/rotation = Quaternion(-0.40256, -0.0237686, -0.0823196, 0.911375)
+bones/10/rotation = Quaternion(-0.0961571, -0.0538567, 0.401658, 0.909134)
+bones/11/rotation = Quaternion(-0.401782, 0.0239168, 0.0820996, 0.911734)
+bones/13/rotation = Quaternion(-0.599257, -0.0882384, 0.038606, 0.794742)
+bones/14/rotation = Quaternion(0.00698386, -0.000402654, 0.0349537, 0.999364)
+bones/15/rotation = Quaternion(-0.511199, 0.504975, 0.58349, 0.378437)
+bones/16/rotation = Quaternion(-0.583866, 0.0923289, -0.0339001, 0.80587)
+bones/17/rotation = Quaternion(0.00711175, 0.00258484, -0.15425, 0.988003)
+bones/18/position = Vector3(0.675716, 0.02519, 0.375266)
+bones/18/rotation = Quaternion(8.53662e-08, 8.60178e-08, -0.699546, 0.714588)
+bones/19/rotation = Quaternion(0.706687, 0.0243395, 0.706688, -0.0243397)
+bones/21/position = Vector3(-0.675716, 0.02519, 0.375266)
+bones/21/rotation = Quaternion(8.53662e-08, -8.60178e-08, 0.699546, 0.714588)
+bones/22/position = Vector3(-0.342631, -0.971052, 0.0515283)
+
+[node name="bandit-bag" parent="." instance=ExtResource("2_offmw")]
+
+[node name="Skeleton3D" parent="bandit-bag/Armature_bag" index="0"]
+bones/0/position = Vector3(-0.0504312, 0.948889, -0.270437)
+bones/0/rotation = Quaternion(0.979123, 0.00239681, -0.176821, 0.10023)
+bones/1/rotation = Quaternion(-0.963494, -0.174675, 0.0754286, 0.188358)
+bones/2/rotation = Quaternion(0.130513, -0.00346198, 0.199461, 0.971169)
+bones/3/rotation = Quaternion(0.0657185, 0.000987017, 0.161938, 0.98461)
+bones/4/rotation = Quaternion(-0.0011002, 0.192243, 0.00301303, 0.981342)
+bones/5/rotation = Quaternion(-0.00443009, 0.0114308, -0.00460312, 0.999914)
+bones/6/rotation = Quaternion(-0.0277457, 4.76654e-07, -1.32302e-08, 0.999615)
+
+[editable path="bandit"]
+[editable path="bandit-bag"]

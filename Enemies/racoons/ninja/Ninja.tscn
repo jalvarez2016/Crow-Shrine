@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://1ww5u0q22rfw"]
+
+[ext_resource type="PackedScene" uid="uid://c4ichist0ovqn" path="res://Assets/3dModels/raccoons/ninja/ninja.tscn" id="1_jpv6c"]
+[ext_resource type="Script" path="res://Enemies/racoons/ninja/Ninja.gd" id="1_o7aky"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2vkph"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5xfxq"]
+radius = 8.22339
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_32hda"]
+radius = 0.60793
+
+[sub_resource type="Animation" id="Animation_167wd"]
+resource_name = "standing"
+
+[sub_resource type="Animation" id="Animation_6eshv"]
+resource_name = "throwing"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"ninjaStarAttack"
+}, {
+"args": [],
+"method": &"notAttacking"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iajk5"]
+resource_name = "two_feet_run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28162"]
+_data = {
+"standing": SubResource("Animation_167wd"),
+"throwing": SubResource("Animation_6eshv"),
+"two_feet_run": SubResource("Animation_iajk5")
+}
+
+[node name="Ninja" type="CharacterBody3D"]
+script = ExtResource("1_o7aky")
+
+[node name="Ninja" parent="." instance=ExtResource("1_jpv6c")]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, -0.447669, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.179407, 0)
+shape = SubResource("SphereShape3D_2vkph")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, 0.502, -1.295)
+
+[node name="range" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.89187)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="range"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.35861)
+shape = SubResource("SphereShape3D_5xfxq")
+
+[node name="hitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375961, 0)
+shape = SubResource("CapsuleShape3D_32hda")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28162")
+}
+
+[connection signal="area_entered" from="range" to="." method="_on_range_area_entered"]
+[connection signal="area_exited" from="range" to="." method="_on_range_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

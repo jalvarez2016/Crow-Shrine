@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://oak0oqq65b41"]
+
+[ext_resource type="Script" path="res://Enemies/racoons/hacker/Hackermain.gd" id="1_2to67"]
+[ext_resource type="PackedScene" uid="uid://bl4k1f21rgeol" path="res://Assets/3dModels/raccoons/hacker/hacker.tscn" id="2_fa48i"]
+[ext_resource type="Script" path="res://Enemies/racoons/hacker/punch.gd" id="3_asf0c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_blpet"]
+radius = 0.355888
+height = 1.80676
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_exnev"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a3v27"]
+height = 5.39236
+radius = 13.4456
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_clxmw"]
+radius = 0.122483
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ug7n7"]
+radius = 1.52958
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3637"]
+albedo_color = Color(0, 0.756863, 0.270588, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ox850"]
+material = SubResource("StandardMaterial3D_f3637")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_30mrh"]
+radius = 0.54
+
+[sub_resource type="Animation" id="Animation_y66fy"]
+resource_name = "punching"
+length = 2.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("punch")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.412979, -0.167, -0.236583, 0.6, 1, 0.539584, 0.081453, 0.120737, 1.6, 1, 0.433146, 0.358721, -0.822135, 2.5, 1, 0.433146, -0.145288, -0.210293)
+
+[sub_resource type="Animation" id="Animation_m0gft"]
+resource_name = "haking"
+length = 3.0
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 2.2, 1, 1, 1, 1, 2.4, 1, 2.8123, 2.8123, 2.8123, 2.7, 1, 22.1171, 22.1171, 22.1171, 3, 1, 1.41991, 1.41991, 1.41991)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dnm0e"]
+_data = {
+"haking": SubResource("Animation_m0gft"),
+"punching": SubResource("Animation_y66fy")
+}
+
+[node name="Hackermain" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0290375, 0, -0.0214834)
+script = ExtResource("1_2to67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_blpet")
+
+[node name="Hacker" parent="." instance=ExtResource("2_fa48i")]
+transform = Transform3D(-0.6, 2.09272e-16, -5.24537e-08, 2.09272e-16, 0.6, -2.09272e-16, 5.24537e-08, -2.09272e-16, -0.6, 0, -0.620301, 0)
+
+[node name="Skeleton3D" parent="Hacker/hacker/Armature" index="0"]
+bones/0/position = Vector3(0.000559172, 0.0466626, -0.0357799)
+bones/0/rotation = Quaternion(0.0481204, -0.013961, 0.0056329, 0.998728)
+bones/2/rotation = Quaternion(-0.044169, -0.162305, -0.367341, 0.914749)
+bones/3/rotation = Quaternion(0.162539, -0.00146048, -0.53115, 0.83154)
+bones/5/rotation = Quaternion(0.0790307, 0.0129592, 0.456067, 0.886335)
+bones/6/rotation = Quaternion(0.385784, 0.0051845, 0.452466, 0.804002)
+bones/7/rotation = Quaternion(0.139334, 0.000538708, -0.0253527, 0.989921)
+bones/8/rotation = Quaternion(-0.0980303, 0.0498614, -0.35806, 0.927198)
+bones/9/rotation = Quaternion(-0.506729, -0.00662312, -0.0626125, 0.859803)
+bones/10/rotation = Quaternion(-0.0965304, -0.0532092, 0.391175, 0.913692)
+bones/11/rotation = Quaternion(-0.485076, 0.00974748, 0.0748834, 0.871206)
+bones/13/rotation = Quaternion(-0.549607, -0.224524, -0.144393, 0.791626)
+bones/14/rotation = Quaternion(0.0053766, -0.000529325, 0.034959, 0.999374)
+bones/16/rotation = Quaternion(-0.606555, 0.233585, 0.159949, 0.742931)
+bones/17/rotation = Quaternion(0.177471, 0.000990266, -0.80353, 0.568193)
+bones/18/position = Vector3(0.664322, 0.10155, 0.466355)
+bones/19/position = Vector3(0.299506, -1.12544, 0.535984)
+bones/21/position = Vector3(-0.465682, 0.150566, 0.51245)
+bones/22/position = Vector3(-0.305813, -0.219168, -0.016234)
+
+[node name="HitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("CapsuleShape3D_exnev")
+
+[node name="range" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="range"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.251257, 0)
+shape = SubResource("CylinderShape3D_a3v27")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 5.0
+
+[node name="punch" type="Area3D" parent="." groups=["enemyAttack"]]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0.412979, -0.167, -0.236583)
+script = ExtResource("3_asf0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="punch"]
+shape = SubResource("SphereShape3D_clxmw")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="punchrange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="punchrange"]
+shape = SubResource("SphereShape3D_ug7n7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(15.6822, 0, 0, 0, 15.6822, 0, 0, 0, 15.6822, 0, 0, -0.0285406)
+visible = false
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ox850")
+
+[node name="hackingAttack" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/hackingAttack"]
+shape = SubResource("SphereShape3D_30mrh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dnm0e")
+}
+
+[connection signal="area_entered" from="range" to="." method="_on_range_area_entered"]
+[connection signal="area_entered" from="punch" to="punch" method="_on_area_entered"]
+
+[editable path="Hacker"]
+[editable path="Hacker/hacker"]
