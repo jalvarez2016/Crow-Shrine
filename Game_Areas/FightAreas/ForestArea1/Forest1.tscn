@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://wa17e4f4ftot"]
+[gd_scene load_steps=28 format=3 uid="uid://wa17e4f4ftot"]
 
 [ext_resource type="Script" path="res://Game_Areas/FightAreas/Area.gd" id="1_0tltg"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="2_tttm0"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://stx63gfosssi" path="res://Assets/3dModels/Environment/Bushes/bush_flowers.tscn" id="20_so8kj"]
 [ext_resource type="PackedScene" uid="uid://y3yjqgg5wud8" path="res://Game_Areas/FightAreas/Exit/exit_interactable.tscn" id="21_rsuqu"]
 [ext_resource type="PackedScene" uid="uid://ch763sv7kbf5" path="res://Enemies/BaseEnemy.tscn" id="22_w4450"]
-[ext_resource type="AudioStream" uid="uid://catdp1ymchpyb" path="res://Assets/Music/ForestFight1.wav" id="23_ebjxp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m7nrh"]
 sky_top_color = Color(0.0156863, 0.00784314, 0.172549, 1)
@@ -458,10 +457,6 @@ invincibility_timer = NodePath("../Enemy10/Invincibility")
 [node name="Enemy15" parent="Enemies" node_paths=PackedStringArray("invincibility_timer") instance=ExtResource("22_w4450")]
 transform = Transform3D(0.36395, 0, -0.931418, 0, 1, 0, 0.931418, 0, 0.36395, -6.9795, 1.17344, 152.076)
 invincibility_timer = NodePath("../Enemy10/Invincibility")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("23_ebjxp")
-autoplay = true
 
 [editable path="Entrance"]
 [editable path="Exit"]

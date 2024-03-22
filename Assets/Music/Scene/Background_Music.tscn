@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://p7j0fh77aqcr"]
+
+[ext_resource type="Script" path="res://Assets/Music/Scene/MusicManager.gd" id="1_i6boh"]
+[ext_resource type="Script" path="res://Assets/Music/Scene/music_provider.gd" id="2_4n845"]
+[ext_resource type="AudioStream" uid="uid://b207j78ugvobf" path="res://Assets/Music/Town.wav" id="3_fk030"]
+[ext_resource type="AudioStream" uid="uid://catdp1ymchpyb" path="res://Assets/Music/ForestFight1.wav" id="4_wpbbb"]
+[ext_resource type="AudioStream" uid="uid://6eqn581uftao" path="res://Assets/Music/ForestFight2.wav" id="5_m3stg"]
+[ext_resource type="AudioStream" uid="uid://o87kttmmyv6y" path="res://Assets/Music/ForestFight3.wav" id="6_ondf8"]
+[ext_resource type="AudioStream" uid="uid://brp7rvgj54tlu" path="res://Assets/Music/ExplorationMusic.mp3" id="7_tkwq5"]
+[ext_resource type="AudioStream" uid="uid://b7ufua83a6pk4" path="res://Assets/Music/FightMusic.mp3" id="8_bmta4"]
+[ext_resource type="AudioStream" uid="uid://t2adhhuyh2tt" path="res://Assets/Music/GameOverMusic.mp3" id="9_qt3jm"]
+[ext_resource type="AudioStream" uid="uid://b8lqrg7ffxo3r" path="res://Assets/Music/IntroMusic.mp3" id="10_hia7j"]
+[ext_resource type="AudioStream" uid="uid://b2q2yg08nltow" path="res://Assets/Music/VictoryMusic.mp3" id="11_1mmtm"]
+
+[node name="BackgroundMusic" type="Node3D" node_paths=PackedStringArray("town_music", "fight_area", "game_over", "intro", "victory")]
+script = ExtResource("1_i6boh")
+town_music = NodePath("Town")
+fight_area = NodePath("FightAreas")
+game_over = NodePath("GameOver")
+intro = NodePath("Intro")
+victory = NodePath("Victory")
+
+[node name="Town" type="Node3D" parent="."]
+script = ExtResource("2_4n845")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="Town"]
+stream = ExtResource("3_fk030")
+
+[node name="FightAreas" type="Node3D" parent="."]
+script = ExtResource("2_4n845")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="FightAreas"]
+stream = ExtResource("4_wpbbb")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer" parent="FightAreas"]
+stream = ExtResource("5_m3stg")
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer" parent="FightAreas"]
+stream = ExtResource("6_ondf8")
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer" parent="FightAreas"]
+stream = ExtResource("7_tkwq5")
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer" parent="FightAreas"]
+stream = ExtResource("8_bmta4")
+
+[node name="GameOver" type="Node3D" parent="."]
+script = ExtResource("2_4n845")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="GameOver"]
+stream = ExtResource("9_qt3jm")
+
+[node name="Intro" type="Node3D" parent="."]
+script = ExtResource("2_4n845")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="Intro"]
+stream = ExtResource("10_hia7j")
+
+[node name="Victory" type="Node3D" parent="."]
+script = ExtResource("2_4n845")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="Victory"]
+stream = ExtResource("11_1mmtm")

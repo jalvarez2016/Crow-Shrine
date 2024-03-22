@@ -65,7 +65,14 @@ func load_next_area(body):
 
 
 func _ready():
+	var music_manager = get_tree().get_root().get_node("BackgroundMusic")
 	world = get_tree().get_root().get_node("Control").get_node("World")
+	
+	if world.current_area == 0:
+		music_manager.play_town_music()
+	else:
+		music_manager.play_fight_music()
+	
 	connect_entrance()
 	connect_exit()
 	
