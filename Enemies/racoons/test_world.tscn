@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg51t1rmvgxn6"]
+[gd_scene load_steps=11 format=3 uid="uid://dg51t1rmvgxn6"]
 
 [ext_resource type="PackedScene" uid="uid://oak0oqq65b41" path="res://Enemies/racoons/hacker/Hackermain.tscn" id="2_752m5"]
 [ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="2_xl5ey"]
+[ext_resource type="PackedScene" uid="uid://1ww5u0q22rfw" path="res://Enemies/racoons/ninja/Ninja.tscn" id="3_m552k"]
+[ext_resource type="PackedScene" uid="uid://ch763sv7kbf5" path="res://Enemies/BaseEnemy.tscn" id="4_eu57o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_232b0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -52,4 +54,10 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_mbuaf")
 
 [node name="Hackermain" parent="." instance=ExtResource("2_752m5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1272, 1.49125, 0.123653)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9437, 0.676498, 12.4475)
+
+[node name="Ninja" parent="." instance=ExtResource("3_m552k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8356, 2.07732, -18.0415)
+
+[node name="Enemy" parent="." instance=ExtResource("4_eu57o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30976, -0.54754, -1.79168)
