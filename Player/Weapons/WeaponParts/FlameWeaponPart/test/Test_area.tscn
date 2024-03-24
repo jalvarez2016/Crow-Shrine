@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc3uv2pg2r7py"]
+
+[ext_resource type="PackedScene" uid="uid://beq61rojhta00" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="1_58xn6"]
+[ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="2_nxrv0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8kal5"]
+size = Vector2(30, 30)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tr3e2"]
+data = PackedVector3Array(15, 0, 15, -15, 0, 15, 15, 0, -15, -15, 0, 15, -15, 0, -15, 15, 0, -15)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xbtxv"]
+sky_top_color = Color(0.0156863, 0.00784314, 0.172549, 1)
+sky_horizon_color = Color(0.164706, 0.466667, 0.572549, 1)
+sky_curve = 0.0494816
+sky_energy_multiplier = 4.7
+ground_bottom_color = Color(0.0431373, 0.113725, 0.368627, 1)
+ground_horizon_color = Color(0.411765, 0.92549, 1, 1)
+
+[sub_resource type="Sky" id="Sky_ia43o"]
+sky_material = SubResource("ProceduralSkyMaterial_xbtxv")
+
+[sub_resource type="Environment" id="Environment_kay6l"]
+background_mode = 2
+sky = SubResource("Sky_ia43o")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.75
+
+[node name="TestArea" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8kal5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_tr3e2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.137255, 0.105882, 0.627451, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_angular_distance = 14.7
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kay6l")
+
+[node name="FlameWeaponPart" parent="." instance=ExtResource("1_58xn6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11952, 3.55515)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_nxrv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16431, -2.36349)

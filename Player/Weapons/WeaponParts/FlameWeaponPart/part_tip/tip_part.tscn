@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi554i6hx8kv2"]
+
+[ext_resource type="PackedScene" uid="uid://b23i3u3wedxvf" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_part_mesh.tscn" id="1_m67t3"]
+[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/part_tip/flame_part_tip.gd" id="2_a0f3r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oh2c8"]
+radius = 0.95781
+
+[node name="TipPart" type="Node3D"]
+script = ExtResource("2_a0f3r")
+
+[node name="FlamePart" parent="." instance=ExtResource("1_m67t3")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_oh2c8")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
