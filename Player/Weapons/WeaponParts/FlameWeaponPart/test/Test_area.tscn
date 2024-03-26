@@ -16,6 +16,7 @@ sky_curve = 0.0494816
 sky_energy_multiplier = 4.7
 ground_bottom_color = Color(0.0431373, 0.113725, 0.368627, 1)
 ground_horizon_color = Color(0.411765, 0.92549, 1, 1)
+use_debanding = false
 
 [sub_resource type="Sky" id="Sky_ia43o"]
 sky_material = SubResource("ProceduralSkyMaterial_xbtxv")
