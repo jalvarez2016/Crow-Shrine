@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b23i3u3wedxvf"]
+
+[ext_resource type="PackedScene" uid="uid://cyo0v1gnhqfhu" path="res://Assets/3dModels/Weapons/WeaponParts/FlamePart.glb" id="1_tx8c6"]
+
+[sub_resource type="Gradient" id="Gradient_prnci"]
+colors = PackedColorArray(0.919281, 3.00817e-06, 7.70092e-07, 1, 1, 0.611962, 0.165875, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gs8bo"]
+gradient = SubResource("Gradient_prnci")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cpv1x"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 1, 0)
+tangential_accel_min = 0.5
+tangential_accel_max = 0.5
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_gs8bo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ducaf"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_egxtm"]
+material = SubResource("StandardMaterial3D_ducaf")
+radius = 0.125
+height = 0.25
+
+[node name="FlamePart" instance=ExtResource("1_tx8c6")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="1"]
+amount = 50
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cpv1x")
+draw_pass_1 = SubResource("SphereMesh_egxtm")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+light_color = Color(1, 0.678431, 0.27451, 1)
+light_energy = 7.744
+light_indirect_energy = 3.545
+light_volumetric_fog_energy = 2.91
+omni_range = 1.58116

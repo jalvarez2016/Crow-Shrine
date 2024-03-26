@@ -1,38 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbqfh3k2hlc03"]
+[gd_scene load_steps=6 format=3 uid="uid://beq61rojhta00"]
 
-[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/Flame_Weapon_part.gd" id="1_h41yq"]
-[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/Area3D.gd" id="2_2kyv0"]
+[ext_resource type="PackedScene" uid="uid://b23i3u3wedxvf" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_part_mesh.tscn" id="1_oqgxo"]
+[ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/attach_flame_part.gd" id="2_jhj7j"]
+[ext_resource type="Texture2D" uid="uid://wwsswoyn10w1" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_q.png" id="3_t0iya"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qkeoq"]
-size = Vector3(0.3, 0.3, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_epfeg"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xotmo"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_3o68b"]
-size = Vector3(0.3, 0.3, 0.3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i46s"]
-albedo_color = Color(1, 0.168627, 0.239216, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_hygdl"]
+radius = 0.780556
 
 [node name="FlameWeaponPart" type="RigidBody3D"]
-mass = 0.01
-script = ExtResource("1_h41yq")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_qkeoq")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_epfeg")
 
-[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("main") groups=["Weapon Part"]]
-script = ExtResource("2_2kyv0")
+[node name="FlamePart" parent="." instance=ExtResource("1_oqgxo")]
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("main", "interact_key") groups=["Weapon Part"]]
+script = ExtResource("2_jhj7j")
 main = NodePath("..")
+interact_key = NodePath("../Interact")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_xotmo")
+shape = SubResource("SphereShape3D_hygdl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("BoxMesh_3o68b")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_1i46s")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[node name="Interact" type="TextureRect" parent="."]
+visible = false
+offset_left = 582.0
+offset_top = 565.0
+offset_right = 646.0
+offset_bottom = 629.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_t0iya")

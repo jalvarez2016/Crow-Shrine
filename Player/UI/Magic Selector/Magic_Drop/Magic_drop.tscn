@@ -1,8 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1k8tjw1tbvlq"]
+[gd_scene load_steps=11 format=3 uid="uid://d1k8tjw1tbvlq"]
 
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/Magic_Drop/Magic_drop.gd" id="1_cbp3g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lweti"]
+
+[sub_resource type="Gradient" id="Gradient_tdn0g"]
+colors = PackedColorArray(0, 0, 0.627451, 1, 0.494118, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vw4qk"]
+gradient = SubResource("Gradient_tdn0g")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ia51x"]
 emission_shape = 6
@@ -11,15 +17,30 @@ emission_ring_height = 1.0
 emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
 gravity = Vector3(0, 9.8, 0)
+tangential_accel_min = 5.0
+tangential_accel_max = 5.0
 scale_min = 0.1
 scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_vw4qk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pooc3"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_r56ck"]
+material = SubResource("StandardMaterial3D_pooc3")
+radius = 1.0
+height = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dadry"]
 radius = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddsnu"]
+shading_mode = 0
+albedo_color = Color(0.203922, 0.427451, 0.988235, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ew7ty"]
+material = SubResource("StandardMaterial3D_ddsnu")
 
 [node name="Magic_Drop" type="RigidBody3D"]
 
@@ -27,6 +48,7 @@ radius = 1.0
 shape = SubResource("BoxShape3D_lweti")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_ia51x")
 draw_pass_1 = SubResource("SphereMesh_r56ck")
 

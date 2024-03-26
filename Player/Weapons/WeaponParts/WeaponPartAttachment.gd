@@ -2,26 +2,41 @@ extends Area3D
 
 var has_weapon_part: bool = false
 var weapon_part : Node3D
+var near_part : bool = false
+var part: Area3D
 
 @export var player: Player
 
 func _process(_delta):
 	if Input.is_action_just_pressed("unequiped") && has_weapon_part:
 		remove_weapon_part()
+	if Input.is_action_just_pressed('interact') && !has_weapon_part && near_part:
+		attach_weapon_part()
+
+func set_weapon_part(part: Node3D):
+	weapon_part = part
+	has_weapon_part = true
 
 
-func attach_weapon_part(area: Area3D):
-	if area.is_in_group("Weapon Part") && !has_weapon_part:
-		area.main.reparent(self, true)
-		weapon_part = area
-		has_weapon_part = true
-		weapon_part.main.rotation = player.rotation
-		weapon_part.main.global_position = global_position
+func _detect_part(area: Area3D):
+	if area.is_in_group("Weapon Part"):
+		part = area
+		near_part = true
+		area.toggle_interactable()
+
+
+func _undetect_part(area: Area3D):
+	if area.is_in_group("Weapon Part"):
+		part = null
+		near_part = false
+		area.toggle_interactable()
+
+
+func attach_weapon_part():
+	part.attach_weapon_part(self)
 
 
 func remove_weapon_part():
-	var root = get_tree().get_root().get_node("Control").get_node("World")
-	weapon_part.main.reparent(root, true)
-	weapon_part.main.eject()
+	weapon_part.eject()
 	weapon_part = null
 	has_weapon_part = false
