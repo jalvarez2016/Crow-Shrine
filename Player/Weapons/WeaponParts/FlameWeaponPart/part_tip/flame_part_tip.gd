@@ -19,5 +19,5 @@ func eject():
 	var weapon_part_interactable_instance = weapon_part_interactable.instantiate()
 	var world = get_tree().get_root().get_children()[1]
 	world.add_child(weapon_part_interactable_instance)
-	weapon_part_interactable_instance.position = Vector3(global_position.x, global_position.y + 1, global_position.z) + (global_transform.basis.z * 2)
+	weapon_part_interactable_instance.position = Vector3(global_position.x, global_position.y + 1, global_position.z) + (global_transform.basis.z * 1.1)
 	queue_free()
