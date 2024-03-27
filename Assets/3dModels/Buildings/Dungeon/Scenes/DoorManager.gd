@@ -6,7 +6,12 @@ extends Node3D
 var near_door : bool = false
 
 func open():
-	rotate_y(PI/2)
+	if !isOpen:
+		isOpen = true
+		rotate_y(PI/2)
+	else:
+		isOpen = false
+		rotate_y(-PI/2)
 
 
 func _on_approach_door(body):
