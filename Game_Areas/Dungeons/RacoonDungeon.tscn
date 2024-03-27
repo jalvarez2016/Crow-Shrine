@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxpgiggem6hw8"]
+
+[ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
+[ext_resource type="PackedScene" uid="uid://q5tm11u2dtwe" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Room.tscn" id="2_83reb"]
+[ext_resource type="PackedScene" uid="uid://bf28pk072p1xo" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Door.tscn" id="3_8exq4"]
+[ext_resource type="PackedScene" uid="uid://gg1yuw85ih4a" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Tube.tscn" id="4_aeojn"]
+[ext_resource type="PackedScene" uid="uid://cjnqgmbh6kmy5" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Torch.tscn" id="4_rgwj1"]
+[ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="5_b8bpr"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0i1ri"]
+size = Vector2(500, 500)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p3to3"]
+data = PackedVector3Array(250, 0, 250, -250, 0, 250, 250, 0, -250, -250, 0, 250, -250, 0, -250, 250, 0, -250)
+
+[node name="Dungeon" type="Node3D"]
+
+[node name="Environment" parent="." instance=ExtResource("1_sfj4s")]
+
+[node name="Tutorial" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "torch")]
+script = ExtResource("2_20vj5")
+flame_part_spawner = NodePath("TubeManager")
+exit_door = NodePath("DoorManager2")
+torch = NodePath("Torch")
+
+[node name="2ExitsRoom" parent="Tutorial" instance=ExtResource("2_83reb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0.1, 15)
+
+[node name="DoorManager" parent="Tutorial" instance=ExtResource("3_8exq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18452, 0.411921, 4.03372)
+
+[node name="DoorManager2" parent="Tutorial" instance=ExtResource("3_8exq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18452, 0.422326, 25.9596)
+locked = true
+
+[node name="Torch" parent="Tutorial" instance=ExtResource("4_rgwj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 19.9139)
+
+[node name="TubeManager" parent="Tutorial" instance=ExtResource("4_aeojn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89409, 15.9806, 8.12618)
+item = "res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn"
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+mesh = SubResource("PlaneMesh_0i1ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_p3to3")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("5_b8bpr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.30412, 1.13043, 1.28879)
