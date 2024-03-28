@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxpgiggem6hw8"]
+[gd_scene load_steps=16 format=3 uid="uid://dxpgiggem6hw8"]
 
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cjnqgmbh6kmy5" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Torch.tscn" id="4_rgwj1"]
 [ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="5_b8bpr"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Path3D.gd" id="7_he7t8"]
+[ext_resource type="PackedScene" uid="uid://bn06hyag8xwmy" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Bars.tscn" id="8_24344"]
+[ext_resource type="PackedScene" uid="uid://doj222xfivwxj" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Lock.tscn" id="9_bv4fn"]
+[ext_resource type="PackedScene" uid="uid://6bwmrqt4nv5h" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/4_Exit_Room.tscn" id="10_57mdc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0alrh"]
 shading_mode = 0
@@ -72,6 +75,49 @@ material = SubResource("StandardMaterial3D_0alrh")
 curve = SubResource("Curve3D_murqp")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
+
+[node name="CentralRoom" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "torch", "path")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 37)
+script = ExtResource("2_20vj5")
+flame_part_spawner = NodePath("../Tutorial/TubeManager")
+exit_door = NodePath("../Tutorial/DoorManager2")
+torch = NodePath("../Tutorial/Torch")
+path = NodePath("../Tutorial/CSGCylinder3D/Path3D")
+
+[node name="Bars" parent="CentralRoom" instance=ExtResource("8_24344")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
+
+[node name="DoorManager2" parent="CentralRoom" node_paths=PackedStringArray("interact") instance=ExtResource("3_8exq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831929, 0.313978, 11)
+locked = true
+interact = NodePath("../../Tutorial/DoorManager2/Interact")
+
+[node name="CSGCylinder3D" type="CSGPolygon3D" parent="CentralRoom"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_0alrh")
+
+[node name="Path3D" type="Path3D" parent="CentralRoom" node_paths=PackedStringArray("path_mesh")]
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("../../Tutorial/CSGCylinder3D")
+
+[node name="Lock" parent="CentralRoom" instance=ExtResource("9_bv4fn")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 9, 1, 4.82261)
+
+[node name="Lock2" parent="CentralRoom" instance=ExtResource("9_bv4fn")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -8, 1, 4.82261)
+
+[node name="4ExitRoom" parent="CentralRoom" instance=ExtResource("10_57mdc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243276, 0, 0)
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
