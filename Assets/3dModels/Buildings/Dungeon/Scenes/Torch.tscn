@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjnqgmbh6kmy5"]
+[gd_scene load_steps=7 format=3 uid="uid://cjnqgmbh6kmy5"]
 
 [ext_resource type="PackedScene" uid="uid://cn3n6pda2u6wc" path="res://Assets/3dModels/Buildings/Dungeon/Torch.glb" id="1_augny"]
+[ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/TorchManager.gd" id="2_gr14o"]
 [ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Torch.gd" id="2_uikuw"]
 [ext_resource type="PackedScene" uid="uid://b23i3u3wedxvf" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_part_mesh.tscn" id="3_xl24j"]
 
@@ -10,19 +11,21 @@ data = PackedVector3Array(-1.1863, -3.2619, 1.1862, -1.9727, 1.2101, -1.9727, -1
 [sub_resource type="SphereShape3D" id="SphereShape3D_prv4f"]
 radius = 1.0
 
-[node name="TorchManager" node_paths=PackedStringArray("flame") instance=ExtResource("1_augny")]
-script = ExtResource("2_uikuw")
-flame = NodePath("FlamePart")
+[node name="TorchManager" instance=ExtResource("1_augny")]
+script = ExtResource("2_gr14o")
 
 [node name="Torch" parent="." index="0"]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Torch" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Torch" index="0" node_paths=PackedStringArray("manager", "flame") groups=["Flamable"]]
+script = ExtResource("2_uikuw")
+manager = NodePath("../..")
+flame = NodePath("../../FlamePart")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Torch/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_yyvdf")
 
-[node name="Area3D" type="Area3D" parent="." index="1" groups=["Flamable"]]
+[node name="Area3D" type="Area3D" parent="." index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 shape = SubResource("SphereShape3D_prv4f")
@@ -33,7 +36,5 @@ visible = false
 
 [node name="FlamePart" parent="FlamePart" index="0"]
 visible = false
-
-[connection signal="area_entered" from="Area3D" to="." method="burn"]
 
 [editable path="FlamePart"]

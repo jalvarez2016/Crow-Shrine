@@ -1,16 +1,16 @@
 extends Node3D
-var is_on_fire : bool = false
+@export var manager : Node3D
 @export var flame : Node3D
 
-func burn(body):
+func burn():
 	turn_on_flame()
 
 
 func turn_on_flame():
 	flame.visible = true
-	is_on_fire = true
+	manager.is_on_fire = true
 
 
 func turn_off_flame():
 	flame.visible = false
-	is_on_fire = false
+	manager.is_on_fire = false

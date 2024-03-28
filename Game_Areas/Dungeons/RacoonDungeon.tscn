@@ -76,13 +76,8 @@ curve = SubResource("Curve3D_murqp")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
 
-[node name="CentralRoom" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "torch", "path")]
+[node name="CentralRoom" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 37)
-script = ExtResource("2_20vj5")
-flame_part_spawner = NodePath("../Tutorial/TubeManager")
-exit_door = NodePath("../Tutorial/DoorManager2")
-torch = NodePath("../Tutorial/Torch")
-path = NodePath("../Tutorial/CSGCylinder3D/Path3D")
 
 [node name="Bars" parent="CentralRoom" instance=ExtResource("8_24344")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
