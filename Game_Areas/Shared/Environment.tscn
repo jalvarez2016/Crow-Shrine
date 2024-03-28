@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://w3vxpb6e6et"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xbtxv"]
+sky_top_color = Color(0.0156863, 0.00784314, 0.172549, 1)
+sky_horizon_color = Color(0.164706, 0.466667, 0.572549, 1)
+sky_curve = 0.0494816
+sky_energy_multiplier = 4.7
+ground_bottom_color = Color(0.0431373, 0.113725, 0.368627, 1)
+ground_horizon_color = Color(0.411765, 0.92549, 1, 1)
+use_debanding = false
+
+[sub_resource type="Sky" id="Sky_ia43o"]
+sky_material = SubResource("ProceduralSkyMaterial_xbtxv")
+
+[sub_resource type="Environment" id="Environment_kay6l"]
+background_mode = 2
+sky = SubResource("Sky_ia43o")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.75
+
+[node name="Environment" type="Node3D"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 2.98023e-08, -1.49012e-08, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0.137255, 0.105882, 0.627451, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_angular_distance = 14.7
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kay6l")

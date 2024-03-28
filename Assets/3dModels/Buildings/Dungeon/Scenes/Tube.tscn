@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://gg1yuw85ih4a"]
+
+[ext_resource type="PackedScene" uid="uid://v0vd3f7strd7" path="res://Assets/3dModels/Buildings/Dungeon/Tube.glb" id="1_rj3i2"]
+[ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Tube.gd" id="2_c0ewn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1cf7"]
+
+[node name="TubeManager" node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rj3i2")]
+script = ExtResource("2_c0ewn")
+spawn_point = NodePath("SpawnPoint")
+
+[node name="Tube" parent="." index="0"]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_g1cf7")
+
+[node name="SpawnPoint" type="Marker3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0354572, 0)
