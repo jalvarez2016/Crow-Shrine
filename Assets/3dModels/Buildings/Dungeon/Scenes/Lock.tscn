@@ -3,11 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://1yy584xsfd55" path="res://Assets/3dModels/Buildings/Dungeon/Lock.glb" id="1_thlnb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c31l"]
-albedo_color = Color(1, 0, 0, 1)
+metallic = 1.0
+roughness = 0.56
+rim_tint = 0.36
+backlight_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_veaw0"]
-shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
+metallic = 1.0
+roughness = 0.35
 
 [node name="Lock" instance=ExtResource("1_thlnb")]
 
