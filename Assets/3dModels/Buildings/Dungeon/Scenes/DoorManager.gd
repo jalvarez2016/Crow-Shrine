@@ -14,6 +14,14 @@ func open():
 		rotate_y(-PI/2)
 
 
+func close():
+	if !isOpen:
+		return
+	
+	isOpen = false
+	rotation_degrees.y = 180
+
+
 func _on_approach_door(body):
 	if body is Player && !locked:
 		near_door = true

@@ -9,7 +9,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_hygdl"]
 radius = 0.780556
 
-[node name="FlameWeaponPart" type="RigidBody3D"]
+[node name="FlameWeaponPart" type="RigidBody3D" groups=["heavy"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_epfeg")
