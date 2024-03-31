@@ -18,6 +18,7 @@ interact = NodePath("Interact")
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.775926, 1.2076, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door" index="0"]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_qiu58")

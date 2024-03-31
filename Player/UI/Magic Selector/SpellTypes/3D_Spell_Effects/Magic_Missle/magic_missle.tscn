@@ -7,10 +7,12 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qf4xb"]
 
-[node name="MagicMissle" type="Node3D"]
+[node name="MagicMissle" type="RigidBody3D"]
+collision_layer = 2
 script = ExtResource("1_tcgk2")
 
 [node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("spell_info") groups=["Magic"]]
+collision_layer = 2
 script = ExtResource("2_jff00")
 spell_info = NodePath("..")
 
@@ -19,6 +21,9 @@ mesh = SubResource("SphereMesh_b4f6i")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qf4xb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_qf4xb")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_entered"]

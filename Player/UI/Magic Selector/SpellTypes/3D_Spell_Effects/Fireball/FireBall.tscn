@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c42yqkp4xvxxe"]
+[gd_scene load_steps=12 format=3 uid="uid://c42yqkp4xvxxe"]
 
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Fireball/Fireball.gd" id="1_4bnxg"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_ih14y"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv8yn"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6xst"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ih14y"]
+material = SubResource("StandardMaterial3D_a6xst")
 
 [sub_resource type="Animation" id="Animation_xkh3d"]
 resource_name = "firing"
@@ -14,14 +20,40 @@ _data = {
 "firing": SubResource("Animation_xkh3d")
 }
 
-[node name="Area3D" type="Area3D"]
-script = ExtResource("1_4bnxg")
+[sub_resource type="Gradient" id="Gradient_i7oxi"]
+colors = PackedColorArray(0.919281, 3.00817e-06, 7.70092e-07, 1, 1, 0.611962, 0.165875, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ih14y")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gs8bo"]
+gradient = SubResource("Gradient_i7oxi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pcjit"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 1, 0)
+tangential_accel_min = 0.5
+tangential_accel_max = 0.5
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_gs8bo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ducaf"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_vwoa8"]
+material = SubResource("StandardMaterial3D_ducaf")
+radius = 0.125
+height = 0.25
+
+[node name="Fireball" type="RigidBody3D"]
+collision_layer = 2
+script = ExtResource("1_4bnxg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_uv8yn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ih14y")
 
 [node name="Explode" type="Timer" parent="."]
 
@@ -31,5 +63,24 @@ libraries = {
 "": SubResource("AnimationLibrary_pfchs")
 }
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_uv8yn")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 50
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pcjit")
+draw_pass_1 = SubResource("SphereMesh_vwoa8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.678431, 0.27451, 1)
+light_energy = 7.744
+light_indirect_energy = 3.545
+light_volumetric_fog_energy = 2.91
+omni_range = 1.58116
+
 [connection signal="timeout" from="Explode" to="." method="_on_explode_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]

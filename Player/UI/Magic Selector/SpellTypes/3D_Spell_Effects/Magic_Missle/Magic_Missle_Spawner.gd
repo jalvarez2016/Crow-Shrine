@@ -6,7 +6,7 @@ var missle = preload("res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects
 
 
 func cast():
-	var root = get_tree().get_root().get_node('Control').get_node("World")
+	var root = get_tree().get_root().get_children()[1]
 	var missle_instance = missle.instantiate()
 	missle_instance.position = selector.spell_spawn_position.global_position
 	var camera = selector.aim_spell

@@ -109,7 +109,9 @@ interact={
 
 [layer_names]
 
-3d_physics/layer_2="traps"
+3d_physics/layer_1="Solid Objects"
+3d_physics/layer_2="Magic Projectiles"
+3d_physics/layer_3="Magic walls"
 
 [navigation]
 

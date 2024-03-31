@@ -18,6 +18,7 @@ script = ExtResource("2_gr14o")
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Torch" index="0" node_paths=PackedStringArray("manager", "flame") groups=["Flamable"]]
+collision_mask = 3
 script = ExtResource("2_uikuw")
 manager = NodePath("../..")
 flame = NodePath("../../FlamePart")
