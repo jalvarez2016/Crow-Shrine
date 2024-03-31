@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dxpgiggem6hw8"]
+[gd_scene load_steps=25 format=3 uid="uid://dxpgiggem6hw8"]
 
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cetfngjxtnlpd" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Button.tscn" id="11_twkam"]
 [ext_resource type="PackedScene" uid="uid://dw4bw3vsff0gp" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/2_exit_room_corner.tscn" id="12_7ag45"]
 [ext_resource type="PackedScene" uid="uid://dttdr4jxucksl" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Magic_wall.tscn" id="14_vvl1b"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle3.gd" id="14_x1p7s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0alrh"]
 shading_mode = 0
@@ -167,14 +168,19 @@ transform = Transform3D(-1.135, 0, 1.50996e-07, 0, 1, 0, -1.7138e-07, 0, -1, 0.8
 locked = true
 interact = NodePath("../Door/Interact")
 
-[node name="Puzzle3" type="Node3D" parent="."]
+[node name="Puzzle3" type="Node3D" parent="." node_paths=PackedStringArray("exit_door", "torch", "path")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 59)
+script = ExtResource("14_x1p7s")
+exit_door = NodePath("Door")
+torch = NodePath("TorchManager")
+path = NodePath("../Puzzle3Path/Path3D")
 
 [node name="2ExitRoomStraight" parent="Puzzle3" instance=ExtResource("4_slm7t")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Door" parent="Puzzle3" instance=ExtResource("3_67d6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78352, 0.100072, 11)
+locked = true
 
 [node name="MagicWall" parent="Puzzle3" instance=ExtResource("14_vvl1b")]
 
@@ -227,5 +233,7 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_otvmy")
 
-[node name="Path3D" type="Path3D" parent="Puzzle3Path"]
+[node name="Path3D" type="Path3D" parent="Puzzle3Path" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_e1yw4")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")
