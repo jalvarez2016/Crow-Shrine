@@ -12,5 +12,11 @@ func _on_entity_entered(area):
 	if canDamage:
 		area.attacked(damage)
 
+
+func _burn_item(body):
+	if body.is_in_group("Flamable"):
+		body.burn()
+
+
 func done_exploding():
 	queue_free()

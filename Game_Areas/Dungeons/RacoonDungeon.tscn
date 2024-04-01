@@ -1,0 +1,334 @@
+[gd_scene load_steps=31 format=3 uid="uid://dxpgiggem6hw8"]
+
+[ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
+[ext_resource type="PackedScene" uid="uid://bb3y0maijkjdb" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/DoorManager.tscn" id="3_67d6m"]
+[ext_resource type="PackedScene" uid="uid://gg1yuw85ih4a" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Tube.tscn" id="4_aeojn"]
+[ext_resource type="PackedScene" uid="uid://cjnqgmbh6kmy5" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Torch.tscn" id="4_rgwj1"]
+[ext_resource type="PackedScene" uid="uid://f8w8gvky5ney" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/2_exit_room_straight.tscn" id="4_slm7t"]
+[ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="5_b8bpr"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Path3D.gd" id="7_he7t8"]
+[ext_resource type="PackedScene" uid="uid://c3yafqblin2ga" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/4_exit_room.tscn" id="8_4jyg4"]
+[ext_resource type="PackedScene" uid="uid://bn06hyag8xwmy" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Bars.tscn" id="8_24344"]
+[ext_resource type="PackedScene" uid="uid://doj222xfivwxj" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Lock.tscn" id="9_bv4fn"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle2.gd" id="11_eta8v"]
+[ext_resource type="PackedScene" uid="uid://cetfngjxtnlpd" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Button.tscn" id="11_twkam"]
+[ext_resource type="PackedScene" uid="uid://dw4bw3vsff0gp" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/2_exit_room_corner.tscn" id="12_7ag45"]
+[ext_resource type="PackedScene" uid="uid://dttdr4jxucksl" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Magic_wall.tscn" id="14_vvl1b"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle3.gd" id="14_x1p7s"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle4.gd" id="16_2pnj8"]
+[ext_resource type="PackedScene" uid="uid://beq61rojhta00" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="16_ck3lq"]
+[ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="16_hxtuj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0alrh"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_murqp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.97502, 0.235905, 19.9507, 0, 0, 0, 0, 0, 0, 2.04624, 0.239514, 19.839, 0, 0, 0, 0, 0, 0, 1.93678, 0.214009, 25.8032),
+"tilts": PackedFloat32Array(0, -0.0124907, 0)
+}
+point_count = 3
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0i1ri"]
+size = Vector2(500, 500)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p3to3"]
+data = PackedVector3Array(250, 0, 250, -250, 0, 250, 250, 0, -250, -250, 0, 250, -250, 0, -250, 250, 0, -250)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cos2f"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_g3gp0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 17.0447, 0.0898011, 44.3723, 0, 0, 0, 0, 0, 0, 24.1112, 0.0920005, 47.7731),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otvmy"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_e1yw4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 31.3916, 0.130085, 59.7434, 0, 0, 0, 0, 0, 0, 23.949, 0.116162, 59.7434, 0, 0, 0, 0, 0, 0, 23.949, 0.136855, 69.9374),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s0wn"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_nv3hw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 29.995, 0.162371, 75.5737, 0, 0, 0, 0, 0, 0, 29.8604, 0.131226, 81.0969, 0, 0, 0, 0, 0, 0, 35.0773, 0.131248, 81.0981),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_ohx8m"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 19.7742, 0.18334, 88.7859, 0, 0, 0, 0, 0, 0, 22.3519, 0.166709, 89.1484),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Dungeon" type="Node3D"]
+
+[node name="Environment" parent="." instance=ExtResource("1_sfj4s")]
+
+[node name="Tutorial" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "torch", "path")]
+script = ExtResource("2_20vj5")
+flame_part_spawner = NodePath("TubeManager")
+exit_door = NodePath("Door2")
+torch = NodePath("Torch")
+path = NodePath("CSGCylinder3D/Path3D")
+
+[node name="Door" parent="Tutorial" instance=ExtResource("3_67d6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23318, 0.167601, 3.97898)
+
+[node name="Door2" parent="Tutorial" instance=ExtResource("3_67d6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23318, 0.167601, 25.979)
+locked = true
+
+[node name="2ExitRoomStraight" parent="Tutorial" instance=ExtResource("4_slm7t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 15)
+
+[node name="Torch" parent="Tutorial" instance=ExtResource("4_rgwj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.704139, 19.9139)
+
+[node name="TubeManager" parent="Tutorial" instance=ExtResource("4_aeojn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89409, 15.9806, 8.12618)
+item = "res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn"
+
+[node name="CSGCylinder3D" type="CSGPolygon3D" parent="Tutorial"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_0alrh")
+
+[node name="Path3D" type="Path3D" parent="Tutorial/CSGCylinder3D" node_paths=PackedStringArray("path_mesh")]
+curve = SubResource("Curve3D_murqp")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")
+
+[node name="CentralRoom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 37)
+
+[node name="4ExitRoom" parent="CentralRoom" instance=ExtResource("8_4jyg4")]
+
+[node name="Bars" parent="CentralRoom" instance=ExtResource("8_24344")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
+
+[node name="CSGCylinder3D" type="CSGPolygon3D" parent="CentralRoom"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_0alrh")
+
+[node name="Path3D" type="Path3D" parent="CentralRoom" node_paths=PackedStringArray("path_mesh")]
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("../../Tutorial/CSGCylinder3D")
+
+[node name="Lock" parent="CentralRoom" instance=ExtResource("9_bv4fn")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 9, 1, 4.82261)
+
+[node name="Lock2" parent="CentralRoom" instance=ExtResource("9_bv4fn")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -8, 1, 4.82261)
+
+[node name="Door" parent="CentralRoom" instance=ExtResource("3_67d6m")]
+transform = Transform3D(1.175, 0, 0, 0, 1, 0, 0, 0, 1, -0.881251, 0.11, 10.9823)
+
+[node name="Door2" parent="CentralRoom" node_paths=PackedStringArray("interact") instance=ExtResource("3_67d6m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.8813, 0.11, -0.783886)
+interact = NodePath("../Door/Interact")
+
+[node name="Puzzle2" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "button", "path")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 37)
+script = ExtResource("11_eta8v")
+flame_part_spawner = NodePath("TubeManager")
+exit_door = NodePath("Door2")
+button = NodePath("Button")
+path = NodePath("../Puzzle2Path/Path3D")
+
+[node name="Button" parent="Puzzle2" instance=ExtResource("11_twkam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7.46578)
+
+[node name="TubeManager" parent="Puzzle2" instance=ExtResource("4_aeojn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 16, -8)
+item = "res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn"
+
+[node name="2ExitRoomCorner" parent="Puzzle2" instance=ExtResource("12_7ag45")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Door" parent="Puzzle2" instance=ExtResource("3_67d6m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 0.0778708, -0.772446)
+
+[node name="Door2" parent="Puzzle2" node_paths=PackedStringArray("interact") instance=ExtResource("3_67d6m")]
+transform = Transform3D(-1.135, 0, 1.50996e-07, 0, 1, 0, -1.7138e-07, 0, -1, 0.862978, 0.112594, 10.9284)
+locked = true
+interact = NodePath("../Door/Interact")
+
+[node name="Puzzle3" type="Node3D" parent="." node_paths=PackedStringArray("exit_door", "torch", "path")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 59)
+script = ExtResource("14_x1p7s")
+exit_door = NodePath("Door")
+torch = NodePath("TorchManager")
+path = NodePath("../Puzzle3Path/Path3D")
+
+[node name="2ExitRoomStraight" parent="Puzzle3" instance=ExtResource("4_slm7t")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Door" parent="Puzzle3" instance=ExtResource("3_67d6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78352, 0.100072, 11)
+locked = true
+
+[node name="MagicWall" parent="Puzzle3" instance=ExtResource("14_vvl1b")]
+
+[node name="TorchManager" parent="Puzzle3" instance=ExtResource("4_rgwj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.622208, 0.762772)
+
+[node name="Puzzle4" type="Node3D" parent="." node_paths=PackedStringArray("exit_door", "button", "path", "fences", "fence_torch", "fence_path")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+script = ExtResource("16_2pnj8")
+exit_door = NodePath("Door")
+button = NodePath("Button")
+path = NodePath("../Puzzle4Paths/DoorPath/Path3D")
+fences = NodePath("Walls")
+fence_torch = NodePath("TorchManager")
+fence_path = NodePath("../Puzzle4Paths/DoorPath2/Path3D")
+
+[node name="2ExitRoomCorner" parent="Puzzle4" instance=ExtResource("12_7ag45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 88)
+
+[node name="Door" parent="Puzzle4" instance=ExtResource("3_67d6m")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1.14, 0, 2.98023e-08, 33.0985, 0.118489, 88.9189)
+locked = true
+
+[node name="Button" parent="Puzzle4" instance=ExtResource("11_twkam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9966, 0.11, 81.652)
+
+[node name="TorchManager" parent="Puzzle4" instance=ExtResource("4_rgwj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3356, 0.603977, 96.1762)
+
+[node name="Walls" type="Node3D" parent="Puzzle4"]
+
+[node name="fence" parent="Puzzle4/Walls" instance=ExtResource("16_hxtuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5388, 0.11, 91.4698)
+
+[node name="fence2" parent="Puzzle4/Walls" instance=ExtResource("16_hxtuj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.7242, 0, 95.3079)
+
+[node name="FlameWeaponPart" parent="Puzzle4" instance=ExtResource("16_ck3lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2047, 0.890556, 95.3132)
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+mesh = SubResource("PlaneMesh_0i1ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_p3to3")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("5_b8bpr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3041, 1.13043, 71.6454)
+
+[node name="Puzzle2Path" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_cos2f")
+
+[node name="Path3D" type="Path3D" parent="Puzzle2Path" node_paths=PackedStringArray("path_mesh")]
+curve = SubResource("Curve3D_g3gp0")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")
+
+[node name="Puzzle3Path" type="CSGPolygon3D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_otvmy")
+
+[node name="Path3D" type="Path3D" parent="Puzzle3Path" node_paths=PackedStringArray("path_mesh")]
+curve = SubResource("Curve3D_e1yw4")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")
+
+[node name="Puzzle4Paths" type="Node3D" parent="."]
+
+[node name="DoorPath" type="CSGPolygon3D" parent="Puzzle4Paths"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_8s0wn")
+
+[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath" node_paths=PackedStringArray("path_mesh")]
+curve = SubResource("Curve3D_nv3hw")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")
+
+[node name="DoorPath2" type="CSGPolygon3D" parent="Puzzle4Paths"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_8s0wn")
+
+[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath2" node_paths=PackedStringArray("path_mesh")]
+curve = SubResource("Curve3D_ohx8m")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")

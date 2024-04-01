@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/part_tip/flame_part_tip.gd" id="2_a0f3r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oh2c8"]
-radius = 0.95781
+radius = 1.32507
 
-[node name="TipPart" type="Node3D"]
+[node name="TipPart" type="Node3D" groups=["flame"]]
 script = ExtResource("2_a0f3r")
 
 [node name="FlamePart" parent="." instance=ExtResource("1_m67t3")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["flame"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_oh2c8")

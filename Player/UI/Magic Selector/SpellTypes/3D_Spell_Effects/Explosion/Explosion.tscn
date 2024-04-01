@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://y8svemcvkxsc"]
+[gd_scene load_steps=13 format=3 uid="uid://y8svemcvkxsc"]
 
 [ext_resource type="Script" path="res://Player/UI/Magic Selector/SpellTypes/3D_Spell_Effects/Explosion/Explosion.gd" id="1_kxwjn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b6sk5"]
 radius = 0.1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sqb3"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_yckkj"]
+material = SubResource("StandardMaterial3D_1sqb3")
 radius = 0.1
 height = 0.1
 
@@ -108,10 +113,36 @@ _data = {
 "RESET": SubResource("Animation_51aiu")
 }
 
+[sub_resource type="Gradient" id="Gradient_cwp1d"]
+colors = PackedColorArray(0.919281, 3.00817e-06, 7.70092e-07, 1, 1, 0.611962, 0.165875, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f5s8v"]
+gradient = SubResource("Gradient_cwp1d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_246m6"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 1, 0)
+tangential_accel_min = 0.5
+tangential_accel_max = 0.5
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_f5s8v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18467"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_1jdvu"]
+material = SubResource("StandardMaterial3D_18467")
+radius = 0.125
+height = 0.25
+
 [node name="Explosion" type="Node3D"]
 script = ExtResource("1_kxwjn")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_b6sk5")
@@ -127,4 +158,18 @@ libraries = {
 }
 autoplay = "Explosion"
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 50
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_246m6")
+draw_pass_1 = SubResource("SphereMesh_1jdvu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.678431, 0.27451, 1)
+light_energy = 7.744
+light_indirect_energy = 3.545
+light_volumetric_fog_energy = 2.91
+omni_range = 1.58116
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_entity_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_burn_item"]
