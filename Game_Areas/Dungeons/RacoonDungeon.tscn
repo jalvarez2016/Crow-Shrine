@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxpgiggem6hw8"]
+[gd_scene load_steps=31 format=3 uid="uid://dxpgiggem6hw8"]
 
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dw4bw3vsff0gp" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/2_exit_room_corner.tscn" id="12_7ag45"]
 [ext_resource type="PackedScene" uid="uid://dttdr4jxucksl" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Magic_wall.tscn" id="14_vvl1b"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle3.gd" id="14_x1p7s"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle4.gd" id="16_2pnj8"]
 [ext_resource type="PackedScene" uid="uid://beq61rojhta00" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="16_ck3lq"]
 [ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="16_hxtuj"]
 
@@ -207,14 +208,22 @@ locked = true
 [node name="TorchManager" parent="Puzzle3" instance=ExtResource("4_rgwj1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.622208, 0.762772)
 
-[node name="Puzzle4" type="Node3D" parent="."]
+[node name="Puzzle4" type="Node3D" parent="." node_paths=PackedStringArray("exit_door", "button", "path", "fences", "fence_torch", "fence_path")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+script = ExtResource("16_2pnj8")
+exit_door = NodePath("Door")
+button = NodePath("Button")
+path = NodePath("../Puzzle4Paths/DoorPath/Path3D")
+fences = NodePath("Walls")
+fence_torch = NodePath("TorchManager")
+fence_path = NodePath("../Puzzle4Paths/DoorPath2/Path3D")
 
 [node name="2ExitRoomCorner" parent="Puzzle4" instance=ExtResource("12_7ag45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 88)
 
 [node name="Door" parent="Puzzle4" instance=ExtResource("3_67d6m")]
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1.14, 0, 2.98023e-08, 33.0985, 0.118489, 88.9189)
+locked = true
 
 [node name="Button" parent="Puzzle4" instance=ExtResource("11_twkam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9966, 0.11, 81.652)
@@ -244,7 +253,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_p3to3")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("5_b8bpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3041, 1.13043, 54.6454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3041, 1.13043, 71.6454)
 
 [node name="Puzzle2Path" type="CSGPolygon3D" parent="."]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
@@ -300,8 +309,10 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_8s0wn")
 
-[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath"]
+[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_nv3hw")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")
 
 [node name="DoorPath2" type="CSGPolygon3D" parent="Puzzle4Paths"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
@@ -317,5 +328,7 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_8s0wn")
 
-[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath2"]
+[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath2" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_ohx8m")
+script = ExtResource("7_he7t8")
+path_mesh = NodePath("..")

@@ -19,7 +19,7 @@ func close():
 		return
 	
 	isOpen = false
-	rotation_degrees.y = 180
+	rotate_y(-PI/2)
 
 
 func _on_approach_door(body):
