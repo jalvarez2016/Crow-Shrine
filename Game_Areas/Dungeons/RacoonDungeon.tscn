@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://f8w8gvky5ney" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/2_exit_room_straight.tscn" id="4_slm7t"]
 [ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="5_b8bpr"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Path3D.gd" id="7_he7t8"]
-[ext_resource type="PackedScene" uid="uid://c3yafqblin2ga" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/4_exit_room.tscn" id="8_4jyg4"]
+[ext_resource type="PackedScene" uid="uid://c3yafqblin2ga" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/4_Exit_Room.tscn" id="8_4jyg4"]
 [ext_resource type="PackedScene" uid="uid://bn06hyag8xwmy" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Bars.tscn" id="8_24344"]
 [ext_resource type="PackedScene" uid="uid://doj222xfivwxj" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Lock.tscn" id="9_bv4fn"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle2.gd" id="11_eta8v"]
@@ -253,7 +253,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_p3to3")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("5_b8bpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3041, 1.13043, 71.6454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3041, 1.13043, 0.43415)
 
 [node name="Puzzle2Path" type="CSGPolygon3D" parent="."]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
