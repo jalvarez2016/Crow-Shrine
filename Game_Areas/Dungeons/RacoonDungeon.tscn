@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dxpgiggem6hw8"]
+[gd_scene load_steps=33 format=3 uid="uid://dxpgiggem6hw8"]
 
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle4.gd" id="16_2pnj8"]
 [ext_resource type="PackedScene" uid="uid://beq61rojhta00" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="16_ck3lq"]
 [ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="16_hxtuj"]
+[ext_resource type="PackedScene" uid="uid://cl8383lc5ewsm" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Robot/Robot.tscn" id="19_ri8fm"]
+[ext_resource type="PackedScene" uid="uid://deh062wct035w" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/ddr_mat/ddr_mat.tscn" id="20_0hf8u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0alrh"]
 shading_mode = 0
@@ -130,7 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 37)
 [node name="4ExitRoom" parent="CentralRoom" instance=ExtResource("8_4jyg4")]
 
 [node name="Bars" parent="CentralRoom" instance=ExtResource("8_24344")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7426, 0, 5)
 
 [node name="CSGCylinder3D" type="CSGPolygon3D" parent="CentralRoom"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
@@ -160,7 +162,7 @@ transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -8, 1,
 transform = Transform3D(1.175, 0, 0, 0, 1, 0, 0, 0, 1, -0.881251, 0.11, 10.9823)
 
 [node name="Door2" parent="CentralRoom" node_paths=PackedStringArray("interact") instance=ExtResource("3_67d6m")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.8813, 0.11, -0.783886)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.0576, 0.11, 0.782528)
 interact = NodePath("../Door/Interact")
 
 [node name="Puzzle2" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "button", "path")]
@@ -242,8 +244,19 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.724
 [node name="FlameWeaponPart" parent="Puzzle4" instance=ExtResource("16_ck3lq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2047, 0.890556, 95.3132)
 
+[node name="Puzzle5" type="Node3D" parent="."]
+
+[node name="Robot" parent="Puzzle5" instance=ExtResource("19_ri8fm")]
+
+[node name="2ExitRoomStraight" parent="Puzzle5" instance=ExtResource("4_slm7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 37)
+
+[node name="DDR-Mat" parent="Puzzle5" node_paths=PackedStringArray("receptor") instance=ExtResource("20_0hf8u")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -12.8, 0.110001, 42.6952)
+receptor = NodePath("../Robot")
+
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.885, 0, -0.017)
 mesh = SubResource("PlaneMesh_0i1ri")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
