@@ -6,8 +6,8 @@ extends Node3D
 
 func reset(area):
 	if area.is_in_group('Player'):
-		print('reset')
 		receptor.reset()
+		print('reset')
 
 
 func move(area, direction):

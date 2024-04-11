@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl8383lc5ewsm"]
+[gd_scene load_steps=5 format=3 uid="uid://cl8383lc5ewsm"]
 
 [ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Robot/Robot.gd" id="1_i1v2n"]
 
-[node name="Robot" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_i5k0w"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_62iab"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1yj5s"]
+
+[node name="Robot" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_i1v2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_i5k0w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_62iab")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.279643, 0.500784)
+mesh = SubResource("BoxMesh_1yj5s")

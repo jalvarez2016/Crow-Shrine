@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://deh062wct035w"]
+[gd_scene load_steps=17 format=3 uid="uid://deh062wct035w"]
 
 [ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/ddr_mat/ddr_mat.gd" id="1_y6fg4"]
+[ext_resource type="Texture2D" uid="uid://6i7pf7mpmtxy" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_arrow_left.png" id="2_lm7lv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_drsuk"]
 size = Vector3(0.8, 0.1, 0.8)
@@ -62,6 +63,11 @@ shape = SubResource("BoxShape3D_sbduh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Right/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_grae5")
 
+[node name="Sprite3D" type="Sprite3D" parent="Right"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
+
 [node name="Left" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 mesh = SubResource("BoxMesh_drsuk")
@@ -76,6 +82,11 @@ shape = SubResource("BoxShape3D_goqny")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Left/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yfg3j")
+
+[node name="Sprite3D" type="Sprite3D" parent="Left"]
+transform = Transform3D(-2, -3.01992e-07, 1.32005e-14, 0, -8.74228e-08, -2, 3.01992e-07, -2, 8.74228e-08, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
 
 [node name="TopLeft" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
@@ -92,6 +103,11 @@ shape = SubResource("BoxShape3D_sbduh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TopLeft/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_n10op")
 
+[node name="Sprite3D" type="Sprite3D" parent="TopLeft"]
+transform = Transform3D(-0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, -0.866025, 3.78552e-08, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
+
 [node name="TopRight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 mesh = SubResource("BoxMesh_drsuk")
@@ -106,6 +122,11 @@ shape = SubResource("ConcavePolygonShape3D_84hvy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TopRight/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0478149, 0)
 shape = SubResource("BoxShape3D_sbduh")
+
+[node name="Sprite3D" type="Sprite3D" parent="TopRight"]
+transform = Transform3D(0.866026, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, 0.866026, -3.78552e-08, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
 
 [node name="Top" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -122,6 +143,12 @@ shape = SubResource("ConcavePolygonShape3D_tknp3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_u3aau")
 
+[node name="Sprite3D" type="Sprite3D" parent="Top"]
+transform = Transform3D(1.50996e-07, 2, -8.74228e-08, 0, -8.74228e-08, -2, -2, 1.50996e-07, -6.60024e-15, 0, 0.06, 0)
+modulate = Color(1, 0, 0, 1)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
+
 [node name="Bottom" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 mesh = SubResource("BoxMesh_drsuk")
@@ -136,6 +163,11 @@ shape = SubResource("BoxShape3D_u3aau")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bottom/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lai6a")
+
+[node name="Sprite3D" type="Sprite3D" parent="Bottom"]
+transform = Transform3D(-8.74228e-08, -2, 8.74228e-08, 0, -8.74228e-08, -2, 2, -8.74228e-08, 3.82137e-15, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
 
 [node name="BottomLeft" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
@@ -152,6 +184,11 @@ shape = SubResource("BoxShape3D_u3aau")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomLeft/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_uc45k")
 
+[node name="Sprite3D" type="Sprite3D" parent="BottomLeft"]
+transform = Transform3D(-0.5, -0.866025, 3.78552e-08, 0, -4.37114e-08, -1, 0.866025, -0.5, 2.18557e-08, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
+
 [node name="BottomRight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 mesh = SubResource("BoxMesh_drsuk")
@@ -167,6 +204,11 @@ shape = SubResource("ConcavePolygonShape3D_xo2dn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_u3aau")
 
+[node name="Sprite3D" type="Sprite3D" parent="BottomRight"]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 0, 0.06, 0)
+alpha_cut = 1
+texture = ExtResource("2_lm7lv")
+
 [node name="CenterIcon" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0090296, 0)
 mesh = SubResource("PlaneMesh_g7ksq")
@@ -180,6 +222,9 @@ shape = SubResource("BoxShape3D_u3aau")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CenterIcon/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jwoap")
+
+[node name="Sprite3D" type="Sprite3D" parent="CenterIcon"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.06, 0)
 
 [connection signal="area_entered" from="Right/Area3D" to="." method="move" binds= ["right"]]
 [connection signal="area_entered" from="Left/Area3D" to="." method="move" binds= ["left"]]

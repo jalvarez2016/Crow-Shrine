@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8qaavnusl5wx"]
+
+[ext_resource type="PackedScene" uid="uid://bme5gsveewcx3" path="res://Assets/3dModels/Environment/BigTree/TREE.glb" id="1_s0g8j"]
+[ext_resource type="Texture2D" uid="uid://bio4itefmvicw" path="res://Assets/3dModels/Environment/BigTree/TREE_leaves2.png" id="2_l4com"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47rwf"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.529412, 0.219608, 0.164706, 1)
+metallic_specular = 0.0
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8mup"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_l4com")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5ftp"]
+size = Vector3(2.88806, 68.4253, 3.22928)
+
+[node name="TREE" instance=ExtResource("1_s0g8j")]
+
+[node name="Cube_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_47rwf")
+surface_material_override/1 = SubResource("StandardMaterial3D_m8mup")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0223999, 33.7126, 0.0118866)
+shape = SubResource("BoxShape3D_j5ftp")

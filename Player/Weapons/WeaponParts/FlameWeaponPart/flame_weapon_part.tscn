@@ -19,17 +19,31 @@ shape = SubResource("BoxShape3D_epfeg")
 [node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("main", "interact_key") groups=["Weapon Part"]]
 script = ExtResource("2_jhj7j")
 main = NodePath("..")
-interact_key = NodePath("../Interact")
+interact_key = NodePath("../Panel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_hygdl")
 
-[node name="Interact" type="TextureRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 visible = false
-offset_left = 582.0
-offset_top = 565.0
-offset_right = 646.0
-offset_bottom = 629.0
+offset_left = 590.0
+offset_top = 572.0
+offset_right = 638.0
+offset_bottom = 614.0
+
+[node name="Interact" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_t0iya")
