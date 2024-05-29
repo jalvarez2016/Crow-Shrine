@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @export var receptor : Node3D
 
 
@@ -15,3 +14,8 @@ func move(area, direction):
 		receptor.move(direction)
 		print(direction)
 
+
+
+func _on_area_3d_area_exited(area):
+	receptor.moving = false
+	pass # Replace with function body.

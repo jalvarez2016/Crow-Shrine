@@ -20,11 +20,14 @@ var angular_acceleration := 7
 var isAlive : bool = true
 var isSprinting : bool = false
 var dodging : bool = false
+var isOnMachine : bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	 #Update animations
 	mesh_manager.update_animation_parameters()
+	
+	if isOnMachine: return
 	
 	# Add the gravity.
 	if not is_on_floor():
