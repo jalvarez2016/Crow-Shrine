@@ -4,44 +4,28 @@
 [ext_resource type="PackedScene" uid="uid://dr6ay5el1r78p" path="res://Assets/3dModels/Interactables/Robots/DrillBot.glb" id="2_m0mtj"]
 [ext_resource type="Texture2D" uid="uid://wwsswoyn10w1" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_q.png" id="3_oy4is"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_62iab"]
-size = Vector3(1.98438, 1.21509, 0.995224)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jpai0"]
-size = Vector3(1, 1.33307, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_yw2qx"]
-radius = 1.43723
-
 [sub_resource type="LabelSettings" id="LabelSettings_mti1s"]
 line_spacing = 5.0
 font_size = 30
 outline_size = 5
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_62iab"]
+size = Vector3(1.98438, 1.21509, 1.15765)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpai0"]
+size = Vector3(1, 1.215, 0.995)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yw2qx"]
+radius = 2.10785
+
 [node name="Robot" type="RigidBody3D" node_paths=PackedStringArray("player_anchor")]
+collision_layer = 8
+collision_mask = 15
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_i1v2n")
 player_anchor = NodePath("PlayerAnchor")
-
-[node name="Body" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110718, -0.00283051)
-shape = SubResource("BoxShape3D_62iab")
-
-[node name="Drill" type="CollisionShape3D" parent="." groups=["drill"]]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -7.27945e-09, 1.18863)
-shape = SubResource("BoxShape3D_jpai0")
-
-[node name="DrillBot" parent="." instance=ExtResource("2_m0mtj")]
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_yw2qx")
-
-[node name="PlayerAnchor" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96994, 0)
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -83,6 +67,24 @@ grow_vertical = 0
 text = "Ride"
 label_settings = SubResource("LabelSettings_mti1s")
 horizontal_alignment = 1
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110718, 0.0783806)
+shape = SubResource("BoxShape3D_62iab")
+
+[node name="Drill" type="CollisionShape3D" parent="." groups=["drill"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104431, 1.18863)
+shape = SubResource("BoxShape3D_jpai0")
+
+[node name="DrillBot" parent="." instance=ExtResource("2_m0mtj")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_yw2qx")
+
+[node name="PlayerAnchor" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.694489, -1.25835)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_ride_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_ride_area_exited"]
