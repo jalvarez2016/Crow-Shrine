@@ -16,15 +16,13 @@ size = Vector3(1.98438, 1.21509, 1.15765)
 size = Vector3(1, 1.215, 0.995)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yw2qx"]
-radius = 2.10785
+radius = 4.69606
 
-[node name="Robot" type="RigidBody3D" node_paths=PackedStringArray("player_anchor")]
+[node name="Robot" type="CharacterBody3D" node_paths=PackedStringArray("player_anchor")]
 collision_layer = 8
 collision_mask = 15
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 script = ExtResource("1_i1v2n")
+speed = 5.0
 player_anchor = NodePath("PlayerAnchor")
 
 [node name="Panel" type="Panel" parent="."]
@@ -74,7 +72,9 @@ shape = SubResource("BoxShape3D_62iab")
 
 [node name="Drill" type="CollisionShape3D" parent="." groups=["drill"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104431, 1.18863)
+visible = false
 shape = SubResource("BoxShape3D_jpai0")
+disabled = true
 
 [node name="DrillBot" parent="." instance=ExtResource("2_m0mtj")]
 
@@ -84,7 +84,7 @@ shape = SubResource("BoxShape3D_jpai0")
 shape = SubResource("SphereShape3D_yw2qx")
 
 [node name="PlayerAnchor" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.694489, -1.25835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44318, 1.73492)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_ride_area_entered"]
 [connection signal="area_exited" from="Area3D" to="." method="_on_ride_area_exited"]

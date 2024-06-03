@@ -1,4 +1,6 @@
-extends RigidBody3D
+extends CharacterBody3D
+@export var gravity := 50.0
+@export var speed := 15.0
 @export var player_anchor : Marker3D
 var near_machine : bool = false
 var player : Player = null
@@ -9,10 +11,11 @@ func _ready():
 	original_position = global_position
 
 func _process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+		
 	if near_machine:
-		#var input_dir = Input.get_vector("left", "right", "forward", "back")
-		#var move_direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		#apply_force(move_direction * 80.0)
 		if Input.is_action_just_pressed("interact"):
 			toggle_riding_machine()
 			
@@ -21,10 +24,15 @@ func _process(delta):
 		var move_direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		move_direction = move_direction.rotated(Vector3.UP, player.spring_arm.rotation.y).normalized()
 		
-		#if move_direction:
-			#rotation.y = lerp_angle(rotation.y, atan2(move_direction.x, move_direction.z), delta)
-		var test_movement_direction = move_direction * 15.00
-		apply_force(test_movement_direction)
+		if move_direction:
+			rotation.y = lerp_angle(rotation.y, atan2(move_direction.x, move_direction.z), delta)
+			velocity.x = move_direction.x * speed
+			velocity.z = move_direction.z * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
+		
+		move_and_slide()
 
 func toggle_riding_machine():
 	player.toggle_collider()
