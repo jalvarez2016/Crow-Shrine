@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl8383lc5ewsm"]
+[gd_scene load_steps=10 format=3 uid="uid://cl8383lc5ewsm"]
 
 [ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Robot/Robot.gd" id="1_i1v2n"]
 [ext_resource type="PackedScene" uid="uid://dr6ay5el1r78p" path="res://Assets/3dModels/Interactables/Robots/DrillBot.glb" id="2_m0mtj"]
 [ext_resource type="Texture2D" uid="uid://wwsswoyn10w1" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_q.png" id="3_oy4is"]
+[ext_resource type="Script" path="res://Player/Camera.gd" id="4_7xkj8"]
+[ext_resource type="PackedScene" uid="uid://bgihiedyi287x" path="res://Player/Camera.tscn" id="4_g3j45"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mti1s"]
 line_spacing = 5.0
@@ -18,12 +20,7 @@ size = Vector3(1, 1.215, 0.995)
 [sub_resource type="SphereShape3D" id="SphereShape3D_yw2qx"]
 radius = 4.69606
 
-[node name="Robot" type="CharacterBody3D" node_paths=PackedStringArray("player_anchor")]
-collision_layer = 8
-collision_mask = 15
-script = ExtResource("1_i1v2n")
-speed = 5.0
-player_anchor = NodePath("PlayerAnchor")
+[node name="Robot" type="Node3D"]
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -66,25 +63,48 @@ text = "Ride"
 label_settings = SubResource("LabelSettings_mti1s")
 horizontal_alignment = 1
 
-[node name="Body" type="CollisionShape3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("panel", "label", "player_anchor", "camera_anchor", "spring_arm", "camera")]
+script = ExtResource("1_i1v2n")
+panel = NodePath("../Panel")
+label = NodePath("../Panel/Label")
+player_anchor = NodePath("PlayerAnchor")
+camera_anchor = NodePath("CameraAnchor")
+spring_arm = NodePath("../Head/SpringArm3D")
+camera = NodePath("../Head/SpringArm3D/Camera3D")
+
+[node name="Body" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110718, 0.0783806)
 shape = SubResource("BoxShape3D_62iab")
 
-[node name="Drill" type="CollisionShape3D" parent="." groups=["drill"]]
+[node name="Drill" type="CollisionShape3D" parent="CharacterBody3D" groups=["drill"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104431, 1.18863)
 visible = false
 shape = SubResource("BoxShape3D_jpai0")
 disabled = true
 
-[node name="DrillBot" parent="." instance=ExtResource("2_m0mtj")]
+[node name="DrillBot" parent="CharacterBody3D" instance=ExtResource("2_m0mtj")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
 shape = SubResource("SphereShape3D_yw2qx")
 
-[node name="PlayerAnchor" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44318, 1.73492)
+[node name="PlayerAnchor" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.770449, -1.00756)
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_ride_area_entered"]
-[connection signal="area_exited" from="Area3D" to="." method="_on_ride_area_exited"]
+[node name="CameraAnchor" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.819267, -2.82751)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Head"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+spring_length = 2.0
+script = ExtResource("4_7xkj8")
+
+[node name="Camera3D" parent="Head/SpringArm3D" instance=ExtResource("4_g3j45")]
+current = false
+
+[connection signal="area_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_ride_area_entered"]
+[connection signal="area_exited" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_ride_area_exited"]

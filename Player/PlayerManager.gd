@@ -7,6 +7,7 @@ class_name Player
 @export var health := 100
 @export var UI_controller : Node3D
 @export var roll_cooldwon : Timer
+@export var camera : Camera3D
 
 @export var attack_manager : AttackManager
 @export var magic_manger : Magic_Selector
@@ -27,7 +28,9 @@ func _process(delta: float):
 	 #Update animations
 	mesh_manager.update_animation_parameters()
 	
-	if isOnMachine: return
+	if isOnMachine: 
+		camera.clear_current()
+		return
 	
 	# Add the gravity.
 	if not is_on_floor():
