@@ -31,7 +31,7 @@ func _process(delta):
 		move_direction = move_direction.rotated(Vector3.UP, spring_arm.rotation.y).normalized()
 		
 		if move_direction:
-			look_at(global_transform.origin + move_direction, Vector3.UP)
+			#look_at(global_transform.origin + move_direction, Vector3.UP)
 			#if Input.is_action_pressed("left") || Input.is_action_pressed("right"):
 				#rotation.y = lerp_angle(rotation.y, atan2(move_direction.x, move_direction.z), delta * .8)
 			velocity.x = move_direction.x * speed
