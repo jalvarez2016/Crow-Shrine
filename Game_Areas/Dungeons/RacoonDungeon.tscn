@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle4.gd" id="16_2pnj8"]
 [ext_resource type="PackedScene" uid="uid://beq61rojhta00" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="16_ck3lq"]
 [ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="16_hxtuj"]
-[ext_resource type="PackedScene" uid="uid://cl8383lc5ewsm" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Robot/Robot.tscn" id="19_ri8fm"]
+[ext_resource type="PackedScene" uid="uid://cr1i66fimgvvo" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Main/Vehicle.tscn" id="20_806vg"]
 [ext_resource type="PackedScene" uid="uid://jloi5ftbqsjf" path="res://Assets/3dModels/Environment/Weeds/WEEDS.glb" id="23_udhw1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0alrh"]
@@ -250,8 +250,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2044, 0.11, 82.0476)
 
 [node name="Puzzle5" type="Node3D" parent="."]
 
-[node name="Robot" parent="Puzzle5" instance=ExtResource("19_ri8fm")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -19.936, 1.04388, 38)
+[node name="Vehicle" parent="Puzzle5" instance=ExtResource("20_806vg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8175, 0.502284, 42.2502)
 
 [node name="2ExitRoomStraight" parent="Puzzle5" instance=ExtResource("4_slm7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 37)
