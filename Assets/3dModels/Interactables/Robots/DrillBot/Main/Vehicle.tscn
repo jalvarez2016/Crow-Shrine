@@ -277,7 +277,7 @@ albedo_color = Color(1, 0.568627, 0.105882, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_oa57c"]
 radius = 1.8874
 
-[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("panel", "label", "player_anchor", "camera_anchor", "spring_arm", "camera")]
+[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("panel", "label", "player_anchor", "camera_anchor", "spring_arm", "camera", "attachment")]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_6qyh5")
@@ -287,6 +287,7 @@ player_anchor = NodePath("PlayerAnchor")
 camera_anchor = NodePath("CameraAnchor")
 spring_arm = NodePath("Head/SpringArm3D")
 camera = NodePath("Head/SpringArm3D/Camera3D")
+attachment = NodePath("Drill")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -429,7 +430,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.532689, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_oa57c")
 
-[node name="Drill2" parent="." instance=ExtResource("5_m2ajt")]
+[node name="Drill" parent="." instance=ExtResource("5_m2ajt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468958, 0)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_ride_area_entered"]

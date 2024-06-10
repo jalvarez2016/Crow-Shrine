@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmq4hbadav6du"]
+[gd_scene load_steps=8 format=3 uid="uid://cmq4hbadav6du"]
 
 [ext_resource type="PackedScene" uid="uid://d271757su0onw" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Drill.glb" id="1_rujov"]
+[ext_resource type="Script" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Main/DrillAttachment.gd" id="2_vo4hq"]
 
 [sub_resource type="Gradient" id="Gradient_unayj"]
 interpolation_mode = 1
@@ -25,7 +26,8 @@ size = Vector3(1.26, 1.305, 1.995)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cddnb"]
 size = Vector3(1, 1, 1.77661)
 
-[node name="Drill2" instance=ExtResource("1_rujov")]
+[node name="Drill" instance=ExtResource("1_rujov")]
+script = ExtResource("2_vo4hq")
 
 [node name="Drill" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_h5i6w")

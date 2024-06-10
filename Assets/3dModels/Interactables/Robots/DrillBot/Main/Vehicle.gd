@@ -7,6 +7,7 @@ extends VehicleBody3D
 @export var camera_anchor : Marker3D
 @export var spring_arm : SpringArm3D
 @export var camera : Camera3D
+@export var attachment : Node3D
 var near_machine : bool = false
 var player : Player = null
 
@@ -34,6 +35,7 @@ func _process(delta):
 
 func toggle_riding_machine():
 	player.toggle_collider()
+	attachment.is_on = !attachment.is_on
 	if !player.isOnMachine:
 		camera.make_current()
 		player.global_position = player_anchor.global_position
