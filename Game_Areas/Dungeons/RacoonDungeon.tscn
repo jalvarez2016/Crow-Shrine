@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dxpgiggem6hw8"]
+[gd_scene load_steps=35 format=3 uid="uid://dxpgiggem6hw8"]
 
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="1_sfj4s"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Tutorial.gd" id="2_20vj5"]
@@ -10,15 +10,19 @@
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Path3D.gd" id="7_he7t8"]
 [ext_resource type="PackedScene" uid="uid://c3yafqblin2ga" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/4_Exit_Room.tscn" id="8_4jyg4"]
 [ext_resource type="PackedScene" uid="uid://bn06hyag8xwmy" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Bars.tscn" id="8_24344"]
+[ext_resource type="PackedScene" uid="uid://dpcvjvar5k4sm" path="res://Assets/3dModels/Environment/Chandelier/chandelier.tscn" id="8_l1htd"]
 [ext_resource type="PackedScene" uid="uid://doj222xfivwxj" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Lock.tscn" id="9_bv4fn"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle2.gd" id="11_eta8v"]
-[ext_resource type="PackedScene" uid="uid://cetfngjxtnlpd" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Button.tscn" id="11_twkam"]
+[ext_resource type="PackedScene" uid="uid://cetfngjxtnlpd" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/button/Button.tscn" id="11_twkam"]
 [ext_resource type="PackedScene" uid="uid://dw4bw3vsff0gp" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/2_exit_room_corner.tscn" id="12_7ag45"]
 [ext_resource type="PackedScene" uid="uid://dttdr4jxucksl" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Magic_wall.tscn" id="14_vvl1b"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle3.gd" id="14_x1p7s"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle4.gd" id="16_2pnj8"]
 [ext_resource type="PackedScene" uid="uid://beq61rojhta00" path="res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn" id="16_ck3lq"]
 [ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="16_hxtuj"]
+[ext_resource type="PackedScene" uid="uid://cr1i66fimgvvo" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Main/Vehicle.tscn" id="20_806vg"]
+[ext_resource type="PackedScene" uid="uid://cqu1p7rcgiq4v" path="res://Assets/3dModels/Environment/Destructable-Wall/breakable_wall.tscn" id="21_7stav"]
+[ext_resource type="PackedScene" uid="uid://jloi5ftbqsjf" path="res://Assets/3dModels/Environment/Weeds/WEEDS.glb" id="23_udhw1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0alrh"]
 shading_mode = 0
@@ -124,13 +128,16 @@ curve = SubResource("Curve3D_murqp")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
 
+[node name="CHANDELIER" parent="Tutorial" instance=ExtResource("8_l1htd")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.99661, 17.691, 15.1296)
+
 [node name="CentralRoom" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 37)
 
 [node name="4ExitRoom" parent="CentralRoom" instance=ExtResource("8_4jyg4")]
 
 [node name="Bars" parent="CentralRoom" instance=ExtResource("8_24344")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7426, 0, 5)
 
 [node name="CSGCylinder3D" type="CSGPolygon3D" parent="CentralRoom"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
@@ -160,7 +167,7 @@ transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -8, 1,
 transform = Transform3D(1.175, 0, 0, 0, 1, 0, 0, 0, 1, -0.881251, 0.11, 10.9823)
 
 [node name="Door2" parent="CentralRoom" node_paths=PackedStringArray("interact") instance=ExtResource("3_67d6m")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.8813, 0.11, -0.783886)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.0576, 0.11, 0.782528)
 interact = NodePath("../Door/Interact")
 
 [node name="Puzzle2" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "button", "path")]
@@ -169,7 +176,7 @@ script = ExtResource("11_eta8v")
 flame_part_spawner = NodePath("TubeManager")
 exit_door = NodePath("Door2")
 button = NodePath("Button")
-path = NodePath("../Puzzle2Path/Path3D")
+path = NodePath("../PuzzlePaths/Puzzle2Path/Path3D")
 
 [node name="Button" parent="Puzzle2" instance=ExtResource("11_twkam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7.46578)
@@ -194,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 59)
 script = ExtResource("14_x1p7s")
 exit_door = NodePath("Door")
 torch = NodePath("TorchManager")
-path = NodePath("../Puzzle3Path/Path3D")
+path = NodePath("../PuzzlePaths/Puzzle3Path/Path3D")
 
 [node name="2ExitRoomStraight" parent="Puzzle3" instance=ExtResource("4_slm7t")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -213,10 +220,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
 script = ExtResource("16_2pnj8")
 exit_door = NodePath("Door")
 button = NodePath("Button")
-path = NodePath("../Puzzle4Paths/DoorPath/Path3D")
+path = NodePath("../PuzzlePaths/Puzzle4Paths/DoorPath/Path3D")
 fences = NodePath("Walls")
 fence_torch = NodePath("TorchManager")
-fence_path = NodePath("../Puzzle4Paths/DoorPath2/Path3D")
+fence_path = NodePath("../PuzzlePaths/Puzzle4Paths/DoorPath2/Path3D")
 
 [node name="2ExitRoomCorner" parent="Puzzle4" instance=ExtResource("12_7ag45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 88)
@@ -224,9 +231,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 88)
 [node name="Door" parent="Puzzle4" instance=ExtResource("3_67d6m")]
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1.14, 0, 2.98023e-08, 33.0985, 0.118489, 88.9189)
 locked = true
-
-[node name="Button" parent="Puzzle4" instance=ExtResource("11_twkam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9966, 0.11, 81.652)
 
 [node name="TorchManager" parent="Puzzle4" instance=ExtResource("4_rgwj1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3356, 0.603977, 96.1762)
@@ -242,8 +246,35 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.724
 [node name="FlameWeaponPart" parent="Puzzle4" instance=ExtResource("16_ck3lq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2047, 0.890556, 95.3132)
 
+[node name="Button" parent="Puzzle4" instance=ExtResource("11_twkam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2044, 0.11, 82.0476)
+
+[node name="Puzzle5" type="Node3D" parent="."]
+
+[node name="Vehicle" parent="Puzzle5" instance=ExtResource("20_806vg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8175, 0.502284, 42.2502)
+
+[node name="2ExitRoomStraight" parent="Puzzle5" instance=ExtResource("4_slm7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 37)
+
+[node name="BreakableWalls" type="Node3D" parent="Puzzle5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 37.16)
+
+[node name="BreakableWall" parent="Puzzle5/BreakableWalls" instance=ExtResource("21_7stav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72477, 1.53607, -0.161251)
+
+[node name="BreakableWall2" parent="Puzzle5/BreakableWalls" instance=ExtResource("21_7stav")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.42453, 1.53008, 1.66368)
+
+[node name="BreakableWall3" parent="Puzzle5/BreakableWalls" instance=ExtResource("21_7stav")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41375, 1.52062, -2.15086)
+
+[node name="Door" parent="Puzzle5" instance=ExtResource("3_67d6m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.9876, 0.11, 36.215)
+
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -7.38134, 59)
+visible = false
 mesh = SubResource("PlaneMesh_0i1ri")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
@@ -253,9 +284,11 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_p3to3")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("5_b8bpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3041, 1.13043, 0.43415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7, 0.999998, 35.1552)
 
-[node name="Puzzle2Path" type="CSGPolygon3D" parent="."]
+[node name="PuzzlePaths" type="Node3D" parent="."]
+
+[node name="Puzzle2Path" type="CSGPolygon3D" parent="PuzzlePaths"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
 mode = 2
 path_node = NodePath("Path3D")
@@ -269,12 +302,12 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_cos2f")
 
-[node name="Path3D" type="Path3D" parent="Puzzle2Path" node_paths=PackedStringArray("path_mesh")]
+[node name="Path3D" type="Path3D" parent="PuzzlePaths/Puzzle2Path" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_g3gp0")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
 
-[node name="Puzzle3Path" type="CSGPolygon3D" parent="."]
+[node name="Puzzle3Path" type="CSGPolygon3D" parent="PuzzlePaths"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
 mode = 2
 path_node = NodePath("Path3D")
@@ -288,14 +321,14 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_otvmy")
 
-[node name="Path3D" type="Path3D" parent="Puzzle3Path" node_paths=PackedStringArray("path_mesh")]
+[node name="Path3D" type="Path3D" parent="PuzzlePaths/Puzzle3Path" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_e1yw4")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
 
-[node name="Puzzle4Paths" type="Node3D" parent="."]
+[node name="Puzzle4Paths" type="Node3D" parent="PuzzlePaths"]
 
-[node name="DoorPath" type="CSGPolygon3D" parent="Puzzle4Paths"]
+[node name="DoorPath" type="CSGPolygon3D" parent="PuzzlePaths/Puzzle4Paths"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
 mode = 2
 path_node = NodePath("Path3D")
@@ -309,12 +342,12 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_8s0wn")
 
-[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath" node_paths=PackedStringArray("path_mesh")]
+[node name="Path3D" type="Path3D" parent="PuzzlePaths/Puzzle4Paths/DoorPath" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_nv3hw")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
 
-[node name="DoorPath2" type="CSGPolygon3D" parent="Puzzle4Paths"]
+[node name="DoorPath2" type="CSGPolygon3D" parent="PuzzlePaths/Puzzle4Paths"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
 mode = 2
 path_node = NodePath("Path3D")
@@ -328,7 +361,708 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_8s0wn")
 
-[node name="Path3D" type="Path3D" parent="Puzzle4Paths/DoorPath2" node_paths=PackedStringArray("path_mesh")]
+[node name="Path3D" type="Path3D" parent="PuzzlePaths/Puzzle4Paths/DoorPath2" node_paths=PackedStringArray("path_mesh")]
 curve = SubResource("Curve3D_ohx8m")
 script = ExtResource("7_he7t8")
 path_mesh = NodePath("..")
+
+[node name="Weeds" type="Node3D" parent="."]
+
+[node name="WEEDS" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0831, 0.11, 5.43226)
+
+[node name="WEEDS3" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.728514, 0, -0.68503, 0, 1, 0, 0.68503, 0, 0.728514, 12.0059, 0.11, 4.82158)
+
+[node name="WEEDS2" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.641088, 0, 0.767467, 0, 1, 0, -0.767467, 0, 0.641088, 11.3676, 0.11, 4.82485)
+
+[node name="WEEDS4" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.999995, 0, 0.0031766, 0, 1, 0, -0.0031766, 0, -0.999995, 11.0227, 0.11, 5.29868)
+
+[node name="WEEDS5" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.726335, 0, 0.687341, 0, 1, 0, -0.687341, 0, -0.726335, 11.0979, 0.11, 5.90961)
+
+[node name="WEEDS6" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.643523, 0, -0.765427, 0, 1, 0, 0.765427, 0, -0.643523, 11.7362, 0.11, 5.90836)
+
+[node name="WEEDS7" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1806, 0.11, 6.69393)
+
+[node name="WEEDS8" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.728514, 0, -0.68503, 0, 1, 0, 0.68503, 0, 0.728514, 12.1035, 0.11, 6.08325)
+
+[node name="WEEDS9" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.641088, 0, 0.767467, 0, 1, 0, -0.767467, 0, 0.641088, 11.4652, 0.11, 6.08652)
+
+[node name="WEEDS10" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.999995, 0, 0.0031766, 0, 1, 0, -0.0031766, 0, -0.999995, 11.1202, 0.11, 6.56035)
+
+[node name="WEEDS11" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.726335, 0, 0.687341, 0, 1, 0, -0.687341, 0, -0.726335, 11.1954, 0.11, 7.17128)
+
+[node name="WEEDS12" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.643523, 0, -0.765427, 0, 1, 0, 0.765427, 0, -0.643523, 11.8337, 0.11, 7.17003)
+
+[node name="WEEDS13" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5994, 0.11, 6.44861)
+
+[node name="WEEDS14" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.728514, 0, -0.68503, 0, 1, 0, 0.68503, 0, 0.728514, 10.5223, 0.11, 5.83792)
+
+[node name="WEEDS15" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.641088, 0, 0.767467, 0, 1, 0, -0.767467, 0, 0.641088, 9.88398, 0.11, 5.8412)
+
+[node name="WEEDS16" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.999995, 0, 0.0031766, 0, 1, 0, -0.0031766, 0, -0.999995, 9.53904, 0.11, 6.31503)
+
+[node name="WEEDS17" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.726335, 0, 0.687341, 0, 1, 0, -0.687341, 0, -0.726335, 9.61423, 0.11, 6.92595)
+
+[node name="WEEDS18" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.643523, 0, -0.765427, 0, 1, 0, 0.765427, 0, -0.643523, 10.2525, 0.11, 6.9247)
+
+[node name="WEEDS19" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 9.21564, 0.11, 4.87465)
+
+[node name="WEEDS20" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 8.64308, 0.11, 4.6487)
+
+[node name="WEEDS21" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 8.33909, 0.11, 5.20998)
+
+[node name="WEEDS22" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 8.58874, 0.11, 5.74023)
+
+[node name="WEEDS23" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 9.16059, 0.11, 5.968)
+
+[node name="WEEDS24" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 9.46636, 0.11, 5.40769)
+
+[node name="WEEDS25" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 11.0085, 0.11, 7.27518)
+
+[node name="WEEDS26" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 10.4359, 0.11, 7.04922)
+
+[node name="WEEDS27" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 10.1319, 0.11, 7.61051)
+
+[node name="WEEDS28" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 10.3816, 0.11, 8.14076)
+
+[node name="WEEDS29" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 10.9534, 0.11, 8.36853)
+
+[node name="WEEDS30" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 11.2592, 0.11, 7.80821)
+
+[node name="WEEDS31" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 11.7898, 0.11, 9.15074)
+
+[node name="WEEDS32" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 11.2173, 0.11, 8.92478)
+
+[node name="WEEDS33" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 10.9133, 0.11, 9.48607)
+
+[node name="WEEDS34" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 11.1629, 0.11, 10.0163)
+
+[node name="WEEDS35" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 11.7348, 0.11, 10.2441)
+
+[node name="WEEDS36" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 12.0406, 0.11, 9.68377)
+
+[node name="WEEDS37" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 9.8361, 0.11, 8.8215)
+
+[node name="WEEDS38" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 9.26353, 0.11, 8.59555)
+
+[node name="WEEDS39" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 8.95954, 0.11, 9.15683)
+
+[node name="WEEDS40" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 9.2092, 0.11, 9.68708)
+
+[node name="WEEDS41" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 9.78104, 0.11, 9.91485)
+
+[node name="WEEDS42" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 10.0868, 0.11, 9.35453)
+
+[node name="WEEDS43" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 8.99711, 0.11, 6.73831)
+
+[node name="WEEDS44" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 8.42455, 0.11, 6.51236)
+
+[node name="WEEDS45" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 8.12056, 0.11, 7.07364)
+
+[node name="WEEDS46" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 8.37022, 0.11, 7.60389)
+
+[node name="WEEDS47" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 8.94206, 0.11, 7.83166)
+
+[node name="WEEDS48" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 9.24783, 0.11, 7.27134)
+
+[node name="WEEDS49" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 7.69456, 0.11, 5.23817)
+
+[node name="WEEDS50" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 7.122, 0.11, 5.01221)
+
+[node name="WEEDS51" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 6.81801, 0.11, 5.5735)
+
+[node name="WEEDS52" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 7.06767, 0.11, 6.10375)
+
+[node name="WEEDS53" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 7.63951, 0.11, 6.33152)
+
+[node name="WEEDS54" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 7.94528, 0.11, 5.7712)
+
+[node name="WEEDS55" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 7.1195, 0.11, 7.13415)
+
+[node name="WEEDS56" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 6.54694, 0.11, 6.9082)
+
+[node name="WEEDS57" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 6.24295, 0.11, 7.46949)
+
+[node name="WEEDS58" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 6.4926, 0.11, 7.99973)
+
+[node name="WEEDS59" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 7.06444, 0.11, 8.22751)
+
+[node name="WEEDS60" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 7.37021, 0.11, 7.66719)
+
+[node name="WEEDS61" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 8.01951, 0.11, 8.61921)
+
+[node name="WEEDS62" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 7.44694, 0.11, 8.39326)
+
+[node name="WEEDS63" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 7.14295, 0.11, 8.95455)
+
+[node name="WEEDS64" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 7.39261, 0.11, 9.48479)
+
+[node name="WEEDS65" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 7.96445, 0.11, 9.71257)
+
+[node name="WEEDS66" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 8.27022, 0.11, 9.15225)
+
+[node name="WEEDS67" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 8.58136, 0.11, 10.7828)
+
+[node name="WEEDS68" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 8.0088, 0.11, 10.5568)
+
+[node name="WEEDS69" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 7.70481, 0.11, 11.1181)
+
+[node name="WEEDS70" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 7.95447, 0.11, 11.6484)
+
+[node name="WEEDS71" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 8.52631, 0.11, 11.8761)
+
+[node name="WEEDS72" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 8.83208, 0.11, 11.3158)
+
+[node name="WEEDS73" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 6.65315, 0.11, 9.86781)
+
+[node name="WEEDS74" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 6.08059, 0.11, 9.64185)
+
+[node name="WEEDS75" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 5.7766, 0.11, 10.2031)
+
+[node name="WEEDS76" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 6.02626, 0.11, 10.7334)
+
+[node name="WEEDS77" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 6.5981, 0.11, 10.9612)
+
+[node name="WEEDS78" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 6.90387, 0.11, 10.4008)
+
+[node name="WEEDS79" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 4.63299, 0.11, 8.43621)
+
+[node name="WEEDS80" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 4.06043, 0.11, 8.21026)
+
+[node name="WEEDS81" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 3.75644, 0.11, 8.77154)
+
+[node name="WEEDS82" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 4.0061, 0.11, 9.30179)
+
+[node name="WEEDS83" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 4.57794, 0.11, 9.52956)
+
+[node name="WEEDS84" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 4.88371, 0.11, 8.96925)
+
+[node name="WEEDS85" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 5.85566, 0.11, 7.84129)
+
+[node name="WEEDS86" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 5.2831, 0.11, 7.61534)
+
+[node name="WEEDS87" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 4.97911, 0.11, 8.17662)
+
+[node name="WEEDS88" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 5.22876, 0.11, 8.70687)
+
+[node name="WEEDS89" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 5.8006, 0.11, 8.93464)
+
+[node name="WEEDS90" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 6.10638, 0.11, 8.37433)
+
+[node name="WEEDS91" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 5.6105, 0.11, 5.37397)
+
+[node name="WEEDS92" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 5.03794, 0.11, 5.14802)
+
+[node name="WEEDS93" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 4.73395, 0.11, 5.70931)
+
+[node name="WEEDS94" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 4.98361, 0.11, 6.23956)
+
+[node name="WEEDS95" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 5.55545, 0.11, 6.46733)
+
+[node name="WEEDS96" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 5.86122, 0.11, 5.90701)
+
+[node name="WEEDS97" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 4.07612, 0.11, 6.23617)
+
+[node name="WEEDS98" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 3.50356, 0.11, 6.01022)
+
+[node name="WEEDS99" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 3.19957, 0.11, 6.5715)
+
+[node name="WEEDS100" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 3.44923, 0.11, 7.10175)
+
+[node name="WEEDS101" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 4.02107, 0.11, 7.32952)
+
+[node name="WEEDS102" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 4.32684, 0.11, 6.76921)
+
+[node name="WEEDS103" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 2.35941, 0.11, 4.63362)
+
+[node name="WEEDS104" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 1.78685, 0.11, 4.40766)
+
+[node name="WEEDS105" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 1.48286, 0.11, 4.96895)
+
+[node name="WEEDS106" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 1.73252, 0.11, 5.4992)
+
+[node name="WEEDS107" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 2.30436, 0.11, 5.72697)
+
+[node name="WEEDS108" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 2.61013, 0.11, 5.16665)
+
+[node name="WEEDS109" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 2.56876, 0.11, 6.77702)
+
+[node name="WEEDS110" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 1.9962, 0.11, 6.55106)
+
+[node name="WEEDS111" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 1.69221, 0.11, 7.11235)
+
+[node name="WEEDS112" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 1.94187, 0.11, 7.6426)
+
+[node name="WEEDS113" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 2.51371, 0.11, 7.87037)
+
+[node name="WEEDS114" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 2.81948, 0.11, 7.31005)
+
+[node name="WEEDS115" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 3.07042, 0.11, 7.87441)
+
+[node name="WEEDS116" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 2.49786, 0.11, 7.64846)
+
+[node name="WEEDS117" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 2.19387, 0.11, 8.20975)
+
+[node name="WEEDS118" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 2.44353, 0.11, 8.74)
+
+[node name="WEEDS119" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 3.01537, 0.11, 8.96777)
+
+[node name="WEEDS120" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 3.32114, 0.11, 8.40745)
+
+[node name="WEEDS121" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 1.0534, 0.11, 7.55724)
+
+[node name="WEEDS122" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 0.480836, 0.11, 7.33129)
+
+[node name="WEEDS123" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, 0.176847, 0.11, 7.89257)
+
+[node name="WEEDS124" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 0.426502, 0.11, 8.42282)
+
+[node name="WEEDS125" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 0.998344, 0.11, 8.65059)
+
+[node name="WEEDS126" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 1.30412, 0.11, 8.09027)
+
+[node name="WEEDS127" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.480744, 0, 0.876861, 0, 1, 0, -0.876861, 0, 0.480744, 0.748492, 0.11, 5.86929)
+
+[node name="WEEDS128" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.950905, 0, 0.309482, 0, 1, 0, -0.309482, 0, 0.950905, 0.175929, 0.11, 5.64333)
+
+[node name="WEEDS129" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.364763, 0, 0.9311, 0, 1, 0, -0.9311, 0, -0.364763, -0.128061, 0.11, 6.20462)
+
+[node name="WEEDS130" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.483527, 0, -0.87533, 0, 1, 0, 0.87533, 0, -0.483527, 0.121595, 0.11, 6.73487)
+
+[node name="WEEDS131" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.951884, 0, -0.306459, 0, 1, 0, 0.306459, 0, -0.951884, 0.693437, 0.11, 6.96264)
+
+[node name="WEEDS132" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.361804, 0, -0.932254, 0, 1, 0, 0.932254, 0, 0.361804, 0.999209, 0.11, 6.40232)
+
+[node name="WEEDS133" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.865798, 0, -0.500393, 0, 1, 0, 0.500393, 0, 0.865798, -0.870775, 0.11, 6.1388)
+
+[node name="WEEDS134" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.287962, 0, -0.957642, 0, 1, 0, 0.957642, 0, 0.287962, -0.63197, 0.11, 5.57148)
+
+[node name="WEEDS135" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.939088, 0, 0.343676, 0, 1, 0, -0.343676, 0, 0.939088, -1.18626, 0.11, 5.25491)
+
+[node name="WEEDS136" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.864205, 0, 0.503141, 0, 1, 0, -0.503141, 0, -0.864205, -1.722, 0.11, 5.49254)
+
+[node name="WEEDS137" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.284919, 0, 0.958552, 0, 1, 0, -0.958552, 0, -0.284919, -1.96261, 0.11, 6.0591)
+
+[node name="WEEDS138" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.940175, 0, -0.340691, 0, 1, 0, 0.340691, 0, -0.940175, -1.40933, 0.11, 6.37743)
+
+[node name="WEEDS139" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.865798, 0, -0.500393, 0, 1, 0, 0.500393, 0, 0.865798, -0.76848, 0.11, 7.84265)
+
+[node name="WEEDS140" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.287962, 0, -0.957642, 0, 1, 0, 0.957642, 0, 0.287962, -0.529675, 0.11, 7.27533)
+
+[node name="WEEDS141" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.939088, 0, 0.343676, 0, 1, 0, -0.343676, 0, 0.939088, -1.08396, 0.11, 6.95876)
+
+[node name="WEEDS142" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.864205, 0, 0.503141, 0, 1, 0, -0.503141, 0, -0.864205, -1.61971, 0.11, 7.1964)
+
+[node name="WEEDS143" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.284919, 0, 0.958552, 0, 1, 0, -0.958552, 0, -0.284919, -1.86031, 0.11, 7.76296)
+
+[node name="WEEDS144" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.940175, 0, -0.340691, 0, 1, 0, 0.340691, 0, -0.940175, -1.30703, 0.11, 8.08129)
+
+[node name="WEEDS145" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.865798, 0, -0.500393, 0, 1, 0, 0.500393, 0, 0.865798, -2.47902, 0.11, 9.52789)
+
+[node name="WEEDS146" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.287962, 0, -0.957642, 0, 1, 0, 0.957642, 0, 0.287962, -2.24022, 0.11, 8.96057)
+
+[node name="WEEDS147" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.939088, 0, 0.343676, 0, 1, 0, -0.343676, 0, 0.939088, -2.7945, 0.11, 8.644)
+
+[node name="WEEDS148" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.864205, 0, 0.503141, 0, 1, 0, -0.503141, 0, -0.864205, -3.33025, 0.11, 8.88164)
+
+[node name="WEEDS149" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.284919, 0, 0.958552, 0, 1, 0, -0.958552, 0, -0.284919, -3.57085, 0.11, 9.4482)
+
+[node name="WEEDS150" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.940175, 0, -0.340691, 0, 1, 0, 0.340691, 0, -0.940175, -3.01757, 0.11, 9.76652)
+
+[node name="WEEDS151" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -3.23229, 0.11, 7.7102)
+
+[node name="WEEDS152" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -2.61729, 0.11, 7.68455)
+
+[node name="WEEDS153" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -2.56704, 0.11, 7.04822)
+
+[node name="WEEDS154" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -3.01027, 0.11, 6.66477)
+
+[node name="WEEDS155" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -3.62535, 0.11, 6.68846)
+
+[node name="WEEDS156" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -3.67763, 0.11, 7.32464)
+
+[node name="WEEDS157" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -3.1564, 0.11, 5.74242)
+
+[node name="WEEDS158" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -2.5414, 0.11, 5.71677)
+
+[node name="WEEDS159" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -2.49114, 0.11, 5.08044)
+
+[node name="WEEDS160" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -2.93438, 0.11, 4.69699)
+
+[node name="WEEDS161" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -3.54946, 0.11, 4.72068)
+
+[node name="WEEDS162" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -3.60174, 0.11, 5.35686)
+
+[node name="WEEDS163" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -4.74104, 0.11, 6.50562)
+
+[node name="WEEDS164" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -4.12604, 0.11, 6.47997)
+
+[node name="WEEDS165" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -4.07578, 0.11, 5.84364)
+
+[node name="WEEDS166" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -4.51902, 0.11, 5.46019)
+
+[node name="WEEDS167" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -5.13409, 0.11, 5.48388)
+
+[node name="WEEDS168" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -5.18637, 0.11, 6.12006)
+
+[node name="WEEDS169" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -4.5908, 0.11, 8.26267)
+
+[node name="WEEDS170" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -3.97581, 0.11, 8.23702)
+
+[node name="WEEDS171" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -3.92555, 0.11, 7.60069)
+
+[node name="WEEDS172" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -4.36878, 0.11, 7.21723)
+
+[node name="WEEDS173" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -4.98386, 0.11, 7.24093)
+
+[node name="WEEDS174" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -5.03614, 0.11, 7.8771)
+
+[node name="WEEDS175" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -6.32693, 0.11, 6.82061)
+
+[node name="WEEDS176" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -5.71193, 0.11, 6.79496)
+
+[node name="WEEDS177" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -5.66167, 0.11, 6.15863)
+
+[node name="WEEDS178" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -6.10491, 0.11, 5.77518)
+
+[node name="WEEDS179" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -6.71999, 0.11, 5.79887)
+
+[node name="WEEDS180" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -6.77226, 0.11, 6.43504)
+
+[node name="WEEDS181" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -8.32187, 0.11, 5.45343)
+
+[node name="WEEDS182" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -7.70687, 0.11, 5.42778)
+
+[node name="WEEDS183" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -7.65661, 0.11, 4.79145)
+
+[node name="WEEDS184" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -8.09985, 0.11, 4.408)
+
+[node name="WEEDS185" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -8.71493, 0.11, 4.43169)
+
+[node name="WEEDS186" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -8.76721, 0.11, 5.06787)
+
+[node name="WEEDS187" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -8.06198, 0.11, 6.71401)
+
+[node name="WEEDS188" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -7.44698, 0.11, 6.68836)
+
+[node name="WEEDS189" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -7.39672, 0.11, 6.05202)
+
+[node name="WEEDS190" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -7.83996, 0.11, 5.66857)
+
+[node name="WEEDS191" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -8.45504, 0.11, 5.69227)
+
+[node name="WEEDS192" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -8.50731, 0.11, 6.32844)
+
+[node name="WEEDS193" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -6.49509, 0.11, 7.99041)
+
+[node name="WEEDS194" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -5.88009, 0.11, 7.96476)
+
+[node name="WEEDS195" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -5.82983, 0.11, 7.32842)
+
+[node name="WEEDS196" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -6.27306, 0.11, 6.94497)
+
+[node name="WEEDS197" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -6.88814, 0.11, 6.96866)
+
+[node name="WEEDS198" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -6.94042, 0.11, 7.60484)
+
+[node name="WEEDS199" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -4.94567, 0.11, 9.27572)
+
+[node name="WEEDS200" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -4.33067, 0.11, 9.25007)
+
+[node name="WEEDS201" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -4.28041, 0.11, 8.61374)
+
+[node name="WEEDS202" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -4.72365, 0.11, 8.23029)
+
+[node name="WEEDS203" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -5.33873, 0.11, 8.25398)
+
+[node name="WEEDS204" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -5.39101, 0.11, 8.89016)
+
+[node name="WEEDS205" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -6.81874, 0.11, 9.18158)
+
+[node name="WEEDS206" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -6.20374, 0.11, 9.15593)
+
+[node name="WEEDS207" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -6.15348, 0.11, 8.51959)
+
+[node name="WEEDS208" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -6.59672, 0.11, 8.13614)
+
+[node name="WEEDS209" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -7.21179, 0.11, 8.15984)
+
+[node name="WEEDS210" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -7.26407, 0.11, 8.79601)
+
+[node name="WEEDS211" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -8.51141, 0.11, 7.76112)
+
+[node name="WEEDS212" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -7.89641, 0.11, 7.73547)
+
+[node name="WEEDS213" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -7.84615, 0.11, 7.09913)
+
+[node name="WEEDS214" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -8.28939, 0.11, 6.71568)
+
+[node name="WEEDS215" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -8.90447, 0.11, 6.73937)
+
+[node name="WEEDS217" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -8.08269, 0.11, 9.2356)
+
+[node name="WEEDS218" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -7.46769, 0.11, 9.20995)
+
+[node name="WEEDS219" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -7.41743, 0.11, 8.57361)
+
+[node name="WEEDS220" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -7.86067, 0.11, 8.19016)
+
+[node name="WEEDS221" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -8.47574, 0.11, 8.21386)
+
+[node name="WEEDS222" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -8.52802, 0.11, 8.85003)
+
+[node name="WEEDS223" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -5.98247, 0.11, 5.27128)
+
+[node name="WEEDS224" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -5.36747, 0.11, 5.24563)
+
+[node name="WEEDS225" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -5.31721, 0.11, 4.6093)
+
+[node name="WEEDS226" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -5.76045, 0.11, 4.22585)
+
+[node name="WEEDS227" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -6.37553, 0.11, 4.24954)
+
+[node name="WEEDS228" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -6.42781, 0.11, 4.88571)
+
+[node name="WEEDS229" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.0838518, 0, -0.996478, 0, 1, 0, 0.996478, 0, -0.0838518, -7.57035, 0.11, 10.5632)
+
+[node name="WEEDS230" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.743705, 0, -0.668508, 0, 1, 0, 0.668508, 0, -0.743705, -6.95535, 0.11, 10.5375)
+
+[node name="WEEDS231" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.711008, 0, -0.703184, 0, 1, 0, 0.703184, 0, 0.711008, -6.90509, 0.11, 9.90118)
+
+[node name="WEEDS232" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.0870169, 0, 0.996207, 0, 1, 0, -0.996207, 0, 0.0870169, -7.34833, 0.11, 9.51772)
+
+[node name="WEEDS233" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(0.745825, 0, 0.666142, 0, 1, 0, -0.666142, 0, 0.745825, -7.96341, 0.11, 9.54142)
+
+[node name="WEEDS234" parent="Weeds" instance=ExtResource("23_udhw1")]
+transform = Transform3D(-0.708771, 0, 0.705439, 0, 1, 0, -0.705439, 0, -0.708771, -8.01569, 0.11, 10.1776)

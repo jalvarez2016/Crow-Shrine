@@ -15,4 +15,4 @@ transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 10.835, 3.25181, 0)
 shape = SubResource("BoxShape3D_forvw")
 
 [node name="Cube" parent="." index="1"]
-transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+transform = Transform3D(0.109, 0, 0, 0, 0.109, 0, 0, 0, 0.109, 0, 0, 0)

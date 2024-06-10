@@ -7,6 +7,7 @@ class_name Player
 @export var health := 100
 @export var UI_controller : Node3D
 @export var roll_cooldwon : Timer
+@export var camera : Camera3D
 
 @export var attack_manager : AttackManager
 @export var magic_manger : Magic_Selector
@@ -20,11 +21,16 @@ var angular_acceleration := 7
 var isAlive : bool = true
 var isSprinting : bool = false
 var dodging : bool = false
+var isOnMachine : bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	 #Update animations
 	mesh_manager.update_animation_parameters()
+	
+	if isOnMachine: 
+		camera.clear_current()
+		return
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -111,6 +117,8 @@ func get_damage():
 func cast_magic():
 	magic_manger.magic()
 
-
 func collect_treasure(value):
 	UI_controller.add_treasure(value)
+
+func toggle_collider():
+	$CollisionShape3D.disabled = !$CollisionShape3D.disabled

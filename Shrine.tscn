@@ -75,7 +75,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_3835e")
 
 [node name="Spawn" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60902, 1.93492, 49.2141)
 
 [node name="Exit" parent="." instance=ExtResource("5_ypn2f")]
 transform = Transform3D(2.465, 0, 0, 0, 2.465, 0, 0, 0, 2.465, 0, 0.420723, -37.2591)

@@ -1,7 +1,7 @@
 extends Area3D
 
 @export var main: Node3D
-@export var interact_key : TextureRect
+@export var interact_key : Panel
 
 func attach_weapon_part(weapon: Node3D):
 	var weapon_tip_part = load("res://Player/Weapons/WeaponParts/FlameWeaponPart/part_tip/tip_part.tscn")

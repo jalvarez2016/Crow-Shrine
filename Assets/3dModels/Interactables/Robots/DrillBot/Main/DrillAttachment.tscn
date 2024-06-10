@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmq4hbadav6du"]
+
+[ext_resource type="PackedScene" uid="uid://d271757su0onw" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Drill.glb" id="1_rujov"]
+[ext_resource type="Script" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Main/DrillAttachment.gd" id="2_vo4hq"]
+
+[sub_resource type="Gradient" id="Gradient_unayj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0943396, 0.296496, 0.541779)
+colors = PackedColorArray(0, 0, 0, 1, 0.2484, 0.2484, 0.2484, 1, 0.47788, 0.47788, 0.47788, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6nt0m"]
+gradient = SubResource("Gradient_unayj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5i6w"]
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_6nt0m")
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7rjit"]
+size = Vector3(1.26, 1.305, 1.995)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cddnb"]
+size = Vector3(1, 1, 1.77661)
+
+[node name="Drill" instance=ExtResource("1_rujov")]
+script = ExtResource("2_vo4hq")
+
+[node name="Drill" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h5i6w")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.44631)
+shape = SubResource("BoxShape3D_7rjit")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.56142)
+shape = SubResource("BoxShape3D_cddnb")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_drill_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_drill_area_exited"]

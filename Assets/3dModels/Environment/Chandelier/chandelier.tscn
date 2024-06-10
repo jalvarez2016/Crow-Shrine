@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpcvjvar5k4sm"]
+
+[ext_resource type="PackedScene" uid="uid://djhwqqisaf1xy" path="res://Assets/3dModels/Environment/Chandelier/CHANDELIER.glb" id="1_fg1xs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddiso"]
+blend_mode = 1
+cull_mode = 2
+emission_enabled = true
+emission = Color(0.870588, 0.498039, 0, 1)
+emission_energy_multiplier = 50.0
+grow_amount = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e6agu"]
+height = 1.64781
+radius = 0.531053
+
+[node name="CHANDELIER" instance=ExtResource("1_fg1xs")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_ddiso")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62132, 0)
+shape = SubResource("CylinderShape3D_e6agu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
+light_color = Color(0.870588, 0.498039, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 1.0
+omni_range = 16.8853
