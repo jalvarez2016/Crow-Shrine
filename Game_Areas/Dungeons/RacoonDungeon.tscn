@@ -257,8 +257,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8175, 0.502284, 42.2502)
 [node name="2ExitRoomStraight" parent="Puzzle5" instance=ExtResource("4_slm7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 37)
 
-[node name="BreakableWall" parent="Puzzle5" instance=ExtResource("21_7stav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9799, 0.492512, 45.8322)
+[node name="BreakableWalls" type="Node3D" parent="Puzzle5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 37.16)
+
+[node name="BreakableWall" parent="Puzzle5/BreakableWalls" instance=ExtResource("21_7stav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72477, 1.53607, -0.161251)
+
+[node name="BreakableWall2" parent="Puzzle5/BreakableWalls" instance=ExtResource("21_7stav")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.42453, 1.53008, 1.66368)
+
+[node name="BreakableWall3" parent="Puzzle5/BreakableWalls" instance=ExtResource("21_7stav")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.41375, 1.52062, -2.15086)
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -7.38134, 59)
