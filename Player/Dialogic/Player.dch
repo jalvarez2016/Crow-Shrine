@@ -17,16 +17,16 @@
 "portraits": {
 "Angry": {
 "export_overrides": {
-"image": ""
+"image": "\"res://Player/Dialogic/Profile_Pictures/Angry.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 1,
+"scale": 1.0,
 "scene": ""
 },
 "Default": {
 "export_overrides": {
-"image": "\"res://Assets/2dIcons/CrowProfile.png\""
+"image": "\"res://Player/Dialogic/Profile_Pictures/Default.png\""
 },
 "mirror": true,
 "offset": Vector2(-150, -10),
@@ -35,7 +35,7 @@
 },
 "Flustered": {
 "export_overrides": {
-"image": ""
+"image": "\"res://Player/Dialogic/Profile_Pictures/Flustered.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -44,7 +44,7 @@
 },
 "Happy": {
 "export_overrides": {
-"image": ""
+"image": "\"res://Player/Dialogic/Profile_Pictures/Happy.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

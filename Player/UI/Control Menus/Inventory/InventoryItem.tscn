@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://uflkfn0ncear"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ereha"]
+bg_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ereha")

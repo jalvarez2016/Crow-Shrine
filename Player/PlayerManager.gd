@@ -11,6 +11,7 @@ class_name Player
 
 @export var attack_manager : AttackManager
 @export var magic_manger : Magic_Selector
+@export var menu_manager : MenuManager
 
 @onready var spring_arm: SpringArm3D = $Head/SpringArm3D
 @onready var mesh : MeshInstance3D = $MeshInstance3D
@@ -27,6 +28,9 @@ var isOnMachine : bool = false
 func _process(delta: float):
 	 #Update animations
 	mesh_manager.update_animation_parameters()
+	
+	if Dialogic.current_timeline != null || menu_manager.isActive:
+		return
 	
 	if isOnMachine: 
 		camera.clear_current()
