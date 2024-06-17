@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://babaffyin54n0"]
+[gd_scene load_steps=7 format=3 uid="uid://babaffyin54n0"]
 
 [ext_resource type="PackedScene" uid="uid://uflkfn0ncear" path="res://Player/UI/Control Menus/Inventory/InventoryItem.tscn" id="1_54uru"]
 [ext_resource type="Script" path="res://Player/UI/Control Menus/Control_center.gd" id="1_kwmwn"]
 [ext_resource type="Texture2D" uid="uid://bgp5u0tkb0vqj" path="res://icon.svg" id="2_17h56"]
+[ext_resource type="Script" path="res://Player/UI/Control Menus/Inventory/Inventory.gd" id="4_meda0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_280oj"]
 bg_color = Color(0.106237, 0.106237, 0.106236, 1)
@@ -10,7 +11,7 @@ bg_color = Color(0.106237, 0.106237, 0.106236, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugthd"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="ControlCenter" type="Control" node_paths=PackedStringArray("menu")]
+[node name="ControlCenter" type="Control" node_paths=PackedStringArray("menu", "inventory_manager", "armor_manager", "key_items_manager", "settigns_manager")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,10 +20,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kwmwn")
 menu = NodePath("CanvasLayer")
+inventory_manager = NodePath("CanvasLayer/TabContainer/Inventory")
+armor_manager = NodePath("CanvasLayer/TabContainer/Armor")
+key_items_manager = NodePath("CanvasLayer/TabContainer/Key Items")
+settigns_manager = NodePath("CanvasLayer/TabContainer/Settings")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
@@ -45,8 +49,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_280oj")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ugthd")
+current_tab = 1
+tabs_visible = false
 
 [node name="Armor" type="TabBar" parent="CanvasLayer/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Armor"]
@@ -215,17 +222,21 @@ offset_left = 480.0
 offset_top = 220.0
 offset_right = 880.001
 offset_bottom = 320.0
+horizontal_scroll_mode = 3
 
 [node name="ItemDescription" type="Label" parent="CanvasLayer/TabContainer/Armor/ScrollContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(390, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "This is sample text that will be replaced. This is also a test to see if i can wrap the text around. And also test how far the words I write can go once they overflow and pass the boundaries set up for the box as a whole. I should make it scrollable."
 autowrap_mode = 2
 
-[node name="Inventory" type="TabBar" parent="CanvasLayer/TabContainer"]
-visible = false
+[node name="Inventory" type="TabBar" parent="CanvasLayer/TabContainer" node_paths=PackedStringArray("item_icon", "item_description", "item_containers")]
 layout_mode = 2
+script = ExtResource("4_meda0")
+item_icon = NodePath("ItemIcon")
+item_description = NodePath("ScrollContainer/ItemDescription")
+item_containers = NodePath("VBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Inventory"]
 layout_mode = 1
@@ -387,15 +398,15 @@ offset_bottom = 191.0
 texture = ExtResource("2_17h56")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/Inventory"]
-custom_minimum_size = Vector2(400, 100)
 layout_mode = 0
 offset_left = 480.0
 offset_top = 220.0
-offset_right = 880.001
+offset_right = 880.0
 offset_bottom = 320.0
+horizontal_scroll_mode = 3
 
 [node name="ItemDescription" type="Label" parent="CanvasLayer/TabContainer/Inventory/ScrollContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(390, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "This is sample text that will be replaced. This is also a test to see if i can wrap the text around. And also test how far the words I write can go once they overflow and pass the boundaries set up for the box as a whole. I should make it scrollable."
@@ -573,7 +584,7 @@ offset_right = 880.001
 offset_bottom = 320.0
 
 [node name="ItemDescription" type="Label" parent="CanvasLayer/TabContainer/Key Items/ScrollContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(390, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "This is sample text that will be replaced. This is also a test to see if i can wrap the text around. And also test how far the words I write can go once they overflow and pass the boundaries set up for the box as a whole. I should make it scrollable."

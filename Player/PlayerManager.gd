@@ -126,3 +126,7 @@ func collect_treasure(value):
 
 func toggle_collider():
 	$CollisionShape3D.disabled = !$CollisionShape3D.disabled
+
+func add_item_to_inventory(item: Dictionary):
+	menu_manager.add_to_inventory(item)
+	print('adding item to inventory:', item)

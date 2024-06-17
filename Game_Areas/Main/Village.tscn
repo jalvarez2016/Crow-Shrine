@@ -140,11 +140,11 @@ transform = Transform3D(-0.76591, 0, 0.642948, 0, 1, 0, -0.642948, 0, -0.76591, 
 
 [node name="TreeBranches" type="Node3D" parent="."]
 
-[node name="TreeBranchs" parent="." instance=ExtResource("10_tr7gj")]
+[node name="TreeBranchs" parent="TreeBranches" instance=ExtResource("10_tr7gj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06676, 2.38419e-07, 22.9155)
 
-[node name="TreeBranchs2" parent="." instance=ExtResource("10_tr7gj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4774, 0.00391471, 48.9043)
+[node name="TreeBranchs2" parent="TreeBranches" instance=ExtResource("10_tr7gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148594, 0.000957131, 30.6752)
 
-[node name="TreeBranchs3" parent="." instance=ExtResource("10_tr7gj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55363, 0, 41.9559)
+[node name="TreeBranchs3" parent="TreeBranches" instance=ExtResource("10_tr7gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3573, 2.38419e-07, 26.7173)
