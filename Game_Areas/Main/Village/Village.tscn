@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://byw4nne6r7e8n"]
+[gd_scene load_steps=16 format=3 uid="uid://byw4nne6r7e8n"]
 
 [ext_resource type="Script" path="res://Game_Areas/Main/Village/Village.gd" id="1_pw3xv"]
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="2_yisfn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ds2mwjxk3nvhn" path="res://Assets/3dModels/Interactables/TreeBranches/Tree_branchs.tscn" id="11_kttrj"]
 [ext_resource type="Resource" path="res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_2.dtl" id="12_7w8hf"]
 [ext_resource type="Resource" path="res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_3.dtl" id="13_yr80r"]
+[ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="14_0wlr6"]
 
 [sub_resource type="Resource" id="Resource_bx1ex"]
 script = ExtResource("6_mxfhk")
@@ -88,6 +89,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8007, -8.07732, 3.20882)
 [node name="TREE10" parent="Trees" instance=ExtResource("10_nrsgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.9315, -8.07732, -4.43372)
 
+[node name="TREE29" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -71.6069, -1.59224, -18.6639)
+
+[node name="TREE30" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -67.368, -1.59224, -20.7071)
+
+[node name="TREE31" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -49.7362, -1.59224, -14.3046)
+
+[node name="TREE32" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -49.0138, -1.59224, -26.6967)
+
+[node name="TREE33" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -44.4427, -3.15463, -26.7112)
+
+[node name="TREE34" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.998325, 0, 0.0578431, 0, 1, 0, -0.0578431, 0, 0.998325, -39.2124, -1.4122, -16.2698)
+
+[node name="TREE35" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.998325, 0, 0.0578431, 0, 1, 0, -0.0578431, 0, 0.998325, -36.124, -2.9746, -19.6399)
+
+[node name="TREE36" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -58.8438, -8.07732, -6.33872)
+
+[node name="TREE37" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -54.6049, -8.07732, -8.38189)
+
+[node name="TREE38" parent="Trees" instance=ExtResource("10_nrsgi")]
+transform = Transform3D(0.71934, 0, -0.694658, 0, 1, 0, 0.694658, 0, 0.71934, -36.9731, -8.07732, -1.97942)
+
 [node name="TREE11" parent="Trees" instance=ExtResource("10_nrsgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.8428, -8.07732, -13.8497)
 
@@ -154,3 +185,29 @@ pickup_dialoge = ExtResource("12_7w8hf")
 [node name="TreeBranchs3" parent="TreeBranches" instance=ExtResource("11_kttrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3573, 2.38419e-07, 26.7173)
 pickup_dialoge = ExtResource("13_yr80r")
+
+[node name="Fences" type="Node3D" parent="."]
+
+[node name="fence" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5035, 0, -32.1048)
+
+[node name="fence2" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5035, 0, -32.1048)
+
+[node name="fence7" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5035, 0, -32.1048)
+
+[node name="fence8" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5035, 0, -32.1048)
+
+[node name="fence3" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4965, 0, -32.1048)
+
+[node name="fence4" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4965, 0, -32.1048)
+
+[node name="fence5" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4965, 0, -32.1048)
+
+[node name="fence6" parent="Fences" instance=ExtResource("14_0wlr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4965, 0, -32.1048)
