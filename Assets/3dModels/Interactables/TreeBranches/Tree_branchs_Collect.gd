@@ -2,6 +2,7 @@ extends Node3D
 
 @export var quantity: int = 3
 @export var interact_icon : Control
+@export var pickup_dialoge : Resource
 
 var player : Player
 var isNear: bool = false
@@ -14,7 +15,7 @@ var branchInfo = {
 		weapons. He says that this wood is different from the wood in the ruins,
 		something about it being more alive and better quality.
 	',
-	'quantity': 1,
+	'quantity': quantity,
 }
 
 
@@ -38,7 +39,7 @@ func _on_area_3d_area_entered(area):
 func run_dialogic():
 	if Dialogic.current_timeline != null:
 		return
-	Dialogic.start("res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_1.dtl")
+	Dialogic.start(pickup_dialoge)
 
 
 func remove_branch():

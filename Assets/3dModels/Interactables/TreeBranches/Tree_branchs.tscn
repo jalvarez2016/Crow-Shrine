@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds2mwjxk3nvhn"]
+[gd_scene load_steps=12 format=3 uid="uid://ds2mwjxk3nvhn"]
 
 [ext_resource type="Script" path="res://Assets/3dModels/Interactables/TreeBranches/Tree_branchs_Collect.gd" id="1_egaj0"]
 [ext_resource type="Texture2D" uid="uid://wwsswoyn10w1" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_q.png" id="2_dhbmo"]
+[ext_resource type="Resource" path="res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_1.dtl" id="2_m8hi7"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bvegt"]
 top_radius = 0.25
@@ -37,7 +38,9 @@ radius = 1.88033
 
 [node name="TreeBranchs" type="Node3D" node_paths=PackedStringArray("interact_icon")]
 script = ExtResource("1_egaj0")
+quantity = 1
 interact_icon = NodePath("Control")
+pickup_dialoge = ExtResource("2_m8hi7")
 
 [node name="Log" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.208679, 0.977046, 0.0428357, 0.201078, -8.7894e-09, 0.979575, 0.95709, 0.21303, -0.196462, 0, 0, 0)
