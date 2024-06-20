@@ -13,8 +13,8 @@ func _process(_delta):
 	if Input.is_action_just_pressed('interact') && !has_weapon_part && near_part:
 		attach_weapon_part()
 
-func set_weapon_part(part: Node3D):
-	weapon_part = part
+func set_weapon_part(part_instance: Node3D):
+	weapon_part = part_instance
 	has_weapon_part = true
 
 

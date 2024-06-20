@@ -1,0 +1,611 @@
+[gd_scene load_steps=7 format=3 uid="uid://babaffyin54n0"]
+
+[ext_resource type="PackedScene" uid="uid://uflkfn0ncear" path="res://Player/UI/Control Menus/Inventory/InventoryItem.tscn" id="1_54uru"]
+[ext_resource type="Script" path="res://Player/UI/Control Menus/Control_center.gd" id="1_kwmwn"]
+[ext_resource type="Texture2D" uid="uid://bgp5u0tkb0vqj" path="res://icon.svg" id="2_17h56"]
+[ext_resource type="Script" path="res://Player/UI/Control Menus/Inventory/Inventory.gd" id="4_meda0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_280oj"]
+bg_color = Color(0.106237, 0.106237, 0.106236, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugthd"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ControlCenter" type="Control" node_paths=PackedStringArray("menu", "inventory_manager", "armor_manager", "key_items_manager", "settigns_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kwmwn")
+menu = NodePath("CanvasLayer")
+inventory_manager = NodePath("CanvasLayer/TabContainer/Inventory")
+armor_manager = NodePath("CanvasLayer/TabContainer/Armor")
+key_items_manager = NodePath("CanvasLayer/TabContainer/Key Items")
+settigns_manager = NodePath("CanvasLayer/TabContainer/Settings")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -478.5
+offset_top = -244.5
+offset_right = 478.5
+offset_bottom = 244.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_280oj")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ugthd")
+current_tab = 1
+tabs_visible = false
+
+[node name="Armor" type="TabBar" parent="CanvasLayer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Armor"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 51.5
+offset_top = -158.5
+offset_right = 444.5
+offset_bottom = 158.5
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TabContainer/Armor/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/TabContainer/Armor/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/TabContainer/Armor/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/TabContainer/Armor/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/TabContainer/Armor/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Armor/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/TabContainer/Armor"]
+layout_mode = 0
+offset_left = 598.5
+offset_top = 63.0
+offset_right = 726.5
+offset_bottom = 191.0
+texture = ExtResource("2_17h56")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/Armor"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 220.0
+offset_right = 880.001
+offset_bottom = 320.0
+horizontal_scroll_mode = 3
+
+[node name="ItemDescription" type="Label" parent="CanvasLayer/TabContainer/Armor/ScrollContainer"]
+custom_minimum_size = Vector2(390, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "This is sample text that will be replaced. This is also a test to see if i can wrap the text around. And also test how far the words I write can go once they overflow and pass the boundaries set up for the box as a whole. I should make it scrollable."
+autowrap_mode = 2
+
+[node name="Inventory" type="TabBar" parent="CanvasLayer/TabContainer" node_paths=PackedStringArray("item_icon", "item_description", "item_containers")]
+layout_mode = 2
+script = ExtResource("4_meda0")
+item_icon = NodePath("ItemIcon")
+item_description = NodePath("ScrollContainer/ItemDescription")
+item_containers = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 51.5
+offset_top = -158.5
+offset_right = 444.5
+offset_bottom = 158.5
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Inventory/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 598.5
+offset_top = 63.0
+offset_right = 726.5
+offset_bottom = 191.0
+texture = ExtResource("2_17h56")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/Inventory"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 220.0
+offset_right = 880.0
+offset_bottom = 320.0
+horizontal_scroll_mode = 3
+
+[node name="ItemDescription" type="Label" parent="CanvasLayer/TabContainer/Inventory/ScrollContainer"]
+custom_minimum_size = Vector2(390, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "This is sample text that will be replaced. This is also a test to see if i can wrap the text around. And also test how far the words I write can go once they overflow and pass the boundaries set up for the box as a whole. I should make it scrollable."
+autowrap_mode = 2
+
+[node name="Key Items" type="TabBar" parent="CanvasLayer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Key Items"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 51.5
+offset_top = -158.5
+offset_right = 444.5
+offset_bottom = 158.5
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer2" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer3" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer4" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Panel" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel2" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel3" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel4" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel5" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel6" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel7" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="Panel8" parent="CanvasLayer/TabContainer/Key Items/VBoxContainer/HBoxContainer5" instance=ExtResource("1_54uru")]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/TabContainer/Key Items"]
+layout_mode = 0
+offset_left = 598.5
+offset_top = 63.0
+offset_right = 726.5
+offset_bottom = 191.0
+texture = ExtResource("2_17h56")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TabContainer/Key Items"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 220.0
+offset_right = 880.001
+offset_bottom = 320.0
+
+[node name="ItemDescription" type="Label" parent="CanvasLayer/TabContainer/Key Items/ScrollContainer"]
+custom_minimum_size = Vector2(390, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "This is sample text that will be replaced. This is also a test to see if i can wrap the text around. And also test how far the words I write can go once they overflow and pass the boundaries set up for the box as a whole. I should make it scrollable."
+autowrap_mode = 2
+
+[node name="Settings" type="TabBar" parent="CanvasLayer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Overall Sound" type="Label" parent="CanvasLayer/TabContainer/Settings"]
+layout_mode = 0
+offset_left = 179.5
+offset_top = 63.0
+offset_right = 297.5
+offset_bottom = 86.0
+text = "Master Volume
+"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/TabContainer/Settings/Overall Sound"]
+layout_mode = 0
+offset_left = 183.5
+offset_right = 494.5
+offset_bottom = 27.0
