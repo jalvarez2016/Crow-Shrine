@@ -27,6 +27,7 @@ directories/dch_directory={
 "Player": "res://Player/Dialogic/Player.dch"
 }
 directories/dtl_directory={
+"Family": "res://Player/Dialogic/Timelines/Photos/Family.dtl",
 "Not_Enough_Tree_Branches": "res://Player/Dialogic/Timelines/Tree_Branches/Not_Enough_Tree_Branches.dtl",
 "Tree_Branch_Collected_1": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_1.dtl",
 "Tree_Branch_Collected_2": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_2.dtl",
