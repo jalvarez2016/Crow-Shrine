@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtp70q7do75f1"]
+[gd_scene load_steps=8 format=3 uid="uid://dtp70q7do75f1"]
 
 [ext_resource type="Script" path="res://Assets/3dModels/Interactables/Photos/Photo-Interact.gd" id="1_fvu1i"]
 [ext_resource type="Texture2D" uid="uid://bgp5u0tkb0vqj" path="res://icon.svg" id="1_p2lr2"]
@@ -11,6 +11,9 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idhac"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.584314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_613pq"]
+bg_color = Color(0.0911214, 0.0911215, 0.0911214, 1)
 
 [node name="Photo" type="Node3D" node_paths=PackedStringArray("interact_menu", "interact_icon")]
 script = ExtResource("1_fvu1i")
@@ -90,6 +93,7 @@ offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.261799
+theme_override_styles/panel = SubResource("StyleBoxFlat_613pq")
 
 [node name="TextureRect" type="TextureRect" parent="Control/interact_ui/Backdrop/Photo"]
 layout_mode = 1
