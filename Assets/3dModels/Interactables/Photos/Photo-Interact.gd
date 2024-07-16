@@ -17,12 +17,13 @@ func _on_photo_area_entered(area):
 	if area.is_in_group("Player"):
 		can_look_at = true
 		interact_icon.visible = true
-
+		player = area.player_manager
 
 func _on_photo_area_exited(area):
 	if area.is_in_group("Player"):
 		can_look_at = false
 		interact_icon.visible = false
+		player = null
 
 
 func _process(_delta):
@@ -36,3 +37,4 @@ func toggle_read_photo():
 		is_looking_at = !is_looking_at
 		if is_looking_at && Dialogic.current_timeline == null:
 			Dialogic.start(photo_dialogue)
+		player.toggle_UI()

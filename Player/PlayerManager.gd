@@ -130,3 +130,6 @@ func toggle_collider():
 func add_item_to_inventory(item: Dictionary):
 	menu_manager.add_to_inventory(item)
 	print('adding item to inventory:', item)
+
+func toggle_UI():
+	UI_controller.UI.visible = !UI_controller.UI.visible

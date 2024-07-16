@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var interact_prompt: TextureRect
 var can_talk: bool = false
 var is_talking: bool = false
+var player : Player
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -28,6 +29,7 @@ func _on_area_entered(area):
 		print('show interact button')
 		interact_prompt.visible = true
 		can_talk = true
+		player = area.player_manager
 
 
 func _on_area_exited(area):
@@ -35,6 +37,7 @@ func _on_area_exited(area):
 		print('stop showing interact button')
 		interact_prompt.visible = false
 		can_talk = false
+		player = null
 
 
 func talk():
@@ -43,3 +46,4 @@ func talk():
 		is_talking = !is_talking
 		if is_talking && Dialogic.current_timeline == null:
 			Dialogic.start(dialogue)
+		player.toggle_UI()

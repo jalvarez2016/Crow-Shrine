@@ -91,6 +91,8 @@ slot_position3 = NodePath("Slot_container/SlotPosition3")
 [node name="Spell_Bullets" type="Control" parent="SpellContainer"]
 layout_mode = 2
 anchors_preset = 0
+offset_left = 41.5
+offset_right = 41.5
 script = ExtResource("3_texis")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SpellContainer/Spell_Bullets"]
