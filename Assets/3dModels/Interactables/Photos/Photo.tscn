@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtp70q7do75f1"]
+[gd_scene load_steps=9 format=3 uid="uid://dtp70q7do75f1"]
 
 [ext_resource type="Script" path="res://Assets/3dModels/Interactables/Photos/Photo-Interact.gd" id="1_fvu1i"]
 [ext_resource type="Texture2D" uid="uid://bgp5u0tkb0vqj" path="res://icon.svg" id="1_p2lr2"]
@@ -9,6 +9,11 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_daxy7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_danae"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idhac"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.584314)
 
@@ -17,8 +22,8 @@ bg_color = Color(0.0911214, 0.0911215, 0.0911214, 1)
 
 [node name="Photo" type="Node3D" node_paths=PackedStringArray("interact_menu", "interact_icon")]
 script = ExtResource("1_fvu1i")
-interact_menu = NodePath("Control/interact_ui")
-interact_icon = NodePath("Control")
+interact_menu = NodePath("interact_ui")
+interact_icon = NodePath("interact_icon")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_eamv4")
@@ -28,17 +33,8 @@ mesh = SubResource("PlaneMesh_eamv4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_daxy7")
 
-[node name="Control" type="Control" parent="."]
+[node name="interact_icon" type="TextureRect" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="interact_icon" type="TextureRect" parent="Control"]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -52,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_2b0ex")
 
-[node name="Label" type="Label" parent="Control/interact_icon"]
+[node name="Label" type="Label" parent="interact_icon"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,11 +63,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Look At"
+label_settings = SubResource("LabelSettings_danae")
 
-[node name="interact_ui" type="CanvasLayer" parent="Control"]
+[node name="interact_ui" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="Backdrop" type="Panel" parent="Control/interact_ui"]
+[node name="Backdrop" type="Panel" parent="interact_ui"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -79,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_idhac")
 
-[node name="Photo" type="Panel" parent="Control/interact_ui/Backdrop"]
+[node name="Photo" type="Panel" parent="interact_ui/Backdrop"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -95,7 +92,7 @@ grow_vertical = 2
 rotation = 0.261799
 theme_override_styles/panel = SubResource("StyleBoxFlat_613pq")
 
-[node name="TextureRect" type="TextureRect" parent="Control/interact_ui/Backdrop/Photo"]
+[node name="TextureRect" type="TextureRect" parent="interact_ui/Backdrop/Photo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p2lr2")
 
-[node name="Label" type="Label" parent="Control/interact_ui/Backdrop/Photo"]
+[node name="Label" type="Label" parent="interact_ui/Backdrop/Photo"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

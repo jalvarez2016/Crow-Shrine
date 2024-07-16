@@ -5,7 +5,7 @@ var is_looking_at : bool = false
 var player : Player
 
 @export var interact_menu : CanvasLayer
-@export var interact_icon : Control
+@export var interact_icon : TextureRect
 @export var photo_dialogue : Resource
 
 

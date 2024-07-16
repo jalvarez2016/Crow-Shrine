@@ -24,11 +24,17 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"Player": "res://Player/Dialogic/Player.dch"
+"Anyar": "res://Characters-NPC/Anyar/Anyar.dch",
+"Pen-Quin": "res://Characters-NPC/Quin/Pen-Quin.dch",
+"Player": "res://Player/Dialogic/Player.dch",
+"Po": "res://Characters-NPC/Po-Panda/Po.dch",
+"Shawn": "res://Characters-NPC/Shawn/Shawn.dch"
 }
 directories/dtl_directory={
+"Conversation": "res://Characters-NPC/Anyar/Conversation.dtl",
 "Family": "res://Player/Dialogic/Timelines/Photos/Family.dtl",
 "Not_Enough_Tree_Branches": "res://Player/Dialogic/Timelines/Tree_Branches/Not_Enough_Tree_Branches.dtl",
+"Rooftop-Convo": "res://Characters-NPC/Po-Panda/Rooftop-Convo.dtl",
 "Tree_Branch_Collected_1": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_1.dtl",
 "Tree_Branch_Collected_2": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_2.dtl",
 "Tree_Branch_Collected_3": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_3.dtl",
@@ -55,6 +61,7 @@ variables={}
 layout/style_list=[]
 layout/default_style="Default"
 glossary/default_case_sensitive=true
+portraits/default_portrait=""
 
 [display]
 

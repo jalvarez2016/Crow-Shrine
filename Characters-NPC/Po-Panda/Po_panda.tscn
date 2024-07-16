@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://touyfrbniykd"]
+
+[ext_resource type="PackedScene" uid="uid://0wb3qgai7qfc" path="res://Characters-NPC/NPC/npc-base.tscn" id="1_162n6"]
+[ext_resource type="Resource" path="res://Characters-NPC/Po-Panda/Rooftop-Convo.dtl" id="2_jprmt"]
+
+[node name="Po Panda" type="Node3D"]
+
+[node name="NPC" parent="." instance=ExtResource("1_162n6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+dialogue = ExtResource("2_jprmt")
