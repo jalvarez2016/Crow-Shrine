@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://0wb3qgai7qfc"]
+
+[ext_resource type="Script" path="res://Characters-NPC/NPC/NPC.gd" id="1_fb7y7"]
+[ext_resource type="Texture2D" uid="uid://wwsswoyn10w1" path="res://Assets/2dIcons/KeyBoard&Mouse_Icons/keyboard_q.png" id="2_5ke5e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ts2u3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_settv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gjt0x"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0jv5x"]
+radius = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_j72ob"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("interact_prompt")]
+script = ExtResource("1_fb7y7")
+interact_prompt = NodePath("interact_icon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ts2u3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_settv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385703, 0.402126, 0)
+mesh = SubResource("BoxMesh_gjt0x")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0jv5x")
+
+[node name="interact_icon" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -168.0
+offset_right = 32.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_5ke5e")
+
+[node name="Label" type="Label" parent="interact_icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = 48.0
+offset_right = 54.5
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Talk"
+label_settings = SubResource("LabelSettings_j72ob")
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_exited"]

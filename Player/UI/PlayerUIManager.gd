@@ -4,6 +4,7 @@ class_name UI_Manager
 @export var health : BarManager
 @export var stamina : BarManager
 @export var treasure : TreasureManager
+@export var UI : CanvasLayer
 
 
 func damage(amount: float):

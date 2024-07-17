@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://coll46n0dklk6"]
+
+[ext_resource type="PackedScene" uid="uid://0wb3qgai7qfc" path="res://Characters-NPC/NPC/npc-base.tscn" id="1_fvfst"]
+[ext_resource type="Resource" path="res://Characters-NPC/Anyar/Conversation.dtl" id="2_hlcum"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qnp7t"]
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Anyar" type="Node3D"]
+
+[node name="NPC" parent="." instance=ExtResource("1_fvfst")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+dialogue = ExtResource("2_hlcum")
+
+[node name="Label" parent="NPC/interact_icon" index="0"]
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+label_settings = SubResource("LabelSettings_qnp7t")
+
+[editable path="NPC"]
