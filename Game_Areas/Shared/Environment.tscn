@@ -2,11 +2,13 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xbtxv"]
 sky_top_color = Color(0.0156863, 0.00784314, 0.172549, 1)
-sky_horizon_color = Color(0.164706, 0.466667, 0.572549, 1)
-sky_curve = 0.0494816
-sky_energy_multiplier = 4.7
+sky_horizon_color = Color(0.988235, 0.580392, 0.494118, 1)
+sky_curve = 0.0568394
+sky_energy_multiplier = 2.28
 ground_bottom_color = Color(0.0431373, 0.113725, 0.368627, 1)
-ground_horizon_color = Color(0.411765, 0.92549, 1, 1)
+ground_horizon_color = Color(0.809677, 0.230207, 0.118346, 1)
+sun_angle_max = 9.62
+sun_curve = 0.00015165
 use_debanding = false
 
 [sub_resource type="Sky" id="Sky_ia43o"]
@@ -15,19 +17,23 @@ sky_material = SubResource("ProceduralSkyMaterial_xbtxv")
 [sub_resource type="Environment" id="Environment_kay6l"]
 background_mode = 2
 sky = SubResource("Sky_ia43o")
-tonemap_mode = 2
-glow_enabled = true
+tonemap_mode = 1
 glow_bloom = 0.75
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.279432, 0.220385, 0.409152, 1)
+volumetric_fog_emission = Color(0.987829, 0.582063, 0.495534, 1)
+volumetric_fog_emission_energy = 0.25
+volumetric_fog_detail_spread = 4.75683
+volumetric_fog_sky_affect = 0.0
 
 [node name="Environment" type="Node3D"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 2.98023e-08, -1.49012e-08, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
-light_color = Color(0.137255, 0.105882, 0.627451, 1)
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_angular_distance = 14.7
+transform = Transform3D(-1, 8.74228e-08, 0, -8.70901e-08, -0.996195, 0.0871558, 7.61939e-09, 0.0871558, 0.996195, 0, 0, 0)
+light_energy = 0.1
+light_volumetric_fog_energy = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kay6l")

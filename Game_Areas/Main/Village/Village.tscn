@@ -401,7 +401,7 @@ script = ExtResource("1_pw3xv")
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 121)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_c0b0s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30158, 1.09928, 66.2454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.302, 1.09928, 7.2454)
 floor_stop_on_slope = false
 
 [node name="HTerrain" type="Node3D" parent="."]
@@ -2427,9 +2427,10 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 3, 16.5708, 23)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.69581, 1, 89.8583)
 dialogue = ExtResource("20_iqtry")
 
-[node name="VillageSurroundings" type="Node3D" parent="."]
+[node name="Telescope" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -512, 0, 0)
 script = ExtResource("4_j7ixr")
-map_scale = Vector3(5, 1, 5)
+ambient_wind = 0.15
 centered = true
 _terrain_data = ExtResource("21_21h1q")
 chunk_size = 64
@@ -2446,3 +2447,13 @@ shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="Telescope"]
+script = ExtResource("7_qag0a")
+texture = ExtResource("8_6idr6")
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("9_a5jr2")

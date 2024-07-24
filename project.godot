@@ -177,3 +177,8 @@ bag={
 
 3d/default_cell_size=0.51
 3d/default_cell_height=0.51
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
