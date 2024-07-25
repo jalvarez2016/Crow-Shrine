@@ -401,7 +401,7 @@ script = ExtResource("1_pw3xv")
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 121)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_c0b0s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.302, 1.09928, 7.2454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.302, 1.09928, 7.2454)
 floor_stop_on_slope = false
 
 [node name="HTerrain" type="Node3D" parent="."]

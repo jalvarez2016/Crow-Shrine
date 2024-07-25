@@ -28,7 +28,6 @@ volumetric_fog_detail_spread = 4.75683
 volumetric_fog_sky_affect = 0.0
 
 [node name="Environment" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.70901e-08, -0.996195, 0.0871558, 7.61939e-09, 0.0871558, 0.996195, 0, 0, 0)
