@@ -76,4 +76,3 @@ func _on_ride_area_exited(area):
 	if area.is_in_group('Player'):
 		player = null
 		toggle_interaction_key()
-

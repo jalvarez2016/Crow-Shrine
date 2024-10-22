@@ -41,14 +41,14 @@ func not_attacking():
 	# Attack State Machine
 	animator["parameters/Attack/conditions/attacking"] = false
 	animator["parameters/Attack/conditions/not_attacking"] = true
-	
+	return
 	
 	
 func idle():
 	animator["parameters/conditions/idling"] = true
-	#animator["parameters/conditions/attacking"] = false
-	#animator["parameters/conditions/defending"] = false
-	#animator["parameters/conditions/jumping"] = false
+	animator["parameters/conditions/attacking"] = false
+	animator["parameters/conditions/defending"] = false
+	animator["parameters/conditions/jumping"] = false
 	animator["parameters/conditions/moving"] = false
 	animator["parameters/Move/conditions/not_moving"] = false
 	
@@ -58,10 +58,7 @@ func moving():
 	animator["parameters/conditions/idling"] = false
 	#animator["parameters/Move/conditions/dodging"] = false
 	
-	if player.dodging:
-		animator["parameters/Move/conditions/dodging"] = true
-	else:
-		animator["parameters/Move/conditions/dodging"] = false
+	animator["parameters/Move/conditions/dodging"] = player.dodging
 	
 	# check if sprinting
 	if player.isSprinting:

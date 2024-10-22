@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://byw4nne6r7e8n"]
+[gd_scene load_steps=140 format=3 uid="uid://byw4nne6r7e8n"]
 
 [ext_resource type="Script" path="res://Game_Areas/Main/Village/Village.gd" id="1_pw3xv"]
 [ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="2_yisfn"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dftibrbdjfbu5" path="res://Assets/3dModels/Interactables/Sign/sign.tscn" id="19_wgmdo"]
 [ext_resource type="Resource" path="res://Assets/3dModels/Interactables/Sign/Welcome Village/Welcome to Wah.dtl" id="20_iqtry"]
 [ext_resource type="Resource" path="res://Game_Areas/Village Surroundings/data.hterrain" id="21_21h1q"]
+[ext_resource type="PackedScene" uid="uid://03v3xxsmqd73" path="res://Assets/3dModels/Buildings/Museum/Crowshrine_museum.tscn" id="22_svmrc"]
 
 [sub_resource type="Resource" id="Resource_bx1ex"]
 script = ExtResource("6_mxfhk")
@@ -905,7 +906,7 @@ transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, -90.3241
 transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, -90.3206, 0, 6.53935)
 
 [node name="fence15" parent="Fences" instance=ExtResource("14_0wlr6")]
-transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, -90.3165, 0, -0.460655)
+transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, -90.3165, 6.55224, -0.460655)
 
 [node name="fence16" parent="Fences" instance=ExtResource("14_0wlr6")]
 transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, -90.3131, 0, -6.46063)
@@ -2427,7 +2428,7 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 3, 16.5708, 23)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.69581, 1, 89.8583)
 dialogue = ExtResource("20_iqtry")
 
-[node name="Telescope" type="Node3D" parent="."]
+[node name="Museum" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -512, 0, 0)
 script = ExtResource("4_j7ixr")
 ambient_wind = 0.15
@@ -2448,7 +2449,7 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 
-[node name="HTerrainDetailLayer" type="Node3D" parent="Telescope"]
+[node name="HTerrainDetailLayer" type="Node3D" parent="Museum"]
 script = ExtResource("7_qag0a")
 texture = ExtResource("8_6idr6")
 shader_params/u_globalmap_tint_bottom = null
@@ -2457,3 +2458,6 @@ shader_params/u_bottom_ao = null
 shader_params/u_instance_scale = null
 shader_params/u_roughness = null
 metadata/_editor_icon = ExtResource("9_a5jr2")
+
+[node name="crowshrine_museum" parent="." instance=ExtResource("22_svmrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -444.868, 7.77096e-06, -33.061)
