@@ -393,7 +393,7 @@ data = PackedVector3Array(-2.25, 0.5, 1, 2.25, 0.5, 1, -2.25, -0.5, 1, 2.25, 0.5
 script = ExtResource("1_pw3xv")
 
 [node name="Environment" parent="." instance=ExtResource("2_yisfn")]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 121)
+transform = Transform3D(-0.866026, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 0, 0, 121)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_c0b0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.652, 1.09928, 3.71648)
