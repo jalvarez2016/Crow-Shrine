@@ -254,13 +254,17 @@ graph_offset = Vector2(36, -256)
 script = ExtResource("2_bey5h")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/2/rotation = Quaternion(0.0703866, -0.00685777, 0.898531, -0.433175)
-bones/3/rotation = Quaternion(0.0110396, -1.364e-07, -0.195589, 0.980624)
-bones/4/rotation = Quaternion(-0.0703392, -0.00732732, 0.901402, 0.427169)
-bones/5/rotation = Quaternion(0.0110396, 1.364e-07, 0.195589, 0.980624)
+bones/2/rotation = Quaternion(0.07042, -0.00650529, 0.896351, -0.437668)
+bones/3/rotation = Quaternion(0.0110396, -1.41292e-07, -0.195589, 0.980624)
+bones/4/rotation = Quaternion(-0.0703633, -0.0070925, 0.899971, 0.430176)
+bones/5/rotation = Quaternion(0.0110396, 1.41292e-07, 0.195589, 0.980624)
+bones/6/position = Vector3(0.384658, -0.884593, -7.6187e-08)
+bones/6/rotation = Quaternion(0.707095, -0.00429505, 0.707093, 0.00429494)
+bones/7/position = Vector3(-0.384658, -0.884593, -7.6187e-08)
+bones/7/rotation = Quaternion(0.707095, 0.00429505, -0.707093, 0.00429494)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.872916, -0.473113, -0.119084, 0.468772, -0.881001, 0.06395, -0.135169, -1.21072e-07, 0.990823, -1.01846, 0.159161, -0.0970732)
+transform = Transform3D(-0.869767, -0.478984, -0.118654, 0.474588, -0.877823, 0.0647436, -0.135169, -1.2666e-07, 0.990823, -1.02405, 0.165978, -0.0970732)
 bone_name = "ForeArm L"
 bone_idx = 5
 

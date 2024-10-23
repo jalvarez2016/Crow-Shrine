@@ -39,6 +39,7 @@ directories/dtl_directory={
 "Tree_Branch_Collected_2": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_2.dtl",
 "Tree_Branch_Collected_3": "res://Player/Dialogic/Timelines/Tree_Branches/Tree_Branch_Collected_3.dtl",
 "Tutorial": "res://Player/Dialogic/Timelines/Tutorial.dtl",
+"Welcome To Museum": "res://Assets/3dModels/Interactables/Sign/To Museum/Welcome To Museum.dtl",
 "Welcome to Wah": "res://Assets/3dModels/Interactables/Sign/Welcome Village/Welcome to Wah.dtl"
 }
 text/letter_speed=0.01

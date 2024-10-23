@@ -1378,14 +1378,14 @@ transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0, 0, 0)
 player = NodePath("../..")
 
 [node name="Skeleton3D" parent="MeshInstance3D/Crow2/Armature" index="0"]
-bones/2/rotation = Quaternion(0.0702784, -0.00788961, 0.904789, -0.419947)
-bones/4/rotation = Quaternion(-0.0702642, -0.0080149, 0.905537, 0.418333)
+bones/2/rotation = Quaternion(0.0702779, -0.00789356, 0.904813, -0.419896)
+bones/4/rotation = Quaternion(-0.0702639, -0.00801753, 0.905552, 0.418299)
 
 [node name="Crow" parent="MeshInstance3D/Crow2/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ugwd6")
 
 [node name="HandAttachment" parent="MeshInstance3D/Crow2/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.881918, -0.455791, -0.120312, 0.451608, -0.890087, 0.0616086, -0.135169, -1.35973e-07, 0.990823, -1.00182, 0.139401, -0.0970732)
+transform = Transform3D(-0.881952, -0.455725, -0.120317, 0.451542, -0.890121, 0.0615996, -0.135169, -1.22935e-07, 0.990823, -1.00175, 0.139327, -0.0970732)
 
 [node name="Weapon" type="Area3D" parent="MeshInstance3D/Crow2/Armature/Skeleton3D/HandAttachment/WeaponContainer" index="0" node_paths=PackedStringArray("attackManager") groups=["Weapon"]]
 transform = Transform3D(-2.27044, 0.970082, -0.806568, -1.23547, -2.04588, 1.01711, -0.255434, 1.27272, 2.24977, 0.187092, 0.534378, -0.337684)

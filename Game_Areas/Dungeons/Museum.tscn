@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=3 uid="uid://dg0f3j4cltxtk"]
+
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/MuseumMain.gd" id="1_4bvu2"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_4hpsa"]
+[ext_resource type="Resource" path="res://Assets/3dModels/Buildings/Museum/Terrain/data.hterrain" id="2_13d24"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_q3qwp"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="4_jhdf8"]
+[ext_resource type="Texture2D" uid="uid://ci4n6asl1x4ab" path="res://Assets/3dModels/Environment/Textures/Grass.png" id="5_th8ap"]
+[ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="6_1enx2"]
+[ext_resource type="PackedScene" uid="uid://03v3xxsmqd73" path="res://Assets/3dModels/Buildings/Museum/Crowshrine_museum.tscn" id="7_6efow"]
+[ext_resource type="PackedScene" uid="uid://w3vxpb6e6et" path="res://Game_Areas/Shared/Environment.tscn" id="8_u4qip"]
+[ext_resource type="PackedScene" uid="uid://nat143ct32bk" path="res://Player/Player.tscn" id="10_aa1oj"]
+[ext_resource type="PackedScene" uid="uid://hxnxylx3w7b5" path="res://Assets/3dModels/Interactables/Sign/Transitioner.tscn" id="11_rjjv4"]
+[ext_resource type="PackedScene" uid="uid://0ev8675tonff" path="res://Assets/3dModels/Environment/Fence/fence.tscn" id="12_6lu3v"]
+
+[sub_resource type="Resource" id="Resource_utpoy"]
+script = ExtResource("3_q3qwp")
+mode = 0
+textures = [[], []]
+
+[node name="Museum" type="Node3D" node_paths=PackedStringArray("player", "starting_point")]
+script = ExtResource("1_4bvu2")
+player = NodePath("CharacterBody3D")
+starting_point = NodePath("StartingPoint")
+
+[node name="Environment" parent="." instance=ExtResource("8_u4qip")]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("10_aa1oj")]
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_4hpsa")
+centered = true
+_terrain_data = ExtResource("2_13d24")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_utpoy")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="HTerrain"]
+script = ExtResource("4_jhdf8")
+texture = ExtResource("5_th8ap")
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("6_1enx2")
+
+[node name="crowshrine_museum" parent="." instance=ExtResource("7_6efow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.9864, 0, 0.0487932)
+
+[node name="StartingPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.922, 1.5, 0)
+
+[node name="Transitioner" parent="." instance=ExtResource("11_rjjv4")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 155.237, 0.698549, 1.98134)
+
+[node name="fence13" parent="." instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, 167.336, 0, 12.5393)
+
+[node name="fence14" parent="." instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, 167.339, 0, 6.53935)
+
+[node name="fence15" parent="." instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, 167.344, 0, -0.461)
+
+[node name="fence16" parent="." instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, 167.347, 0, -6.46063)
