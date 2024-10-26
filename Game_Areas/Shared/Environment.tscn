@@ -61,6 +61,7 @@ sky_top_color = SubResource("Gradient_3cesu")
 sky_horizon_color = SubResource("Gradient_665wl")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.529919, 0.848048, 0, -0.848048, -0.529919, 0, 0, 0)
 light_color = Color(0.733005, 0.733005, 0.733005, 1)
 light_angular_distance = 8.36
 shadow_enabled = true
@@ -70,9 +71,13 @@ shadow_blur = 0.001
 directional_shadow_mode = 0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.989016, 0.147809, 0, -0.147809, -0.989016, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -0.233445, 0.97237, 0, -0.97237, -0.233445, 0, 0, 0)
 visible = false
+light_energy = 0.287
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
 light_negative = true
+light_bake_mode = 0
 shadow_enabled = true
 sky_mode = 2
 

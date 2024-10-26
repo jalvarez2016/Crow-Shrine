@@ -35,14 +35,14 @@ func _process(delta):
 		time = 0.0
 		
 	#Sun
-	sun.rotation_degrees.x = time * 360 + 180
+	sun.rotation_degrees.x = time * 360 + 90
 	sun.light_color = sun_color.sample(time)
 	sun.light_energy = sun_intensity.sample(time)
 	
 	sun.visible = sun.light_energy > 0
 	
 	#Moon
-	moon.rotation_degrees.x = time * 360 
+	moon.rotation_degrees.x = time * 360 + 270
 	moon.light_color = moon_color.sample(time)
 	moon.light_energy = moon_intensity.sample(time)
 	
