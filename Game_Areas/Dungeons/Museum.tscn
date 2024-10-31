@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://dg0f3j4cltxtk"]
+[gd_scene load_steps=57 format=4 uid="uid://dg0f3j4cltxtk"]
 
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/MuseumMain.gd" id="1_4bvu2"]
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_4hpsa"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://cjnqgmbh6kmy5" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Torch.tscn" id="17_501c3"]
 [ext_resource type="Script" path="res://Game_Areas/Dungeons/Path3D.gd" id="18_shace"]
 [ext_resource type="PackedScene" uid="uid://gg1yuw85ih4a" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Tube.tscn" id="19_730r4"]
+[ext_resource type="Script" path="res://Game_Areas/Dungeons/Puzzle2.gd" id="22_pda2f"]
+[ext_resource type="PackedScene" uid="uid://cr1i66fimgvvo" path="res://Assets/3dModels/Interactables/Robots/DrillBot/Main/Vehicle.tscn" id="22_qrcqo"]
+[ext_resource type="PackedScene" uid="uid://cetfngjxtnlpd" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/button/Button.tscn" id="23_5mflr"]
 
 [sub_resource type="Resource" id="Resource_utpoy"]
 script = ExtResource("3_q3qwp")
@@ -426,6 +429,86 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v68ge"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_l2gwm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.9954, 0.236, 44.723, 0, 0, 0, 0, 0, 0, -25.471, 0.24, 36.7048, 0, 0, 0, 0, 0, 0, -29.8454, 0.214, 36.6223),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3mdn"]
+resource_name = "Wall"
+cull_mode = 2
+albedo_color = Color(0.90634, 0.741585, 0.490066, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4i2u"]
+resource_name = "RaccoonDoor"
+cull_mode = 2
+albedo_color = Color(0.226243, 0.226243, 0.226243, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qhl5j"]
+_surfaces = [{
+"aabb": AABB(-0.625838, -1, -0.852636, 0.443289, 2, 1.70527),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAIAAAABAAMABgAFAAQABgAHAAUAAwAHAAIAAwAFAAcAAgAGAAAAAgAHAAYAAAAEAAEAAAAGAAQAAQAFAAMAAQAEAAUA"),
+"name": "Wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("V+46vgAAgD9O5TU/V+46vgAAgD9O5TW/V+46vgAAgL9eRlo/V+46vgAAgL9eRlq/8jYgvwAAgD9O5TW/8jYgvwAAgL9eRlq/8jYgvwAAgD9O5TU/8jYgvwAAgL9eRlo/")
+}, {
+"aabb": AABB(-0.18255, -0.239626, -0.420972, 0.147763, 0.626285, 0.841947),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("BgAHAAAABwAFAAIABQAEAAMABAAGAAEABgAFAAcABQAGAAQACAAKAAkACgAMAAsADAAOAA0ADgAIAA8ACAAMAAoADAAIAA4AAAAKAAYAAAAJAAoAAQAMAAQAAQALAAwABAANAAMABAAMAA0ABwAJAAAABwAIAAkAAgAIAAcAAgAPAAgAAwAOAAUAAwANAA4ABQAPAAIABQAOAA8ABgALAAEABgAKAAsA"),
+"name": "RaccoonDoor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AABULv//AAAAAP////8AAAAAVC4AAAAAAAD//wAAAAAAABil/38AAAAAkYffFQAAAACRhx/qAAAAAAAA/38AAP//AAD/fwAA//9ULv//AAD//5GHH+oAAP///////wAA//8Ypf9/AAD/////AAAAAP//kYffFQAA//9ULgAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jsnrw"]
+resource_name = "crowshrine_museum_Cube_072"
+_surfaces = [{
+"aabb": AABB(-0.625838, -1, -0.852636, 0.443289, 2, 1.70527),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AgALAAgAAgAFAAsAFAARAA4AFAAXABEACgAWAAcACgAQABYABgASAAAABgAVABIAAQANAAQAAQATAA0AAwAPAAkAAwAMAA8A"),
+"material": SubResource("StandardMaterial3D_m3mdn"),
+"name": "Wall",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("V+46vgAAgD9O5TU/V+46vgAAgD9O5TU/V+46vgAAgD9O5TU/V+46vgAAgD9O5TW/V+46vgAAgD9O5TW/V+46vgAAgD9O5TW/V+46vgAAgL9eRlo/V+46vgAAgL9eRlo/V+46vgAAgL9eRlo/V+46vgAAgL9eRlq/V+46vgAAgL9eRlq/V+46vgAAgL9eRlq/8jYgvwAAgD9O5TW/8jYgvwAAgD9O5TW/8jYgvwAAgD9O5TW/8jYgvwAAgL9eRlq/8jYgvwAAgL9eRlq/8jYgvwAAgL9eRlq/8jYgvwAAgD9O5TU/8jYgvwAAgD9O5TU/8jYgvwAAgD9O5TU/8jYgvwAAgL9eRlo/8jYgvwAAgL9eRlo/8jYgvwAAgL9eRlo//399iP///z//f///////v////3////+/gPf//////7//f///////v////3////+//399iP///z//fwAA////v////3////+/gPf//////7//fwAA////v////3////+/gPf//////7//f///////vwAA/3////+/gPf//////7//fwAA////vwAA/3////+//399iP///z//f///////vwAA/3////+//399iP///z//fwAA////vwAA/3////+/")
+}, {
+"aabb": AABB(-0.18255, -0.239626, -0.420972, 0.147763, 0.626285, 0.841947),
+"attribute_data": PackedByteArray("/1////9f////X////5////+f////n////1//v/9f/7//X/+//5//v/+f/7//n/+//5//3/+f/9//n//f/3//v/9//7//f/+//3////9/////f////1//3/9f/9//X//f/1//3/9f/9//X//f/1////9f////X////3////9/////f////5////+f////n////5//3/+f/9//n//f/5//v/+f/7//n/+//3//v/9//7//f/+//1//v/9f/7//X/+/"),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("FAAXAAIAFwARAAgAEQAOAAsADgAUAAUAFAARABcAEQAUAA4AGgAgAB0AIAAmACMAJgAsACkALAAaAC8AGgAmACAAJgAaACwAAQAfABMAAQAcAB8ABAAkAAwABAAiACQADQAoAAoADQAlACgAFgAbAAAAFgAZABsABgAYABUABgAtABgACQAqAA8ACQAnACoAEAAuAAcAEAArAC4AEgAhAAMAEgAeACEA"),
+"material": SubResource("StandardMaterial3D_v4i2u"),
+"name": "RaccoonDoor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AABULv//tsoAAFQu//8H8wAAVC7//7YxAAD/////PfYAAP/////MUwAA/////9MkAABULgAAt0oAAFQuAAAIcwAAVC4AANIiAAD//wAAPXYAAP//AADM0wAA//8AAA4wAAAYpf9/zFMAABil/3/M0wAAGKX/f6oqAACRh98VPXYAAJGH3xUIcwAAkYffFdgqAACRhx/qPfYAAJGHH+oH8wAAkYcf6nwqAAAAAP9/t0oAAAAA/3+2ygAAAAD/f6oq//8AAP9/t0r//wAA/3+2yv//AAD/f1TV//9ULv//tsr//1Qu//8H8///VC7//yzd//+Rhx/qPfb//5GHH+oH8///kYcf6ibV////////Pfb////////MU/////////DP//8Ypf9/zFP//xil/3/M0///GKX/f1TV/////wAAPXb/////AADM0/////8AACvb//+Rh98VPXb//5GH3xUIc///kYffFYLV//9ULgAAt0r//1QuAAAIc///VC4AAEjO////fwAA/39QNNcl////fwAA/38VJPQt////fwAA/3//If8u////fwAA/3/LMRknAAD/fwAA/3+qKqoq////fwAA/3/iKo4q////fwAA/39yKsYq////f////3+qKqoq////f////39U1VTV////fwAA/3//3f/Q////fwAA/38c1XDV////fwAA/38zzuXYAAD/fwAA/39U1VTV////fwAA/3/p2wrS////fwAA/3+M1TjV////fwAA/3+uyyfa")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qhl5j")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ypf1a"]
+data = PackedVector3Array(-0.1825, 1, 0.7105, -0.1825, -1, -0.8526, -0.1825, -1, 0.8526, -0.1825, 1, 0.7105, -0.1825, 1, -0.7105, -0.1825, -1, -0.8526, -0.6258, 1, 0.7105, -0.6258, -1, -0.8526, -0.6258, 1, -0.7105, -0.6258, 1, 0.7105, -0.6258, -1, 0.8526, -0.6258, -1, -0.8526, -0.1825, -1, -0.8526, -0.6258, -1, 0.8526, -0.1825, -1, 0.8526, -0.1825, -1, -0.8526, -0.6258, -1, -0.8526, -0.6258, -1, 0.8526, -0.1825, -1, 0.8526, -0.6258, 1, 0.7105, -0.1825, 1, 0.7105, -0.1825, -1, 0.8526, -0.6258, -1, 0.8526, -0.6258, 1, 0.7105, -0.1825, 1, 0.7105, -0.6258, 1, -0.7105, -0.1825, 1, -0.7105, -0.1825, 1, 0.7105, -0.6258, 1, 0.7105, -0.6258, 1, -0.7105, -0.1825, 1, -0.7105, -0.6258, -1, -0.8526, -0.1825, -1, -0.8526, -0.1825, 1, -0.7105, -0.6258, 1, -0.7105, -0.6258, -1, -0.8526, -0.1826, 0.092, 0.349, -0.1826, -0.2396, 0, -0.1826, -0.1263, 0.421, -0.1826, -0.2396, 0, -0.1826, 0.092, -0.349, -0.1826, -0.1263, -0.421, -0.1826, 0.092, -0.349, -0.1826, 0.1643, 0, -0.1826, 0.3867, -0.421, -0.1826, 0.1643, 0, -0.1826, 0.092, 0.349, -0.1826, 0.3867, 0.421, -0.1826, 0.092, 0.349, -0.1826, 0.092, -0.349, -0.1826, -0.2396, 0, -0.1826, 0.092, -0.349, -0.1826, 0.092, 0.349, -0.1826, 0.1643, 0, -0.0348, -0.2396, 0, -0.0348, 0.092, 0.349, -0.0348, -0.1263, 0.421, -0.0348, 0.092, 0.349, -0.0348, 0.1643, 0, -0.0348, 0.3867, 0.421, -0.0348, 0.1643, 0, -0.0348, 0.092, -0.349, -0.0348, 0.3867, -0.421, -0.0348, 0.092, -0.349, -0.0348, -0.2396, 0, -0.0348, -0.1263, -0.421, -0.0348, -0.2396, 0, -0.0348, 0.1643, 0, -0.0348, 0.092, 0.349, -0.0348, 0.1643, 0, -0.0348, -0.2396, 0, -0.0348, 0.092, -0.349, -0.1826, -0.1263, 0.421, -0.0348, 0.092, 0.349, -0.1826, 0.092, 0.349, -0.1826, -0.1263, 0.421, -0.0348, -0.1263, 0.421, -0.0348, 0.092, 0.349, -0.1826, 0.3867, 0.421, -0.0348, 0.1643, 0, -0.1826, 0.1643, 0, -0.1826, 0.3867, 0.421, -0.0348, 0.3867, 0.421, -0.0348, 0.1643, 0, -0.1826, 0.1643, 0, -0.0348, 0.3867, -0.421, -0.1826, 0.3867, -0.421, -0.1826, 0.1643, 0, -0.0348, 0.1643, 0, -0.0348, 0.3867, -0.421, -0.1826, -0.2396, 0, -0.0348, -0.1263, 0.421, -0.1826, -0.1263, 0.421, -0.1826, -0.2396, 0, -0.0348, -0.2396, 0, -0.0348, -0.1263, 0.421, -0.1826, -0.1263, -0.421, -0.0348, -0.2396, 0, -0.1826, -0.2396, 0, -0.1826, -0.1263, -0.421, -0.0348, -0.1263, -0.421, -0.0348, -0.2396, 0, -0.1826, 0.3867, -0.421, -0.0348, 0.092, -0.349, -0.1826, 0.092, -0.349, -0.1826, 0.3867, -0.421, -0.0348, 0.3867, -0.421, -0.0348, 0.092, -0.349, -0.1826, 0.092, -0.349, -0.0348, -0.1263, -0.421, -0.1826, -0.1263, -0.421, -0.1826, 0.092, -0.349, -0.0348, 0.092, -0.349, -0.0348, -0.1263, -0.421, -0.1826, 0.092, 0.349, -0.0348, 0.3867, 0.421, -0.1826, 0.3867, 0.421, -0.1826, 0.092, 0.349, -0.0348, 0.092, 0.349, -0.0348, 0.3867, 0.421)
+
 [node name="Museum" type="Node3D" node_paths=PackedStringArray("player", "starting_point")]
 script = ExtResource("1_4bvu2")
 player = NodePath("CharacterBody3D")
@@ -661,6 +744,27 @@ transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 155.237,
 
 [node name="fence13" parent="Fences" instance=ExtResource("12_6lu3v")]
 transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, 167.336, 0, 12.5393)
+
+[node name="fence17" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, -7.664, 7.65377, -1.4607)
+
+[node name="fence18" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.707514, 0, 0.7067, 0, 1, 0, -0.7067, 0, 0.707514, -10.664, 7.65377, 4.5393)
+
+[node name="fence19" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.965777, 0, -0.259375, 0, 1, 0, 0.259375, 0, 0.965777, -16.664, 7.65377, 5.5393)
+
+[node name="fence20" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(0.349309, 0, -0.937008, 0, 1, 0, 0.937008, 0, 0.349309, -21.664, 7.65377, 1.5393)
+
+[node name="fence21" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(-0.500498, 0, -0.865738, 0, 1, 0, 0.865738, 0, -0.500498, -20.664, 7.65377, -4.4607)
+
+[node name="fence22" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(-0.865738, 0, 0.500498, 0, 1, 0, -0.500498, 0, -0.865738, -11.664, 7.65377, -6.4607)
+
+[node name="fence23" parent="Fences" instance=ExtResource("12_6lu3v")]
+transform = Transform3D(-0.966075, 0, -0.258263, 0, 1, 0, 0.258263, 0, -0.966075, -16.664, 7.65377, -7.4607)
 
 [node name="fence14" parent="Fences" instance=ExtResource("12_6lu3v")]
 transform = Transform3D(0.000575475, 0, 1, 0, 1, 0, -1, 0, 0.000575475, 167.339, 0, 6.53935)
@@ -1252,3 +1356,54 @@ path_mesh = NodePath("..")
 [node name="TubeManager" parent="Puzzles/Tutorial" instance=ExtResource("19_730r4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94773, 0.1, -4.19832)
 item = "res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn"
+
+[node name="Puzzle2" type="Node3D" parent="Puzzles" node_paths=PackedStringArray("flame_part_spawner", "exit_door", "button", "path")]
+script = ExtResource("22_pda2f")
+flame_part_spawner = NodePath("Puzzle2_TubeManager")
+exit_door = NodePath("Puzzle2Door")
+button = NodePath("Puzzle2_Button")
+path = NodePath("CSGCylinder3D/Puzzle2_Path")
+
+[node name="Puzzle2_TubeManager" parent="Puzzles/Puzzle2" instance=ExtResource("19_730r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0523, 0.1, 25.8017)
+item = "res://Player/Weapons/WeaponParts/FlameWeaponPart/flame_weapon_part.tscn"
+
+[node name="Puzzle2_Button" parent="Puzzles/Puzzle2" instance=ExtResource("23_5mflr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 44.4658)
+
+[node name="CSGCylinder3D" type="CSGPolygon3D" parent="Puzzles/Puzzle2"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.05, 0.05, 0.05, 0)
+mode = 2
+path_node = NodePath("Puzzle2_Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_v68ge")
+
+[node name="Puzzle2_Path" type="Path3D" parent="Puzzles/Puzzle2/CSGCylinder3D" node_paths=PackedStringArray("path_mesh")]
+curve = SubResource("Curve3D_l2gwm")
+script = ExtResource("18_shace")
+path_mesh = NodePath("..")
+
+[node name="Puzzle2Door" type="Node3D" parent="Puzzles/Puzzle2"]
+transform = Transform3D(0.67676, 0, 0, 0, 2, 0, 0, 0, 1.4074, -29.648, 2, 37.6968)
+script = ExtResource("11_b5l27")
+
+[node name="Cube_211" type="MeshInstance3D" parent="Puzzles/Puzzle2/Puzzle2Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.710529)
+mesh = SubResource("ArrayMesh_jsnrw")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Puzzles/Puzzle2/Puzzle2Door/Cube_211"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzles/Puzzle2/Puzzle2Door/Cube_211/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ypf1a")
+
+[node name="Vehicle" parent="." instance=ExtResource("22_qrcqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1343, 8.91286, -43.0929)
+speed = 15.0

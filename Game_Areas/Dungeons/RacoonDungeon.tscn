@@ -170,13 +170,9 @@ transform = Transform3D(1.175, 0, 0, 0, 1, 0, 0, 0, 1, -0.881251, 0.11, 10.9823)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.0576, 0.11, 0.782528)
 interact = NodePath("../Door/Interact")
 
-[node name="Puzzle2" type="Node3D" parent="." node_paths=PackedStringArray("flame_part_spawner", "exit_door", "button", "path")]
+[node name="Puzzle2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 37)
 script = ExtResource("11_eta8v")
-flame_part_spawner = NodePath("TubeManager")
-exit_door = NodePath("Door2")
-button = NodePath("Button")
-path = NodePath("../PuzzlePaths/Puzzle2Path/Path3D")
 
 [node name="Button" parent="Puzzle2" instance=ExtResource("11_twkam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7.46578)
