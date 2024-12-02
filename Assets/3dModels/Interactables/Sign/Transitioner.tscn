@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://hxnxylx3w7b5"]
+
+[ext_resource type="Script" path="res://Assets/3dModels/Interactables/Sign/Transitioner.gd" id="1_40t8t"]
+[ext_resource type="PackedScene" uid="uid://dftibrbdjfbu5" path="res://Assets/3dModels/Interactables/Sign/sign.tscn" id="1_aodaw"]
+[ext_resource type="Resource" path="res://Assets/3dModels/Interactables/Sign/To Museum/Welcome To Museum.dtl" id="2_btq1e"]
+
+[node name="Transitioner" type="Node3D"]
+script = ExtResource("1_40t8t")
+
+[node name="Sign" parent="." instance=ExtResource("1_aodaw")]
+dialogue = ExtResource("2_btq1e")

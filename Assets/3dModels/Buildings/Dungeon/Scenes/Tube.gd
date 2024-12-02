@@ -4,6 +4,8 @@ extends Node3D
 @export var item : String
 @export var spawn_point : Marker3D
 
+func _ready() -> void:
+	spawn_item()
 
 func spawn_item():
 	var item_instance = load(item).instantiate()

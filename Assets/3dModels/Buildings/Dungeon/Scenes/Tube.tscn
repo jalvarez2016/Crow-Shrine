@@ -1,9 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://gg1yuw85ih4a"]
+[gd_scene load_steps=7 format=3 uid="uid://gg1yuw85ih4a"]
 
 [ext_resource type="PackedScene" uid="uid://v0vd3f7strd7" path="res://Assets/3dModels/Buildings/Dungeon/Tube.glb" id="1_rj3i2"]
 [ext_resource type="Script" path="res://Assets/3dModels/Buildings/Dungeon/Scenes/Tube.gd" id="2_c0ewn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1cf7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_juakd"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn53b"]
+albedo_color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t6rk0"]
+data = PackedVector3Array(-0.5, 0.1, 0.5, 0.5, 0.1, 0.5, -0.5, -0.1, 0.5, 0.5, 0.1, 0.5, 0.5, -0.1, 0.5, -0.5, -0.1, 0.5, 0.5, 0.1, -0.5, -0.5, 0.1, -0.5, 0.5, -0.1, -0.5, -0.5, 0.1, -0.5, -0.5, -0.1, -0.5, 0.5, -0.1, -0.5, 0.5, 0.1, 0.5, 0.5, 0.1, -0.5, 0.5, -0.1, 0.5, 0.5, 0.1, -0.5, 0.5, -0.1, -0.5, 0.5, -0.1, 0.5, -0.5, 0.1, -0.5, -0.5, 0.1, 0.5, -0.5, -0.1, -0.5, -0.5, 0.1, 0.5, -0.5, -0.1, 0.5, -0.5, -0.1, -0.5, 0.5, 0.1, 0.5, -0.5, 0.1, 0.5, 0.5, 0.1, -0.5, -0.5, 0.1, 0.5, -0.5, 0.1, -0.5, 0.5, 0.1, -0.5, -0.5, -0.1, 0.5, 0.5, -0.1, 0.5, -0.5, -0.1, -0.5, 0.5, -0.1, 0.5, 0.5, -0.1, -0.5, -0.5, -0.1, -0.5)
 
 [node name="TubeManager" node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_rj3i2")]
 script = ExtResource("2_c0ewn")
@@ -11,7 +20,17 @@ spawn_point = NodePath("SpawnPoint")
 
 [node name="Tube" parent="." index="0"]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_g1cf7")
 
 [node name="SpawnPoint" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0354572, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.335007, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("BoxMesh_juakd")
+surface_material_override/0 = SubResource("StandardMaterial3D_sn53b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_t6rk0")

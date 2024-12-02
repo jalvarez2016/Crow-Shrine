@@ -14,4 +14,3 @@ func _check_lock():
 		exit_door.locked = false
 		exit_door.open()
 		path.turn_on()
-
