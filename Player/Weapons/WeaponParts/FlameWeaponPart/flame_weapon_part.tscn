@@ -26,10 +26,12 @@ shape = SubResource("SphereShape3D_hygdl")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
-offset_left = 590.0
+offset_left = 582.0
 offset_top = 572.0
-offset_right = 638.0
-offset_bottom = 614.0
+offset_right = 639.0
+offset_bottom = 629.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="Interact" type="TextureRect" parent="Panel"]
 layout_mode = 1

@@ -2530,6 +2530,7 @@ _data = {
 line_spacing = 5.0
 font_size = 30
 outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="crowshrine_museum" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104, 0, 0)
@@ -6508,11 +6509,18 @@ libraries = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
-offset_left = 590.0
-offset_top = 572.0
-offset_right = 638.0
-offset_bottom = 614.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.5
+offset_top = -86.0
+offset_right = 26.5
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "Push the Q key to open the door"
 
 [node name="Interact" type="TextureRect" parent="Panel"]
 layout_mode = 1
