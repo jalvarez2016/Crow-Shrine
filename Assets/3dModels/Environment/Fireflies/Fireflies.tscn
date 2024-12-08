@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0i4o8jtcsv2r"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_icqkr"]
+lifetime_randomness = 1.0
+emission_shape_scale = Vector3(5, 5, 5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, 0)
+initial_velocity_min = -2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx4il"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lmi5w"]
+material = SubResource("StandardMaterial3D_bx4il")
+radius = 0.2
+height = 0.4
+
+[node name="FireFlies" type="GPUParticles3D"]
+amount = 40
+lifetime = 20.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_icqkr")
+draw_pass_1 = SubResource("SphereMesh_lmi5w")

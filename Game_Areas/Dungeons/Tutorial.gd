@@ -5,9 +5,6 @@ extends Node3D
 @export var torch :Node3D
 @export var path: Path3D
 
-func _ready():
-	flame_part_spawner.spawn_item()
-
 
 func _process(_delta):
 	_check_lock()
